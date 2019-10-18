@@ -50,7 +50,7 @@ while video.isOpened():
     for face in faces:
         face.draw_bbox(frame)
         face.draw_pts(frame)
-        face.show_eyes()
+        face.draw_gaze(frame)
 
         # send 'em
         # you got the gaze vectors

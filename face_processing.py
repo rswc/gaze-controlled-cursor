@@ -52,10 +52,14 @@ class Face:
         (self.l_p2, self.l_p1, self.l_mid, self.l_eye) = self.get_eye(self.eye_pts[1], self.eye_pts[0])
         (self.r_p2, self.r_p1, self.r_mid, self.r_eye) = self.get_eye(self.eye_pts[2], self.eye_pts[3])
 
+        if self.l_eye.size is 0 or self.l_eye[0].size is 0 or self.r_eye.size is 0 or self.r_eye[0].size is 0:
+            return
+
         # Head pose
-        self.h_pose = model_hp.Predict({'data': self.image})
+        self.h_pose = np.array([angle[0][0] for angle in model_hp.Predict({'data': self.image})])
 
         # Gaze estimation
+        self.gaze = model_ge.Predict({'left_eye_image': self.l_eye, 'right_eye_image': self.r_eye, 'head_pose_angles': self.h_pose})[0]
 
     def get_eye(self, p1, p2):
         eye_norm = cv2.norm(p1 - p2)
@@ -63,6 +67,9 @@ class Face:
 
         (xmin, ymin) = (midpoint - eye_norm * 1.6).astype("int")
         (xmax, ymax) = (midpoint + eye_norm * 1.6).astype("int")
+
+        assert xmax > midpoint[0] and xmin < midpoint[0]
+        assert ymax > midpoint[1] and ymin < midpoint[1]
 
         (w, h) = self.p1
         xmin = max(xmin, 0)
@@ -87,10 +94,16 @@ class Face:
         cv2.rectangle(image, self.l_p2, self.l_p1, (230, 230, 230), 1)
         cv2.rectangle(image, self.r_p2, self.r_p1, (230, 230, 230), 1)
 
+    def draw_gaze(self, image):
+        gaze_arrow = (np.array([self.gaze[0], -self.gaze[1]]) * 0.4 * self.image.shape[0]).astype("int")
+        cv2.arrowedLine(image, self.l_mid, (self.l_mid[0] + gaze_arrow[0], self.l_mid[1] + gaze_arrow[1]), (240, 24, 24))
+        cv2.arrowedLine(image, self.r_mid, (self.r_mid[0] + gaze_arrow[0], self.r_mid[1] + gaze_arrow[1]), (240, 24, 24))
+
     def show_eyes(self):
-        #if self.l_eye:
+        if self.l_eye.size > 0: 
             cv2.imshow('left eye', self.l_eye)
             cv2.resizeWindow('left eye', 256, 256)
-        #if self.r_eye:
+        if self.r_eye.size > 0:
             cv2.imshow('right eye', self.r_eye)
             cv2.resizeWindow('right eye', 256, 256)
+
