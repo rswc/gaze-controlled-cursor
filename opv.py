@@ -101,6 +101,9 @@ class OpvModel(OpvExec):
         (self.original,image) = self.Preprocess(image)
         
         self.lastresult = self._GetMachine().infer(inputs={self.input_layer: image}) #for models with more than 1 output layer
-        output = self.lastresult[layer]
-        return output                                        # Return the default output layer
-        
+        if len(self.lastresult.keys()) > 1:
+            return self.lastresult.values()
+        else:
+            output = self.lastresult[layer]
+            return output                                        # Return the default output layer
+            
