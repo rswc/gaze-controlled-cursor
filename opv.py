@@ -73,9 +73,9 @@ class OpvModel(OpvExec):
                 del plugin
                 assert(len(not_supported_layers)==0)
         
-        self.input_layer = next(iter(net.inputs))
-        self.input_shape = net.inputs[self.input_layer].shape
-        self.output_layer = next(iter(net.outputs))
+        self.input_layers = [*net.inputs] #TODO: make these two into just a single dict
+        self.input_shapes = {layer: net.inputs[layer].shape for layer in net.inputs}
+        self.output_layers = [*net.outputs]
         
         self._SetMachine(plugin.load(network=net))
         del net
@@ -83,27 +83,27 @@ class OpvModel(OpvExec):
         if (self._debug):
             print("[INFO] Model " + model_name + " Loaded and Ready on NCS device "+str(ncs))
 
-    def Preprocess(self, image):                              # Preprocess the image
-        original = image.copy()
+    def Preprocess(self, image, shape):                              # Preprocess the image
+        (b, c, h, w) = shape
+        images = np.ndarray(shape=(b, c, h, w))
 
-        (n, c, h, w) = self.input_shape
-        images = np.ndarray(shape=(n, c, h, w))
         if image.shape[:-1] != (h, w):
             if (self._debug):
                 print("\t[INFO] Image resized from {} to {}".format(image.shape[:-1], (h, w)))
             image = cv2.resize(image, (w, h))
         images[0] = image.transpose((2, 0, 1))               # Change data layout from HWC to CHW
-        return (original, images)
+        return images
 
-    def Predict(self, image, layer=None):
-        if (layer==None):
-            layer = self.output_layer
-        (self.original,image) = self.Preprocess(image)
+    def Predict(self, images):
+        for layer, image in images.items():
+            assert layer in self.input_layers, "Invalid input layer name"
+            if len(image.shape) > 2:
+                images[layer] = self.Preprocess(image, self.input_shapes[layer])
         
-        self.lastresult = self._GetMachine().infer(inputs={self.input_layer: image}) #for models with more than 1 output layer
+        self.lastresult = self._GetMachine().infer(inputs=images) #for models with more than 1 output layer
+
         if len(self.lastresult.keys()) > 1:
-            return self.lastresult.values()
+            return [*self.lastresult.values()]
         else:
-            output = self.lastresult[layer]
-            return output                                        # Return the default output layer
+            return next(iter(self.lastresult.values()))                     # Return the default output layer
             

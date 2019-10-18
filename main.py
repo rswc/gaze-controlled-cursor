@@ -8,7 +8,7 @@ def DrawBoundingBoxes(predictions, image, conf=0.5):
     predictions_1 = predictions[0][0]                 # subset dataframe
     confidence = predictions_1[:,2]                   # getting conf value [image_id, label, conf, x_min, y_min, x_max, y_max]
     topresults = predictions_1[(confidence>conf)]     # choosing only predictions with conf value bigger than treshold
-    (h,w) = canvas.shape[:2]                        # setting the variable h and w according to image height
+    (h, w) = canvas.shape[:2]                        # setting the variable h and w according to image height
     faces = []
     
     #
@@ -49,7 +49,6 @@ def DrawPoints(predictions, image, x, y, w, h):
         cv2.circle(canvas, (c_x, c_y), 2, (240, 240, 24), -1)
     return canvas
 
-
 video = cv2.VideoCapture(0)
 
 model_fd = OpvModel("face-detection-adas-0001", "GPU")
@@ -61,19 +60,20 @@ while video.isOpened():
     if not ret: 
         break
 
-    predictions_fd = model_fd.Predict(frame)
+    predictions_fd = model_fd.Predict({'data': frame})
     frame, faces = DrawBoundingBoxes(predictions_fd, frame) #TODO: proper separation
 
-    predictions_lm = predictions_hp = []
+    predictions_lm = []
+    predictions_hp = []
+
     for face in faces:
-            predictions_lm.append(model_lm.Predict(face[0]))
-            predictions_hp.append(model_hp.Predict(face[0]))
+            predictions_lm.append(model_lm.Predict({'data': face[0]}))
+            predictions_hp.append(model_hp.Predict({'data': face[0]}))
 
             (x, y) = face[1:3]
             (h, w) = face[0].shape[:2]
             frame = DrawPoints(predictions_lm, frame, x, y, w, h)
-    
-    #TODO: suck my big fat cock
+
     
     cv2.imshow('frame', frame)
 
