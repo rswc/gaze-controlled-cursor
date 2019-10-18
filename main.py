@@ -1,37 +1,25 @@
 #pylint: disable=missing-docstring, invalid-name
 import cv2
 import numpy as np
-from opv import OpvModel
+import face_processing
+from face_processing import Face
 
 def DrawBoundingBoxes(predictions, image, conf=0.5):
     canvas = image.copy()                             # copy instead of modifying the original image
     predictions_1 = predictions[0][0]                 # subset dataframe
-    confidence = predictions_1[:,2]                   # getting conf value [image_id, label, conf, x_min, y_min, x_max, y_max]
-    topresults = predictions_1[(confidence>conf)]     # choosing only predictions with conf value bigger than treshold
+    confidence = predictions_1[:, 2]                   # getting conf value [image_id, label, conf, x_min, y_min, x_max, y_max]
+    topresults = predictions_1[(confidence > conf)]     # choosing only predictions with conf value bigger than treshold
     (h, w) = canvas.shape[:2]                        # setting the variable h and w according to image height
     faces = []
     
-    #
     for detection in topresults:
         box = detection[3:7] * np.array([w, h, w, h]) # determine box location
         (xmin, ymin, xmax, ymax) = box.astype("int") # assign box location value to xmin, ymin, xmax, ymax
 
-        if xmin - 15 >= 0: #TODO: this is ugly as shit
-            xmin = xmin - 15
-        else:
-            xmin = 0
-        if xmax + 15 <= w:
-            xmax = xmax + 15
-        else:
-            xmax = w
-        if ymin - 15 >= 0:
-            ymin = ymin - 15
-        else:
-            ymin = 0
-        if ymax + 15 <= h:
-            ymax = ymax + 15
-        else:
-            ymax = h
+        xmin = max(xmin - 15, 0)
+        xmax = min(xmax + 15, w)
+        ymin = max(ymin - 15, 0)
+        ymax = min(ymax + 15, h)
 
         faces.append([image[ymin:ymax, xmin:xmax, :], xmin, ymin])
 
@@ -51,28 +39,21 @@ def DrawPoints(predictions, image, x, y, w, h):
 
 video = cv2.VideoCapture(0)
 
-model_fd = OpvModel("face-detection-adas-0001", "GPU")
-model_lm = OpvModel("facial-landmarks-35-adas-0002", "GPU", ncs=2)
-model_hp = OpvModel("head-pose-estimation-adas-0001", "GPU", ncs=3)
 
 while video.isOpened():
     ret, frame = video.read()
     if not ret: 
         break
 
-    predictions_fd = model_fd.Predict({'data': frame})
-    frame, faces = DrawBoundingBoxes(predictions_fd, frame) #TODO: proper separation
-
-    predictions_lm = []
-    predictions_hp = []
+    faces = face_processing.process(frame)
 
     for face in faces:
-            predictions_lm.append(model_lm.Predict({'data': face[0]}))
-            predictions_hp.append(model_hp.Predict({'data': face[0]}))
+        face.draw_bbox(frame)
+        face.draw_pts(frame)
+        face.show_eyes()
 
-            (x, y) = face[1:3]
-            (h, w) = face[0].shape[:2]
-            frame = DrawPoints(predictions_lm, frame, x, y, w, h)
+        # send 'em
+        # you got the gaze vectors
 
     
     cv2.imshow('frame', frame)

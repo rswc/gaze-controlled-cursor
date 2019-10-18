@@ -13,10 +13,11 @@
 #
 # Run ClearMachine() after the model is no longer required for inferences. Not required if executing from command line.
 
+#pylint: disable=no-name-in-module
+import os
 import cv2
 import numpy as np
 from openvino.inference_engine import IENetwork, IEPlugin
-import os
 
 class OpvExec:
     __machine = []
