@@ -39,10 +39,13 @@ class Face:
         self.p2 = p2
         self.conf = conf
         self.image = image
+        self.gaze = np.array([])
+        self.h_pose = np.array([])
         
         # Landmarks
         lm = model_lm.Predict({'data': self.image})[0]
         (h, w) = self.image.shape[:2]
+        self.size = h * w
 
         self.eye_pts = []
         for i in range(0, 8, 2):
@@ -95,6 +98,8 @@ class Face:
         cv2.rectangle(image, self.r_p2, self.r_p1, (230, 230, 230), 1)
 
     def draw_gaze(self, image):
+        if not self.gaze.size:
+            return
         gaze_arrow = (np.array([self.gaze[0], -self.gaze[1]]) * 0.4 * self.image.shape[0]).astype("int")
         cv2.arrowedLine(image, self.l_mid, (self.l_mid[0] + gaze_arrow[0], self.l_mid[1] + gaze_arrow[1]), (240, 24, 24))
         cv2.arrowedLine(image, self.r_mid, (self.r_mid[0] + gaze_arrow[0], self.r_mid[1] + gaze_arrow[1]), (240, 24, 24))
