@@ -25,27 +25,47 @@ def process(image, conf=0.5):
         ymin = max(ymin - 15, 0)
         ymax = min(ymax + 15, h)
 
-        face_crop = image[ymin:ymax, xmin:xmax, :]
-
-        faces.append(Face((xmin, ymin), (xmax, ymax), result[2], face_crop))
+        faces.append(Face((xmin, ymin), (xmax, ymax), result[2], image))
 
     return faces
 
 class Face:
-    #TODO: docstrings
+    """
+    General class for calculating all necessary face attributes and displaying the results.
+
+    Args:
+        p1: Bounding box minimum point (in image fraction, 0-1)
+        p1: Bounding box maximum point (in image fraction, 0-1)
+        conf: Face detection confidence
+        image: Image from which the face will be cut out
+
+    Attributes:
+        p1: Bounding box minimum point (in image fraction, 0-1)
+        p1: Bounding box maximum point (in image fraction, 0-1)
+        conf: Face detection confidence
+        image: Image of the face
+        gaze: The estimated gaze vector
+        h_pose: The estimated head pose
+        size: Area of the image (in px^2)
+        eye_pts: The four eye corner points, local coordinates (in numpy arrays of image fractions, 0-1)
+        l_mid, r_mid: The two eye midpoints, global coordinates (in tuples of image fractions, 0-1)
+        l_p1, l_p2, r_p1, r_p2: The four eye corner points, global coordinates (in tuples of image fractions, 0-1)
+        l_eye, r_eye: Images of the eyes, cut out from the local face image
+    """
 
     def __init__(self, p1, p2, conf, image):
         self.p1 = p1
         self.p2 = p2
         self.conf = conf
-        self.image = image
+        self.image = image[p1[1]:p2[1], p1[0]:p2[0], :]
         self.gaze = np.array([])
         self.h_pose = np.array([])
+
+        (h, w) = self.image.shape[:2]
+        self.size = h * w
         
         # Landmarks
         lm = model_lm.Predict({'data': self.image})[0]
-        (h, w) = self.image.shape[:2]
-        self.size = h * w
 
         self.eye_pts = []
         for i in range(0, 8, 2):
@@ -58,7 +78,7 @@ class Face:
         if self.l_eye.size is 0 or self.l_eye[0].size is 0 or self.r_eye.size is 0 or self.r_eye[0].size is 0:
             return
 
-        # Head pose
+        # Head pose estimation
         self.h_pose = np.array([angle[0][0] for angle in model_hp.Predict({'data': self.image})])
 
         # Gaze estimation
@@ -83,7 +103,7 @@ class Face:
         return ((xmax + w, ymax + h), (xmin + w, ymin + h), (int(midpoint[0] + w), int(midpoint[1] + h)), self.image[ymin:ymax, xmin:xmax, :])
 
     def draw_bbox(self, image):
-        cv2.rectangle(image, self.p2, self.p1, (230, 230, 230), 2)  # make a rectangle
+        cv2.rectangle(image, self.p2, self.p1, (230, 230, 230), 2)
         cv2.putText(image, str(round(self.conf * 100, 2))+"%", self.p2, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0,0), 2)
 
     def draw_pts(self, image):
@@ -112,3 +132,77 @@ class Face:
             cv2.imshow('right eye', self.r_eye)
             cv2.resizeWindow('right eye', 256, 256)
 
+class GazeVectorAverager:
+    """
+    Instance-based helper class for averaging the gaze vectors. It will first attempt
+    to collect the specified minimum number of samples, and can then return the average
+    and standard deviation every frame, unless it becomes invalidated (for ex. by std
+    exceeding the limit). In that case, the process will start over.
+
+    Args:
+        length: The desired amount of samples
+        std_limit: (Optional) If the standard deviation exceeds this limit,
+                   the instance is invalidated and reset
+    """
+
+    def __init__(self, length, std_limit=0.5):
+        self.length = length
+        self.std_limit = std_limit
+        self.std = 0
+        self.valid = False
+        self.__avg = np.array([0., 0., 0.])
+        self.__values = []
+        self.__sum = np.array([0., 0., 0.])
+        self.__next = 0                        # The id of the value in __values next to be replaced
+
+    def add(self, vector):
+        if vector.size is 0:
+            self.invalidate()
+            return
+
+        # Fill __values to capacity, then replace the oldest one each frame
+        if len(self.__values) < self.length:
+            self.__values.append(vector)
+            self.__sum = self.__sum + vector
+        else:
+            self.__sum = self.__sum - self.__values[self.__next] + vector
+            self.__values[self.__next] = vector
+
+        # Cycle through values to replace
+        self.__next = self.__next + 1
+        if self.__next >= self.length:
+            self.__next = 0
+
+        if self.valid:
+            # Make sure std is not too high
+            self.std = np.sum(np.std(self.__values, axis=0))
+            if self.std > self.std_limit:
+                self.invalidate()
+                return
+
+            self.__avg = self.__sum / self.length
+
+        elif len(self.__values) is self.length:
+            # The average is considered valid when the desired number of values has been reached
+            self.valid = True
+
+    def invalidate(self):
+        self.valid = False
+        self.__values = []
+        self.__sum = np.array([0., 0., 0.])
+        self.__next = 0
+
+    def get(self):
+        if self.valid:
+            return (self.__avg, self.std)
+        else:
+            return False
+
+    def draw(self, image, face):
+        if not self.valid:
+            return
+        gaze_arrow = (np.array([self.__avg[0], -self.__avg[1]]) * 0.4 * face.image.shape[0]).astype("int")
+        cv2.arrowedLine(image, face.l_mid, (face.l_mid[0] + gaze_arrow[0], face.l_mid[1] + gaze_arrow[1]), (24, 24, 240))
+        cv2.arrowedLine(image, face.r_mid, (face.r_mid[0] + gaze_arrow[0], face.r_mid[1] + gaze_arrow[1]), (24, 24, 240))
+
+        
