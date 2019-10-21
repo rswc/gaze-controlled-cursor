@@ -53,23 +53,15 @@ for i, dp in enumerate(raw_data):
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
-<<<<<<< HEAD
 del raw_data
 
-=======
-    
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
 # Format:
 # [point.x, point.y, left_eye_midpoint, right_eye_midpoint, face_size, gaze_vector.x, gaze_vector.y, gaze_vector.z, head_pose.x, head_pose.y, head_pose.z,]
 
 data = data[mask, ...]
 
 # split into training and testing sets
-<<<<<<< HEAD
 mask = np.random.choice([True, False], len(data), p=[0.75, 0.25])
-=======
-mask = np.load("mask.npy", allow_pickle=True)
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
 
 training_data = data[mask, ...][:, 2:]
 training_labels = data[mask, ...][:, :2]
