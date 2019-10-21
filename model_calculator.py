@@ -1,13 +1,8 @@
 from tensorflow import keras
 import numpy as np
 
-<<<<<<< HEAD
 NORMALIZATION = [False]
 NUM_HIDDEN_LAYERS = [2, 3, 4]
-=======
-NORMALIZATION = [True]
-NUM_HIDDEN_LAYERS = [4]
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
 NUM_UNITS = [16, 32, 64]
 ACTIVATION = ['relu']
 OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
