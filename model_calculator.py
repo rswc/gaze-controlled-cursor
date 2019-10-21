@@ -1,12 +1,12 @@
 from tensorflow import keras
 import numpy as np
 
-NORMALIZATION = [False]
-NUM_HIDDEN_LAYERS = [2, 3, 4]
+NORMALIZATION = [True]
+NUM_HIDDEN_LAYERS = [1, 2, 3, 4]
 NUM_UNITS = [16, 32, 64]
-ACTIVATION = ['relu']
+ACTIVATION = ['relu', 'linear']
 OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
-NUM_EPOCHS = [10, 20, 30]
+NUM_EPOCHS = [10, 10, 10]
 
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
@@ -102,14 +102,14 @@ for norm in NORMALIZATION:
                 for epochs in NUM_EPOCHS:
                     current_test = current_test + 1
                     # train the model
-                    model.fit(training_data, training_labels, epochs=epochs)
+                    if norm:
+                        model.fit(norm_training_data, norm_training_labels, epochs=epochs)
+                    else:
+                        model.fit(training_data, training_labels, epochs=epochs)
                     total_epochs = total_epochs + epochs
 
                     # test the model
-                    if norm:
-                        test_loss, test_mse = model.evaluate(norm_training_data, norm_training_labels, verbose=0)
-                    else:
-                        test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+                    test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
                     print('\nTest (' + str(current_test) + '/' + total_tests + ') MSE:', test_mse)
 
                     configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
@@ -121,7 +121,7 @@ configurations.sort(key=lambda x: x[-1])
 print("#  | loss             | norm  | out_ac       | epochs | hidden layers")
 print("--------------------------------------------------")
 for i, result in enumerate(configurations):
-    print("{0:2d} | {1:6.10f} | {2:5s} | {3:12s} | {4:6d} | {5}".format(i, result[4], result[0], result[2], result[3], result[1]))
+    print("{0:2d} | {1:6.10f} | {2} | {3:12s} | {4:6d} | {5}".format(i, result[4], result[0], result[2], result[3], result[1]))
 
 # convert to openvino-mo-understandable format
 # printtest()
