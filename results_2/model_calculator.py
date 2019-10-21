@@ -1,13 +1,8 @@
 from tensorflow import keras
 import numpy as np
 
-<<<<<<< HEAD
-NORMALIZATION = [False]
-NUM_HIDDEN_LAYERS = [2, 3, 4]
-=======
 NORMALIZATION = [True]
-NUM_HIDDEN_LAYERS = [4]
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
+NUM_HIDDEN_LAYERS = [2,3]
 NUM_UNITS = [16, 32, 64]
 ACTIVATION = ['relu']
 OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
@@ -58,23 +53,14 @@ for i, dp in enumerate(raw_data):
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
-<<<<<<< HEAD
-del raw_data
-
-=======
     
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
 # Format:
 # [point.x, point.y, left_eye_midpoint, right_eye_midpoint, face_size, gaze_vector.x, gaze_vector.y, gaze_vector.z, head_pose.x, head_pose.y, head_pose.z,]
 
 data = data[mask, ...]
 
 # split into training and testing sets
-<<<<<<< HEAD
-mask = np.random.choice([True, False], len(data), p=[0.75, 0.25])
-=======
 mask = np.load("mask.npy", allow_pickle=True)
->>>>>>> 2712593820f14986438720fc6a8511c4681da081
 
 training_data = data[mask, ...][:, 2:]
 training_labels = data[mask, ...][:, :2]
@@ -87,16 +73,7 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
-del data
-
 configurations = []
-per_layer_configutaions = len(NUM_UNITS) * len(ACTIVATION)
-total_tests = 0
-for n in NUM_HIDDEN_LAYERS:
-    total_tests = total_tests + per_layer_configutaions ** n
-total_tests = str(total_tests * len(NORMALIZATION) * len(NUM_EPOCHS) * len(OUTPUT_LAYER_ACTIVATION))
-
-current_test = 0
 for norm in NORMALIZATION:
     for num_hl in NUM_HIDDEN_LAYERS:
         for hl_cfg in all_hl_cfg(num_hl):
@@ -113,21 +90,20 @@ for norm in NORMALIZATION:
 
                 total_epochs = 0
                 for epochs in NUM_EPOCHS:
-                    current_test = current_test + 1
                     # train the model
                     model.fit(training_data, training_labels, epochs=epochs)
                     total_epochs = total_epochs + epochs
 
                     # test the model
                     if norm:
-                        test_loss, test_mse = model.evaluate(norm_training_data, norm_training_labels, verbose=0)
+                        test_loss, test_acc = model.evaluate(norm_training_data, norm_training_labels, verbose=0)
                     else:
-                        test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-                    print('\nTest (' + str(current_test) + '/' + total_tests + ') MSE:', test_mse)
+                        test_loss, test_acc = model.evaluate(testing_data, testing_labels, verbose=0)
+                    print('\nTest accuracy:', test_acc)
 
                     configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
 
-np.save("configurations2", configurations)
+np.save("configurations", configurations)
 
 configurations.sort(key=lambda x: x[-1])
 
