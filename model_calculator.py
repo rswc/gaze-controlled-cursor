@@ -4,7 +4,7 @@ import numpy as np
 NORMALIZATION = [True]
 NUM_HIDDEN_LAYERS = [1, 2, 3, 4]
 NUM_UNITS = [16, 32, 64]
-ACTIVATION = ['relu', 'linear']
+ACTIVATION = ['linear']
 OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
 NUM_EPOCHS = [10, 10, 10]
 
@@ -114,7 +114,7 @@ for norm in NORMALIZATION:
 
                     configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
 
-np.save("configurations2", configurations)
+np.save("configurations3", configurations)
 
 configurations.sort(key=lambda x: x[-1])
 
