@@ -67,6 +67,7 @@ class Face:
         # Landmarks
         lm = model_lm.Predict({'data': self.image})[0]
 
+        # Only points 0 to 3 interest us
         self.eye_pts = []
         for i in range(0, 8, 2):
             self.eye_pts.append(np.array([lm[i] * w, lm[i + 1] * h]).astype("int"))
@@ -132,9 +133,9 @@ class Face:
             cv2.imshow('right eye', self.r_eye)
             cv2.resizeWindow('right eye', 256, 256)
 
-class GazeVectorAverager:
+class PropertyAverager:
     """
-    Instance-based helper class for averaging the gaze vectors. It will first attempt
+    Instance-based helper class for averaging face data. It will first attempt
     to collect the specified minimum number of samples, and can then return the average
     and standard deviation every frame, unless it becomes invalidated (for ex. by std
     exceeding the limit). In that case, the process will start over.
@@ -144,19 +145,19 @@ class GazeVectorAverager:
         std_limit: (Optional) If the standard deviation exceeds this limit,
                    the instance is invalidated and reset
     """
-
-    def __init__(self, length, std_limit=0.5):
+    def __init__(self, length, std_limit=0.5, size=3):
         self.length = length
         self.std_limit = std_limit
         self.std = 0
         self.valid = False
-        self.__avg = np.array([0., 0., 0.])
         self.__values = []
-        self.__sum = np.array([0., 0., 0.])
+        self.__avg = np.zeros(size)
+        self.__sum = np.zeros(size)
         self.__next = 0                        # The id of the value in __values next to be replaced
+        self.__size = size                     # Size of the averaged vector
 
     def add(self, vector):
-        if vector.size is 0:
+        if vector.size != self.__size:
             self.invalidate()
             return
 
@@ -204,5 +205,4 @@ class GazeVectorAverager:
         gaze_arrow = (np.array([self.__avg[0], -self.__avg[1]]) * 0.4 * face.image.shape[0]).astype("int")
         cv2.arrowedLine(image, face.l_mid, (face.l_mid[0] + gaze_arrow[0], face.l_mid[1] + gaze_arrow[1]), (24, 24, 240))
         cv2.arrowedLine(image, face.r_mid, (face.r_mid[0] + gaze_arrow[0], face.r_mid[1] + gaze_arrow[1]), (24, 24, 240))
-
         

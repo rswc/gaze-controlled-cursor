@@ -1,12 +1,13 @@
-from tensorflow import keras
+from tensorflow import keras, device
 import numpy as np
+import random
 
 NORMALIZATION = [True]
-NUM_HIDDEN_LAYERS = [1, 2, 3, 4]
-NUM_UNITS = [16, 32, 64]
+NUM_HIDDEN_LAYERS = [7]
+NUM_UNITS = [64, 32, 128]
 ACTIVATION = ['relu', 'linear']
-OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
-NUM_EPOCHS = [10, 10, 10]
+OUTPUT_LAYER_ACTIVATION = ['linear']
+NUM_EPOCHS = [10, 10, 20, 20]
 
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
@@ -34,7 +35,7 @@ def all_hl_cfg(depth=1, _arr=[]):
     elif depth is 1:
         return _arr
     else:
-        raise ValueError('depth must always be equal or higher than 1')
+        raise ValueError('depth must always be equal to, or higher than 1')
 
 # Format:
 # [point, left_eye_midpoint, right_eye_midpoint, gaze_vector, face_size, head_pose]
@@ -76,6 +77,8 @@ norm_training_labels = normalize(training_labels)
 
 del data
 
+random.seed(1984)
+
 configurations = []
 per_layer_configutaions = len(NUM_UNITS) * len(ACTIVATION)
 total_tests = 0
@@ -84,37 +87,41 @@ for n in NUM_HIDDEN_LAYERS:
 total_tests = str(total_tests * len(NORMALIZATION) * len(NUM_EPOCHS) * len(OUTPUT_LAYER_ACTIVATION))
 
 current_test = 0
-for norm in NORMALIZATION:
-    for num_hl in NUM_HIDDEN_LAYERS:
-        for hl_cfg in all_hl_cfg(num_hl):
-            for out_ac in OUTPUT_LAYER_ACTIVATION:
-                model = keras.Sequential()
-                model.add(keras.Input(shape=(11,), name='data'))
-                for layer in hl_cfg:
-                    model.add(keras.layers.Dense(layer[0], activation=layer[1]))
-                
-                model.add(keras.layers.Dense(2, activation=out_ac, name='output'))
+with device('/CPU:0'):
+    for norm in NORMALIZATION:
+        for num_hl in NUM_HIDDEN_LAYERS:
+            for hl_cfg in all_hl_cfg(num_hl):
+                for out_ac in OUTPUT_LAYER_ACTIVATION:
+                    if random.random() > 0.05:
+                        continue
 
-                model.compile(optimizer='adam', loss='mean_squared_error', 
-                            metrics=['mean_squared_error'])
+                    model = keras.Sequential()
+                    model.add(keras.Input(shape=(11,), name='data'))
+                    for layer in hl_cfg:
+                        model.add(keras.layers.Dense(layer[0], activation=layer[1]))
+                    
+                    model.add(keras.layers.Dense(2, activation=out_ac, name='output'))
 
-                total_epochs = 0
-                for epochs in NUM_EPOCHS:
-                    current_test = current_test + 1
-                    # train the model
-                    if norm:
-                        model.fit(norm_training_data, norm_training_labels, epochs=epochs)
-                    else:
-                        model.fit(training_data, training_labels, epochs=epochs)
-                    total_epochs = total_epochs + epochs
+                    model.compile(optimizer='adam', loss='mean_squared_error', 
+                                metrics=['mean_squared_error'])
 
-                    # test the model
-                    test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-                    print('\nTest (' + str(current_test) + '/' + total_tests + ') MSE:', test_mse)
+                    total_epochs = 0
+                    for epochs in NUM_EPOCHS:
+                        current_test = current_test + 1
+                        # train the model
+                        if norm:
+                            model.fit(norm_training_data, norm_training_labels, epochs=epochs)
+                        else:
+                            model.fit(training_data, training_labels, epochs=epochs)
+                        total_epochs = total_epochs + epochs
 
-                    configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
+                        # test the model
+                        test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+                        print('\nTest (' + str(current_test) + '/' + total_tests + ') MSE:', test_mse)
 
-np.save("configurations2", configurations)
+                        configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
+
+np.save("configurations_l7", configurations)
 
 configurations.sort(key=lambda x: x[-1])
 
