@@ -2,12 +2,13 @@ from tensorflow import keras, device
 import numpy as np
 import random
 
-NORMALIZATION = [True]
-NUM_HIDDEN_LAYERS = [7]
-NUM_UNITS = [64, 32, 128]
-ACTIVATION = ['relu', 'linear']
-OUTPUT_LAYER_ACTIVATION = ['linear']
-NUM_EPOCHS = [10, 10, 20, 20]
+NORMALIZATION = [True, False]
+NUM_HIDDEN_LAYERS = [2, 3, 4]
+NUM_UNITS = [16, 32, 64]
+ACTIVATION = ['relu']
+OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
+NUM_EPOCHS = [10, 10, 10]
+AUTOSAVE_EVERY = 150
 
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
@@ -88,24 +89,25 @@ total_tests = str(total_tests * len(NORMALIZATION) * len(NUM_EPOCHS) * len(OUTPU
 
 current_test = 0
 with device('/CPU:0'):
-    for norm in NORMALIZATION:
-        for num_hl in NUM_HIDDEN_LAYERS:
-            for hl_cfg in all_hl_cfg(num_hl):
-                for out_ac in OUTPUT_LAYER_ACTIVATION:
-                    if random.random() > 0.05:
-                        continue
+    for num_hl in NUM_HIDDEN_LAYERS:
+        for hl_cfg in all_hl_cfg(num_hl):
+            for out_ac in OUTPUT_LAYER_ACTIVATION:
+                if current_test % AUTOSAVE_EVERY is 0:
+                    np.save("cfg_autosave", configurations)
+                    keras.backend.clear_session()
 
-                    model = keras.Sequential()
-                    model.add(keras.Input(shape=(11,), name='data'))
-                    for layer in hl_cfg:
-                        model.add(keras.layers.Dense(layer[0], activation=layer[1]))
-                    
-                    model.add(keras.layers.Dense(2, activation=out_ac, name='output'))
+                model = keras.Sequential()
+                model.add(keras.Input(shape=(11,), name='data'))
+                for layer in hl_cfg:
+                    model.add(keras.layers.Dense(layer[0], activation=layer[1]))
+                
+                model.add(keras.layers.Dense(2, activation=out_ac, name='output'))
 
-                    model.compile(optimizer='adam', loss='mean_squared_error', 
-                                metrics=['mean_squared_error'])
+                model.compile(optimizer='adam', loss='mean_squared_error', 
+                            metrics=['mean_squared_error'])
 
-                    total_epochs = 0
+                total_epochs = 0
+                for norm in NORMALIZATION:
                     for epochs in NUM_EPOCHS:
                         current_test = current_test + 1
                         # train the model
