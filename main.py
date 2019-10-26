@@ -15,7 +15,7 @@ training_pts = [(0.04, 0.56), (0.37, 0.42), (0.7, 0.28),
 capture_results = []
 active_point = (0.5, 0.5)
 
-face_avg = fp.GazeVectorAverager(10)
+face_avg = fp.PropertyAverager(10)
 
 while video.isOpened():
     ret, frame = video.read()
@@ -45,12 +45,12 @@ while video.isOpened():
         
 
             # save face & point data to capture_results
-            # capture_results.append([active_point, face.l_mid, face.r_mid, face.gaze, face.size, face.h_pose])
+        capture_results.append([active_point, face.l_mid, face.r_mid, face.gaze, face.size, face.h_pose])
 
     (pt_x, pt_y) = np.array([active_point[0] * 1920, active_point[1] * 1080]).astype('int')
     cv2.circle(img, (pt_x, pt_y), 8, (0.9, 0.9, 0.9), -1)
 
-    #cv2.imshow('window', img)
+    cv2.imshow('window', img)
     cv2.imshow('frame', frame)
 
     key = cv2.waitKey(1)
@@ -63,7 +63,7 @@ while video.isOpened():
             active_point = training_pts.pop()
         capture = not capture
 
-# np.save("capresults", capture_results)
+np.save("capresults", capture_results)
 
 video.release()
 cv2.waitKey(0)

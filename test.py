@@ -9,6 +9,8 @@ def printtest():
         index = random.randint(0, 500)
         td = testing_data[index:index+1]
 
+        print(type(td), td.shape, td)
+
         print('\nModel returns:', model.predict(td))
         print('Expected:', testing_labels[index])
 
