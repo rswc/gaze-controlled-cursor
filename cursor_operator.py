@@ -87,7 +87,7 @@ while video.isOpened():
     faces = fp.process(frame)
 
     if len(faces) is 1:
-        face_avg.add(faces[0].gaze)
+       #  face_avg.add(faces[0].gaze)
         face_avg.draw(frame, faces[0])
     else:
         face_avg.invalidate()
@@ -95,8 +95,12 @@ while video.isOpened():
     for face in faces:
         face.draw_bbox(frame)
         face.draw_pts(frame)
+        face.draw_gaze(frame)
 
+
+    cv2.circle(frame, (320, 240), 120, (0.9,0.1,0,1))
     cv2.imshow('frame', frame)
+    
 
     lmid_x, lmid_y = face.l_mid
     rmid_x, rmid_y = face.r_mid
@@ -107,7 +111,7 @@ while video.isOpened():
    
 
 
-    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, float(pos_x), float(pos_y), float(pos_z)]])
+    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x)*10, float(gaz_y)*10, float(gaz_z)*10, fac_siz, float(pos_x), float(pos_y), float(pos_z)]])
 
     #print(type(data), data.shape, data)
     #mask = np.ones(1, dtype = bool)
