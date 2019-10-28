@@ -24,6 +24,7 @@ pose_avg = fp.PropertyAverager(10, std_limit=3)
 
 while video.isOpened():
     ret, frame = video.read()
+    
     if not ret:
         break
 
@@ -37,7 +38,7 @@ while video.isOpened():
         #l_mid_avg.add(np.array(faces[0].l_mid))
         #r_mid_avg.add(np.array(faces[0].r_mid))
 
-        gaze_avg.drawVector(frame, faces[0])
+        gaze_avg.draw_vector(frame, faces[0])
         #l_mid_avg.drawPoint(frame)
         #r_mid_avg.drawPoint(frame)
     else:
@@ -68,6 +69,8 @@ while video.isOpened():
 
     frame = cv2.resize(frame, (1344, 756))
     cv2.imshow('frame', frame)
+
+    
 
     key = cv2.waitKey(1)
     if key == ord('q'):
