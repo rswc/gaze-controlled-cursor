@@ -13,8 +13,9 @@
 # -- using more than two parents for crossover
 # -- keeping track of best overall model
 
-from sortedcontainers import SortedList
 import random
+import numpy as np
+from sortedcontainers import SortedList
 
 class Model: #TODO: slots
     def __init__(self, norm=False, out_ac=None, epochs=0, layers=[], error=None):
@@ -36,18 +37,36 @@ class Model: #TODO: slots
     def __ge__(self, other):
         return self.error >= other.error
 
+class Util:
+    @staticmethod
+    def choice_crossover(a, b):
+        if a is b:
+            return a
+        else:
+            return random.choice((a, b))
+
+    @staticmethod
+    def normal_crossover(a, b):
+        x = np.random.normal(scale=0.5)
+        if x > 1:
+            x = 1
+        if x < -1:
+            x = -1
+        
+        if x is 0:
+            return int((a + b) / 2)
+        elif x > 0:
+            return int((x * a + (1-x) * b) / 2)
+        else:
+            return int(((x-1) * a + x * b) / 2)
+        
+
 def simple_crossover(a, b):
     model = Model()
 
-    if a.norm is b.norm:
-        model.norm = a.norm
-    else:
-        model.norm = random.choice((a.norm, b.norm))
-
-    if a.out_ac is b.out_ac:
-        model.out_ac = a.out_ac
-    else:
-        model.out_ac = random.choice((a.out_ac, b.out_ac))
+    model.norm = Util.choice_crossover(a.norm, b.norm)
+    model.out_ac = Util.choice_crossover(a.out_ac, b.out_ac)
+    model.epochs = Util.normal_crossover(a.epochs, b.epochs)
 
     
 
@@ -61,7 +80,7 @@ class GeneticCalculator:
                  mutation_func=simple_mutation):
         self.__fitness = fitness_func
         self.__crossover = crossover_func
-        self.__mutation = mutation_func
+        self.__mutate = mutation_func
         self.__generation = 0
         self.__selection_amount = selection_amount
 
@@ -74,10 +93,14 @@ class GeneticCalculator:
             # Selection
             del self.__population[-self.__selection_amount:]
 
+            births = []
+
             # Crossover
             for i in range(self.__selection_amount, step=2):
-                self.__crossover(self.__population[i], self.__population[i+1])
+                births.append(self.__crossover(self.__population[i], self.__population[i+1]))
 
             # Mutation
+            for b in births:
+                b = self.__mutate(b)
 
             # Fitness
