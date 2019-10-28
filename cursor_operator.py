@@ -2,7 +2,7 @@ import pyautogui
 import cv2
 import numpy as np
 import face_processing as fp
-from tensorflow import keras, device
+from tensorflow import keras
 
 
 #pyautogui.moveTo(100,150)
@@ -88,7 +88,7 @@ while video.isOpened():
 
     if len(faces) is 1:
         face_avg.add(faces[0].gaze)
-        face_avg.draw(frame, faces[0])
+        face_avg.draw_vector(frame, faces[0])
     else:
         face_avg.invalidate()
 
@@ -130,17 +130,6 @@ while video.isOpened():
     
     if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
         pyautogui.moveTo(1920*gx,1080*gy)
-    
-        
-    
-
-    
-    
-
-    
-
-
-
 
     key = cv2.waitKey(1)
     if key == ord(' '):

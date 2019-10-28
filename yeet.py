@@ -9,6 +9,8 @@ def printtest():
         index = random.randint(0, 500)
         td = testing_data[index:index+1]
 
+        print(type(td), td.shape, td)
+
         print('\nModel returns:', model.predict(td))
         print('Expected:', testing_labels[index])
 
@@ -16,7 +18,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("capresults.npy", allow_pickle=True)
+raw_data = np.load("capresults_ign.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -31,6 +33,8 @@ for i, dp in enumerate(raw_data):
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
 del raw_data
+
+
 
 data = data[mask, ...]
 
@@ -48,44 +52,43 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+
+
+
+#print(norm_training_data)
+
 del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
+model.add(keras.layers.Dense(16384, activation='relu'))
+model.add(keras.layers.Dense(8192, activation='relu'))
+model.add(keras.layers.Dense(4098, activation='relu'))
+model.add(keras.layers.Dense(2048, activation='relu'))
+model.add(keras.layers.Dense(1024, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
 
+
+
+
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
+model.compile(optimizer='adam', loss='mean_absolute_error', 
+            metrics=['mean_absolute_error'])
 
-model.fit(training_data, training_labels, epochs=40)
+model.fit(norm_training_data, norm_training_labels, epochs=45, class_weight=weights)
 
-test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-print("\nTest MSE:", test_mse)
 
-#printtest()
-
-model = keras.Sequential()
-model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-
-model.add(keras.layers.Dense(2, activation='linear', name='output'))
-
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
-
-model.fit(training_data, training_labels, epochs=40)
 
 test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-print("\nTest MSE:", test_mse)
+
+
+printtest()
+
+print("\nTest MAE:", test_mse)

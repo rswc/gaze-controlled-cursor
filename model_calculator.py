@@ -2,24 +2,24 @@ from tensorflow import keras, device
 import numpy as np
 import random
 
-NORMALIZATION = [True, False]
-NUM_HIDDEN_LAYERS = [2, 3, 4]
+NORMALIZATION = [False]
+NUM_HIDDEN_LAYERS = [4]
 NUM_UNITS = [16, 32, 64]
 ACTIVATION = ['relu']
-OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
-NUM_EPOCHS = [10, 10, 10]
+OUTPUT_LAYER_ACTIVATION = ['linear']
+NUM_EPOCHS = [40, 10, 10]
 AUTOSAVE_EVERY = 150
 
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 def printtest():
-    for i in range(17, 29):
-        td = testing_data[i:i+1]
+    for i in range(15):
+        index = random.randint(0, 500)
+        td = testing_data[index:index+1]
 
-        print('\nWith data:', td)
-        print('Model returns:', model.predict(td))
-        print('Expected:', testing_labels[17])
+        print('\nModel returns:', model.predict(td))
+        print('Expected:', testing_labels[index])
 
 def all_hl_cfg(depth=1, _arr=[]):
     if not _arr:
@@ -88,7 +88,8 @@ for n in NUM_HIDDEN_LAYERS:
 total_tests = str(total_tests * len(NORMALIZATION) * len(NUM_EPOCHS) * len(OUTPUT_LAYER_ACTIVATION))
 
 current_test = 0
-with device('/CPU:0'):
+
+with device('/GPU:0'):
     for num_hl in NUM_HIDDEN_LAYERS:
         for hl_cfg in all_hl_cfg(num_hl):
             for out_ac in OUTPUT_LAYER_ACTIVATION:
@@ -98,6 +99,7 @@ with device('/CPU:0'):
 
                 model = keras.Sequential()
                 model.add(keras.Input(shape=(11,), name='data'))
+                model.add(keras.layers.Dense(128, activation='relu'))
                 for layer in hl_cfg:
                     model.add(keras.layers.Dense(layer[0], activation=layer[1]))
                 
@@ -112,9 +114,9 @@ with device('/CPU:0'):
                         current_test = current_test + 1
                         # train the model
                         if norm:
-                            model.fit(norm_training_data, norm_training_labels, epochs=epochs)
+                            model.fit(norm_training_data, norm_training_labels, epochs=epochs, initial_epoch=total_epochs)
                         else:
-                            model.fit(training_data, training_labels, epochs=epochs)
+                            model.fit(training_data, training_labels, epochs=epochs, initial_epoch=total_epochs)
                         total_epochs = total_epochs + epochs
 
                         # test the model
@@ -123,7 +125,7 @@ with device('/CPU:0'):
 
                         configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
 
-np.save("configurations_l7", configurations)
+np.save("configurations_zjst_l5", configurations)
 
 configurations.sort(key=lambda x: x[-1])
 

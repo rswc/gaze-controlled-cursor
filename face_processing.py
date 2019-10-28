@@ -174,13 +174,13 @@ class PropertyAverager:
         if self.__next >= self.length:
             self.__next = 0
 
-        if self.valid:
-            # Make sure std is not too high
-            self.std = np.sum(np.std(self.__values, axis=0))
-            if self.std > self.std_limit:
-                self.invalidate()
-                return
+        # Make sure std is not too high
+        self.std = np.sum(np.std(self.__values[:], axis=0))
+        if self.std > self.std_limit:
+            self.invalidate()
+            return
 
+        if self.valid:
             self.__avg = self.__sum / self.length
 
         elif len(self.__values) is self.length:
@@ -190,7 +190,7 @@ class PropertyAverager:
     def invalidate(self):
         self.valid = False
         self.__values = []
-        self.__sum = np.array([0., 0., 0.])
+        self.__sum = np.array(self.__size)
         self.__next = 0
 
     def get(self):
@@ -199,10 +199,15 @@ class PropertyAverager:
         else:
             return False
 
-    def draw(self, image, face):
-        if not self.valid:
+    def draw_vector(self, image, face):
+        if not self.valid or not self.__size is 3:
             return
         gaze_arrow = (np.array([self.__avg[0], -self.__avg[1]]) * 0.4 * face.image.shape[0]).astype("int")
         cv2.arrowedLine(image, face.l_mid, (face.l_mid[0] + gaze_arrow[0], face.l_mid[1] + gaze_arrow[1]), (24, 24, 240))
         cv2.arrowedLine(image, face.r_mid, (face.r_mid[0] + gaze_arrow[0], face.r_mid[1] + gaze_arrow[1]), (24, 24, 240))
+
+    def draw_point(self, image):
+        if not self.valid or not self.__size is 2:
+            return
+        cv2.circle(image, (int(self.__avg[0]), int(self.__avg[1])), 2, (24, 240, 48), -1)
         
