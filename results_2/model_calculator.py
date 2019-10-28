@@ -1,12 +1,14 @@
-from tensorflow import keras
+from tensorflow import keras, device
 import numpy as np
+import random
 
 NORMALIZATION = [True]
-NUM_HIDDEN_LAYERS = [2,3]
-NUM_UNITS = [16, 32, 64]
+NUM_HIDDEN_LAYERS = [6]
+NUM_UNITS = [8, 16, 32, 64]
 ACTIVATION = ['relu']
-OUTPUT_LAYER_ACTIVATION = ['linear', 'sigmoid']
-NUM_EPOCHS = [10, 20, 30]
+OUTPUT_LAYER_ACTIVATION = ['linear']
+NUM_EPOCHS = [30, 20]
+AUTOSAVE_EVERY = 150
 
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
@@ -34,7 +36,7 @@ def all_hl_cfg(depth=1, _arr=[]):
     elif depth is 1:
         return _arr
     else:
-        raise ValueError('depth must always be equal or higher than 1')
+        raise ValueError('depth must always be equal to, or higher than 1')
 
 # Format:
 # [point, left_eye_midpoint, right_eye_midpoint, gaze_vector, face_size, head_pose]
@@ -53,14 +55,15 @@ for i, dp in enumerate(raw_data):
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
-    
+del raw_data
+
 # Format:
 # [point.x, point.y, left_eye_midpoint, right_eye_midpoint, face_size, gaze_vector.x, gaze_vector.y, gaze_vector.z, head_pose.x, head_pose.y, head_pose.z,]
 
 data = data[mask, ...]
 
 # split into training and testing sets
-mask = np.load("mask.npy", allow_pickle=True)
+mask = np.random.choice([True, False], len(data), p=[0.75, 0.25])
 
 training_data = data[mask, ...][:, 2:]
 training_labels = data[mask, ...][:, :2]
@@ -73,11 +76,26 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+del data
+
+random.seed(1984)
+
 configurations = []
-for norm in NORMALIZATION:
+per_layer_configutaions = len(NUM_UNITS) * len(ACTIVATION)
+total_tests = 0
+for n in NUM_HIDDEN_LAYERS:
+    total_tests = total_tests + per_layer_configutaions ** n
+total_tests = str(total_tests * len(NORMALIZATION) * len(NUM_EPOCHS) * len(OUTPUT_LAYER_ACTIVATION))
+
+current_test = 0
+with device('/CPU:0'):
     for num_hl in NUM_HIDDEN_LAYERS:
         for hl_cfg in all_hl_cfg(num_hl):
             for out_ac in OUTPUT_LAYER_ACTIVATION:
+                if current_test % AUTOSAVE_EVERY is 0:
+                    np.save("cfg_autosave", configurations)
+                    keras.backend.clear_session()
+
                 model = keras.Sequential()
                 model.add(keras.Input(shape=(11,), name='data'))
                 for layer in hl_cfg:
@@ -89,28 +107,31 @@ for norm in NORMALIZATION:
                             metrics=['mean_squared_error'])
 
                 total_epochs = 0
-                for epochs in NUM_EPOCHS:
-                    # train the model
-                    model.fit(training_data, training_labels, epochs=epochs)
-                    total_epochs = total_epochs + epochs
+                for norm in NORMALIZATION:
+                    for epochs in NUM_EPOCHS:
+                        current_test = current_test + 1
+                        # train the model
+                        if norm:
+                            model.fit(norm_training_data, norm_training_labels, epochs=epochs)
+                        else:
+                            model.fit(training_data, training_labels, epochs=epochs)
+                        total_epochs = total_epochs + epochs
 
-                    # test the model
-                    if norm:
-                        test_loss, test_acc = model.evaluate(norm_training_data, norm_training_labels, verbose=0)
-                    else:
-                        test_loss, test_acc = model.evaluate(testing_data, testing_labels, verbose=0)
-                    print('\nTest accuracy:', test_acc)
+                        # test the model
+                        test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+                        print('\nTest (' + str(current_test) + '/' + total_tests + ') MSE:', test_mse)
 
-                    configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
+                        
+                        configurations.append([norm, hl_cfg, out_ac, total_epochs, test_loss])
 
-np.save("configurations", configurations)
+np.save("configurationsMANY", configurations)
 
 configurations.sort(key=lambda x: x[-1])
 
 print("#  | loss             | norm  | out_ac       | epochs | hidden layers")
 print("--------------------------------------------------")
 for i, result in enumerate(configurations):
-    print("{0:2d} | {1:6.10f} | {2:5s} | {3:12s} | {4:6d} | {5}".format(i, result[4], result[0], result[2], result[3], result[1]))
+    print("{0:2d} | {1:6.10f} | {2} | {3:12s} | {4:6d} | {5}".format(i, result[4], result[0], result[2], result[3], result[1]))
 
 # convert to openvino-mo-understandable format
 # printtest()

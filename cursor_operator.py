@@ -55,20 +55,42 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
+model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
 
 
 
 
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
 
-model.fit(training_data, training_labels, epochs=40)
+model.fit(norm_training_data, norm_training_labels, epochs=40, class_weight=weights)
 
 test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
 print("\nTest MSE:", test_mse)
@@ -84,7 +106,7 @@ video = cv2.VideoCapture(0)
 
 face_avg = fp.PropertyAverager(10)
 
-
+#
 
 while video.isOpened():
     ret, frame = video.read()
@@ -114,7 +136,7 @@ while video.isOpened():
    
 
 
-    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz]])
+    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, pos_x, pos_y, pos_z]])
 
     #print(type(data), data.shape, data)
     #mask = np.ones(1, dtype = bool)
