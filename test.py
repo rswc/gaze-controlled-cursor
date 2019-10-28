@@ -34,6 +34,8 @@ for i, dp in enumerate(raw_data):
         data[i] = flattened
 del raw_data
 
+
+
 data = data[mask, ...]
 
 # split into training and testing sets
@@ -50,6 +52,12 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
+
+print(type(weights), weights, len(weights))
+
+#print(norm_training_data)
+
 del data
 
 model = keras.Sequential()
@@ -59,16 +67,22 @@ model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
+model.compile(optimizer='adam', loss='mean_absolute_error', 
+            metrics=['mean_absolute_error'])
 
-model.fit(training_data, training_labels, epochs=40)
+model.fit(training_data, training_labels, epochs=30, class_weight=weights)
+
+
 
 test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-print("\nTest MSE:", test_mse)
+
 
 printtest()
 
+print("\nTest MSE:", test_mse)

@@ -5,6 +5,11 @@ import face_processing as fp
 from tensorflow import keras, device
 
 
+def normalize(array):
+    return (array - array.min(0)) / array.ptp(0)
+
+    
+
 #pyautogui.moveTo(100,150)
 x,y = pyautogui.position()
 
@@ -43,23 +48,25 @@ mask = ~mask
 testing_data = data[mask, ...][:, 2:]
 testing_labels = data[mask, ...][:, :2]
 
+norm_training_data = normalize(training_data)
+norm_training_labels = normalize(training_labels)
+
 del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
+
+
 
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
+model.compile(optimizer='adam', loss='mean_absolute_error', 
+            metrics=['mean_absolute_error'])
 
 model.fit(training_data, training_labels, epochs=40)
 
@@ -107,7 +114,7 @@ while video.isOpened():
    
 
 
-    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, float(pos_x), float(pos_y), float(pos_z)]])
+    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz]])
 
     #print(type(data), data.shape, data)
     #mask = np.ones(1, dtype = bool)
