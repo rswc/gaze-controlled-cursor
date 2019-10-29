@@ -61,13 +61,18 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(8192, activation='relu'))
-model.add(keras.layers.Dense(4098, activation='relu'))
-model.add(keras.layers.Dense(2048, activation='relu'))
-model.add(keras.layers.Dense(1024, activation='relu'))
-model.add(keras.layers.Dense(512, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(32, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
@@ -76,12 +81,14 @@ model.add(keras.layers.Dense(16, activation='relu'))
 
 
 weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
+
+
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
 
-model.fit(norm_training_data, norm_training_labels, epochs=45, class_weight=weights)
+model.fit(norm_training_data, norm_training_labels, epochs=90, class_weight=weights)
 
 
 
