@@ -19,7 +19,7 @@ print("pos: ", x, ' ', y)
 ####################
 
 
-raw_data = np.load("capresults.npy", allow_pickle=True)
+raw_data = np.load("captured_calibrations/capresults.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -56,6 +56,8 @@ norm_testing_labels = normalize(testing_labels)
 
 del data
 
+
+#Initializing layers
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
 model.add(keras.layers.Dense(512, activation='relu'))
@@ -79,6 +81,7 @@ model.add(keras.layers.Dense(2, activation='linear', name='output'))
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
 
+#FIT 
 model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
 
 test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
@@ -95,12 +98,13 @@ video = cv2.VideoCapture(0)
 
 face_avg = fp.PropertyAverager(10)
 
-#
+
 
 avx = 0
 avy = 0
 rou = 0
 
+#Program loop
 while video.isOpened():
     ret, frame = video.read()
     if not ret:

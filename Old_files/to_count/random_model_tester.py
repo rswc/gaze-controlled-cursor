@@ -27,7 +27,7 @@ ran = 50
 
 for it in range(ran):
     print('TEST ', it, ' z ',ran)
-    raw_data = np.load("captured_calibrations/capresults.npy", allow_pickle=True)
+    raw_data = np.load("capresults.npy", allow_pickle=True)
 
     # del datapoints with empty vectors
     mask = np.ones(len(raw_data), dtype=bool)
@@ -102,7 +102,7 @@ for it in range(ran):
     model.compile(optimizer='adam', loss='mean_absolute_error', 
                 metrics=['mean_absolute_error'])
 
-    ep = random.randint(50,100)
+    ep = random.randint(45,100)
     model.fit(norm_training_data, training_labels, epochs=ep)
 
 
@@ -132,4 +132,4 @@ print(type(capture_results), capture_results)
 
 #FORMAT ZAPISU: 
 
-np.save("captured_randoms_third_try_to_3-8l", capture_results)
+np.save("captured_randoms_second_try_to_12l", capture_results)
