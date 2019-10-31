@@ -10,7 +10,10 @@ video = cv2.VideoCapture(0)
 #cv2.setWindowProperty("window", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
 capture = False
-training_pts = [(0.04, 0.56), (0.37, 0.42), (0.7, 0.28),
+#training_pts = [(0.04, 0.56), (0.37, 0.42), (0.7, 0.28),
+#                (0.1, 0.1), (0.1, 0.9), (0.9, 0.1), (0.9, 0.9)]
+                
+training_pts = [(0.04, 0.56), (0.33, 0.8), (0.66, 0.8), (0.33, 0.3), (0.66, 0.3),
                 (0.1, 0.1), (0.1, 0.9), (0.9, 0.1), (0.9, 0.9)]
 capture_results = []
 active_point = (0.5, 0.5)
@@ -63,7 +66,7 @@ while video.isOpened():
             active_point = training_pts.pop()
         capture = not capture
 
-np.save("capresults", capture_results)
+np.save("capresultsRotatin", capture_results)
 
 video.release()
 cv2.waitKey(0)

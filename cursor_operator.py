@@ -51,48 +51,37 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+norm_testing_data = normalize(testing_data)
+norm_testing_labels = normalize(testing_labels)
+
 del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(32, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+
 
 
 
 
 weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
+
+
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
 
-model.fit(norm_training_data, norm_training_labels, epochs=40, class_weight=weights)
+model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
 
-test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 print("\nTest MSE:", test_mse)
 
 ##############################################################################################
@@ -107,6 +96,10 @@ video = cv2.VideoCapture(0)
 face_avg = fp.PropertyAverager(10)
 
 #
+
+avx = 0
+avy = 0
+rou = 0
 
 while video.isOpened():
     ret, frame = video.read()
@@ -136,30 +129,44 @@ while video.isOpened():
    
 
 
-    data = np.array([[float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, pos_x, pos_y, pos_z]])
+    data = np.array([float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, float(pos_x), float(pos_y), float(pos_z)])
 
-    #print(type(data), data.shape, data)
-    #mask = np.ones(1, dtype = bool)
-    #print(type(td), td.shape, td)
-    tab = model.predict(data)
-    #print(type(tab), tab.shape, tab)
+    m = testing_data.min(0)
+    p = testing_data.ptp(0)
+
+    #print('m', m,'p',p)
+
+
+
+
+    t = [[(data - m )/ p]]
+
+    #print('normalized: ', t)
+    #print('pred: ', model.predict(t))
+    #print('exp: ', testing_labels[600])
+    tab = model.predict(t)
 
     gx = tab[0,0]
     gy = tab[0,1]
 
-   # if gx > 1:
-   #     gx = 1
-   # elif gx < 0:
-   #     gx = 0
-   # elif gy > 1:
-   #     gy = 1
-   # elif gy < 0:
-   #     gy = 0
-    print('x = ', gx, '| y = ', gy)
     
-    if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
-        pyautogui.moveTo(1920*gx,1080*gy)
-    
+
+    if(rou == 4):
+        gx = avx/5
+        gy = avy/5
+        
+        print('x = ', gx, '| y = ', gy)
+        
+        if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
+            pyautogui.moveTo(1920*gx,1080*gy)
+        rou = 0
+        avx = 0
+        avy = 0
+    else:
+        avx += gx
+        avy += gy
+        rou += 1
+        
         
     
 

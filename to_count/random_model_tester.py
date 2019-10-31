@@ -23,7 +23,7 @@ def normalize(array):
 
 capture_results = []
 
-ran = 100
+ran = 50
 
 for it in range(ran):
     print('TEST ', it, ' z ',ran)
@@ -61,6 +61,9 @@ for it in range(ran):
     norm_training_data = normalize(training_data)
     norm_training_labels = normalize(training_labels)
 
+    
+    norm_testing_data = normalize(testing_data)
+    norm_testing_labels = normalize(testing_labels)
 
 
 
@@ -68,10 +71,10 @@ for it in range(ran):
 
     del data
 
-    lay = random.randint(1,20)
+    lay = random.randint(3,12)
     model = keras.Sequential()
 
-    neur = [16,16,32,32,64, 64,128,128,256,256,512,1024]
+    neur = [16,32,32,64, 64,128,128,256,256,512]
    
     model.add(keras.Input(shape=(11,), name='data'))
 
@@ -83,8 +86,8 @@ for it in range(ran):
 
     r = random.randint(0,4)
     eyes = [1,1,1,1,2]
-    rr = random.randint(0,4)
-    gaze = [1,1,1,1,2]
+    rr = random.randint(0,5)
+    gaze = [1,1,1,1,2,2.5]
     rrr = random.randint(0,4)
     face_s = [1,1,1,1,2]
     rrrr = random.randint(0,4)
@@ -99,32 +102,34 @@ for it in range(ran):
     model.compile(optimizer='adam', loss='mean_absolute_error', 
                 metrics=['mean_absolute_error'])
 
-    ep = random.randint(40,70)
-    model.fit(norm_training_data, norm_training_labels, epochs=ep, class_weight=weights)
+    ep = random.randint(30,70)
+    model.fit(norm_training_data, training_labels, epochs=ep)
 
 
 
-    test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+    test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 
-    #points = []
+    points = []
 
     
-    #for i in range(3):
-        #index = random.randint(0, 500)
-       # td = testing_data[index:index+1]
+    for i in range(2):
+        index = random.randint(0, 1200)
+        td = norm_testing_data[index:index+1]
 
         #print(type(td), td.shape, td)
 
         #print('\nModel returns:', model.predict(td))
         #print('Expected:', testing_labels[index])
 
-        #points.append([model.predict(td),  testing_labels[index]])
+        points.append([model.predict(td),  testing_labels[index]])
     
     #print(points)
 
-    capture_results.append([test_mse, ep, ws, lay ,layer])
+    capture_results.append([test_mse, ep, ws, lay ,layer, points])
     print("\nTest",it," MSE:", test_mse)
 print(type(capture_results), capture_results)
 
 
-np.save("captured_randoms_first_try", capture_results)
+#FORMAT ZAPISU: 
+
+np.save("captured_randoms_second_try_to_12l", capture_results)

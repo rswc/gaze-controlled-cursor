@@ -4,21 +4,29 @@ import random
 
 random.seed(1984)
 
+
 def printtest():
     for i in range(15):
-        index = random.randint(0, 500)
-        td = testing_data[index:index+1]
+        index = random.randint(0, 1100)
+        
+        normed = _normalize(testing_data[index:index+1], minim, ptp)
+        # normed = normalize__(testing_data[index:index+1])
+        td = normed
 
         print(type(td), td.shape, td)
 
         print('\nModel returns:', model.predict(td))
         print('Expected:', testing_labels[index])
 
+
+def _normalize(array, mini, ptpp):
+    return (array - mini / ptpp)
+
 def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("capresults.npy", allow_pickle=True)
+raw_data = np.load("capresultsRotatin.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -52,8 +60,16 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+norm_testing_data = normalize(testing_data)
+norm_testing_labels = normalize(testing_labels)
+
+print(testing_data)
 
 
+minim = testing_data.min(0)
+ptp = testing_data.ptp(0)
+
+print('min: ', minim, ' ptp: ', ptp)
 
 #print(norm_training_data)
 
@@ -61,26 +77,18 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
 
 
 
 
-weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
+
+
+weights = np.array([1,1,1,1,2,2,2,1,2,2,2])
 
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
@@ -88,13 +96,32 @@ model.add(keras.layers.Dense(2, activation='linear', name='output'))
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
 
-model.fit(norm_training_data, norm_training_labels, epochs=90, class_weight=weights)
+model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
 
 
 
-test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
+test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 
-
-printtest()
+#printtest()
 
 print("\nTest MSE:", test_mse)
+
+
+
+#a = np.array([minim, ptp, testing_data[600]])
+
+
+m = testing_data.min(0)
+p = testing_data.ptp(0)
+
+#print('m', m,'p',p)
+#nor = normalize(a)
+
+
+
+
+t = [[(testing_data[400] - m )/ p]]
+
+print('normalized: ', t)
+print('pred: ', model.predict(t))
+print('exp: ', testing_labels[400])
