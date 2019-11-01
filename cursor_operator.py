@@ -19,7 +19,7 @@ print("pos: ", x, ' ', y)
 ####################
 
 
-raw_data = np.load("captured_calibrations/capresults.npy", allow_pickle=True)
+raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -60,10 +60,10 @@ del data
 #Initializing layers
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(1024, activation='relu'))
 model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(32, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
@@ -73,7 +73,7 @@ model.add(keras.layers.Dense(256, activation='relu'))
 
 
 
-weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
+weights = np.array([1,1,1,1,2,2,2,1,1,1,1])
 
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))

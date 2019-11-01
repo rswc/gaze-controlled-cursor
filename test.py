@@ -26,7 +26,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("captured_calibrations/capresultsRotatin.npy", allow_pickle=True)
+raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
