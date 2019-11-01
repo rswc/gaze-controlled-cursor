@@ -27,7 +27,7 @@ ran = 50
 
 for it in range(ran):
     print('TEST ', it, ' z ',ran)
-    raw_data = np.load("captured_calibrations/capresults.npy", allow_pickle=True)
+    raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
 
     # del datapoints with empty vectors
     mask = np.ones(len(raw_data), dtype=bool)
@@ -71,7 +71,7 @@ for it in range(ran):
 
     del data
 
-    lay = random.randint(3,8)
+    lay = random.randint(3,12)
     model = keras.Sequential()
 
     neur = [16,32,32,64,64,128,128,256,512,1024]
@@ -84,9 +84,9 @@ for it in range(ran):
         model.add(keras.layers.Dense(neur[ne], activation='relu'))
         layer.append(neur[ne])
 
-    eyes = [1,1,1,1.5,2]
-    gaze = [1,1,1.5,2,2.5]
-    face_s = [1,1,1,1.5,2]
+    eyes = [1,1,1,1,1]
+    gaze = [1,1,1,1.5,2]
+    face_s = [1,1,1,1,1]
     head_p = [1,1,1,1.5,2]
     rr = random.randint(0,len(gaze)-1)
     rrr = random.randint(0,len(face_s)-1)
@@ -102,7 +102,7 @@ for it in range(ran):
     model.compile(optimizer='adam', loss='mean_absolute_error', 
                 metrics=['mean_absolute_error'])
 
-    ep = random.randint(50,100)
+    ep = random.randint(50,70)
     model.fit(norm_training_data, training_labels, epochs=ep)
 
 
@@ -132,4 +132,4 @@ print(type(capture_results), capture_results)
 
 #FORMAT ZAPISU: 
 
-np.save("captured_randoms_third_try_to_3-8l", capture_results)
+np.save("captured_randoms_from_combined", capture_results)
