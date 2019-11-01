@@ -60,14 +60,18 @@ del data
 #Initializing layers
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(1024, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(48, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(128, activation='relu'))
 model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(48, activation='relu'))
 model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
 
 
 
@@ -82,7 +86,7 @@ model.compile(optimizer='adam', loss='mean_absolute_error',
             metrics=['mean_absolute_error'])
 
 #FIT 
-model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
+model.fit(norm_training_data, training_labels, epochs=40, class_weight=weights)
 
 test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 print("\nTest MSE:", test_mse)
