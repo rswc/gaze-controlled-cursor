@@ -75,11 +75,11 @@ class Util:
         else:
             return short[0:x_point] + long[x_point:s_len] + long[s_len:s_len + diff_x_point]
 
-def simple_selection(pop, selection_amount, min_pop_size=10, protected_amount=6):
+def simple_selection(pop, selection_amount, min_pop_size=10):
     total_deleted = 0
 
-    for i in range(len(pop) - protected_amount):
-        if random.random() < 0.5:
+    for i in range(len(pop) - selection_amount):
+        if random.random() < 0.5 and i+1 <= len(pop):
             del pop[-i-1]
             total_deleted += 1
         if total_deleted is selection_amount:
@@ -111,9 +111,17 @@ def simple_mutation(model, pm):
     if random.random() < pm:
         model.epochs += random.choice([-7, -5, -2, 2, 5, 7])
 
+    if random.random() < (0.5 * pm):
+        del model.layers[random.randrange(0, len(model.layers))]
+
+    if random.random() < (0.5 * pm):
+        model.layers.append(model.layers[random.randrange(0, len(model.layers))])
+
     for i in range(len(model.layers)):
         if random.random() < (0.7 * pm):
             model.layers[i][0] += random.choice([-10, -5, -2, 2, 5, 10])
+            if model.layers[i][0] < 10:
+                model.layers[i][0] = 10
             model.layers[i][1] = GeneticCalculator.ACTIVATION_FUNCTIONS[random.randrange(0, len(GeneticCalculator.ACTIVATION_FUNCTIONS))]
 
     return model
@@ -152,7 +160,7 @@ class GeneticCalculator:
     ACTIVATION_FUNCTIONS = ['relu', 'linear']
 
     def __init__(self, population, fitness_func, crossover_func=simple_crossover, selection_amount=1,
-                 mutation_func=simple_mutation, mutation_probablility=0.1, selection_func=simple_selection,
+                 mutation_func=simple_mutation, mutation_probability=0.1, selection_func=simple_selection,
                  verbose=1, selection_probability=0.4):
         self.__fitness = fitness_func
         self.__select = selection_func
@@ -160,15 +168,15 @@ class GeneticCalculator:
         self.__mutate = mutation_func
         self.__generation = 0
         self.__selection_amount = selection_amount
-        self.__pm = mutation_probablility
+        self.__pm = mutation_probability
         self.__ps = selection_probability
         self.__verbosity = verbose
 
         with open('out.txt', 'w') as OUTPUT_FILE:
             for i, model in enumerate(population, 0):
                 if self.__verbosity > 1:
-                    print("Processing initial population model ({0}/{1})...".format(i, len(population)))
-                    OUTPUT_FILE.write("Processing initial population model ({0}/{1})...\n".format(i, len(population)))
+                    print("Processing initial population model ({0}/{1})...".format(i, len(population)-1))
+                    OUTPUT_FILE.write("Processing initial population model ({0}/{1})...\n".format(i, len(population)-1))
 
                 if type(model) is list: 
                     model = GeneticCalculator.to_model(model)
@@ -226,6 +234,11 @@ class GeneticCalculator:
                 print("\nFINAL POPULATION:")
                 OUTPUT_FILE.write("\nFINAL POPULATION:\n")
                 self.print_population(file=OUTPUT_FILE)
+
+    def reconfigure(self, selection_amount, mutation_probability, selection_probability):
+        self.__selection_amount = selection_amount
+        self.__pm = mutation_probability
+        self.__ps = selection_probability
 
     def print_population(self, n=None, file=None):
         print("#  | error      | norm  | out_ac | epochs | hidden layers")
