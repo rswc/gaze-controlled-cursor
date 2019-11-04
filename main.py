@@ -16,11 +16,7 @@ training_pts = [(0.04, 0.56), (0.37, 0.42), (0.7, 0.28),
 capture_results = []
 active_point = (0.5, 0.5)
 
-gaze_avg = fp.PropertyAverager(10)
-pose_avg = fp.PropertyAverager(10, std_limit=3)
-
-#l_mid_avg = fp.PropertyAverager(10, std_limit=2, size=2)
-#r_mid_avg = fp.PropertyAverager(10, std_limit=2, size=2)
+fp.init(True)
 
 while video.isOpened():
     ret, frame = video.read()
@@ -32,22 +28,6 @@ while video.isOpened():
 
     faces = fp.process(frame)
 
-    if len(faces) is 1:
-        gaze_avg.add(faces[0].gaze)
-        pose_avg.add(faces[0].h_pose)
-        #l_mid_avg.add(np.array(faces[0].l_mid))
-        #r_mid_avg.add(np.array(faces[0].r_mid))
-
-        gaze_avg.draw_vector(frame, faces[0])
-        #l_mid_avg.drawPoint(frame)
-        #r_mid_avg.drawPoint(frame)
-    else:
-        gaze_avg.invalidate()
-        pose_avg.invalidate()
-        #l_mid_avg.invalidate()
-        #r_mid_avg.invalidate()
-
-
     for face in faces:
         face.draw_bbox(frame)
         face.draw_pts(frame)
@@ -56,16 +36,13 @@ while video.isOpened():
     if capture and len(faces) is 1:
         cv2.circle(img, (50, 50), 8, (0.24, 0.48, 0.9), -1)
 
-        if gaze_avg.valid and pose_avg.valid:
-            cv2.circle(img, (100, 50), 8, (0.48, 0.9, 0.24), -1)
-
             # save face & point data to capture_results
             #capture_results.append([active_point, face.l_mid, face.r_mid, gaze_avg.get()[0], face.size, face.h_pose])
 
     (pt_x, pt_y) = np.array([active_point[0] * 1920, active_point[1] * 1080]).astype('int')
     cv2.circle(img, (pt_x, pt_y), 5, (0.9, 0.9, 0.9), -1)
 
-    cv2.imshow('window', img)
+    #cv2.imshow('window', img)
 
     frame = cv2.resize(frame, (1344, 756))
     cv2.imshow('frame', frame)
