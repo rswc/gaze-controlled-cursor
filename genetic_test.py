@@ -62,28 +62,30 @@ def model_fitness(tpl):
 
 # initial population
 pop = [
-    Model(True, 'linear', 55, [[37, 'relu'], [118, 'linear'], [48, 'relu'], [258, 'linear'], [256, 'relu'], [48, 'linear'], [258, 'linear']]),
+    Model(True, 'relu', 50, [[512, 'relu'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]),
     Model(True, 'relu', 50, [[244, 'relu'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]),
     Model(True, 'relu', 50, [[16, 'relu'], [256, 'relu'], [256, 'relu'], [512, 'linear'], [64, 'relu']]),
     Model(True, 'relu', 45, [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]),
-    Model(True, 'linear', 60, [[14, 'linear'], [517, 'relu'], [144, 'linear'], [489, 'linear'], [34, 'linear'], [31, 'relu'],
-                               [113, 'relu'], [31, 'relu']]),
+    Model(True, 'linear', 60, [[269, 'relu'], [478, 'relu'], [500, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]),
     Model(True, 'linear', 50, [[138, 'relu'], [48, 'linear'], [133, 'linear'], [256, 'relu'], [256, 'relu'], [22, 'linear'], [38, 'relu']]),
     Model(True, 'linear', 50, [[16, 'relu'], [128, 'linear'], [512, 'relu'], [256, 'relu'], [256, 'relu'], [22, 'linear'], [48, 'linear'], [512, 'relu']]),
     Model(True, 'linear', 50, [[510, 'linear'], [138, 'linear'], [48, 'relu'], [128, 'relu'], [30, 'linear'], [64, 'relu'], [43, 'relu']]),
-    Model(True, 'linear', 50, [[48, 'linear'], [21, 'linear'], [512, 'relu'], [44, 'linear'], [266, 'relu'], [32, 'linear'], [11, 'relu'], [71, 'linear'], [256, 'relu']])
-] + GeneticCalculator.random(31, min_layers=4, max_layers=9, layer_size_choice=[16, 32, 48, 64, 128, 256, 512],
+    Model(True, 'linear', 50, [[48, 'linear'], [21, 'linear'], [512, 'relu'], [44, 'linear'], [266, 'relu'], [32, 'linear'], [11, 'relu'], [71, 'linear'], [256, 'relu']]),
+    Model(True, 'relu', 53, [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [57, 'linear'], [32, 'relu'], [73, 'relu']]),
+    Model(True, 'linear', 54, [[512, 'relu'], [138, 'linear'], [512, 'relu'], [253, 'relu'], [256, 'relu'], [10, 'relu'], [60, 'relu']]),
+    Model(True, 'linear', 56, [[512, 'relu'], [128, 'relu'], [512, 'relu'], [258, 'linear'], [254, 'relu'], [32, 'linear'], [27, 'relu']])
+] + GeneticCalculator.random(19, min_layers=4, max_layers=9, layer_size_choice=[16, 32, 48, 64, 128, 256, 512],
                              layer_activation=['relu', 'linear'], norm_choice=[True], out_ac_choice=['relu', 'linear'],
                              epochs_choice=[40, 50, 60])
 
-gen_calc = GeneticCalculator(pop, model_fitness, mutation_probability=0.2, selection_amount=6, selection_probability=0.5, verbose=3)
-gen_calc.start(6)
+gen_calc = GeneticCalculator(pop, model_fitness, mutation_probability=0.25, selection_amount=6, selection_probability=0.6, verbose=3)
+gen_calc.start(2)
 
 while True:
     c = input("Set finished.\nC - Continue  E - Edit  Q - Quit")
     if c is 'C':
         gen_calc.start(int(input("Number of generations > ")))
     elif c is 'E':
-        gen_calc.reconfigure(input("Selection amount > "), input("Mutation probability > "), input("Selection probability > "))
+        gen_calc.reconfigure(int(input("Selection amount > ")), float(input("Mutation probability > ")), float(input("Selection probability > ")))
     else:
         break

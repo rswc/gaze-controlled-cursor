@@ -51,7 +51,6 @@ for i, dp in enumerate(raw_data):
     if (dp[3].size is 0 or dp[5].size is 0):
         mask[i] = False
     
-    #flattened = np.concatenate([[*dp[0], dp[1][0] / 1920, dp[1][1] / 1080, dp[2][0] / 1920, dp[2][1] / 1080,], dp[3], [dp[4] / 2073600], dp[5]], axis=0).astype('float32')
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened

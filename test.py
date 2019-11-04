@@ -1,8 +1,40 @@
-from tensorflow import keras, device
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import backend as K
 import numpy as np
 import random
 
 random.seed(1984)
+
+def freeze_session(session, keep_var_names=None, output_names=None, clear_devices=True):
+    """
+    Freezes the state of a session into a pruned computation graph.
+
+    Creates a new computation graph where variable nodes are replaced by
+    constants taking their current value in the session. The new graph will be
+    pruned so subgraphs that are not necessary to compute the requested
+    outputs are removed.
+    @param session The TensorFlow session to be frozen.
+    @param keep_var_names A list of variable names that should not be frozen,
+                          or None to freeze all the variables in the graph.
+    @param output_names Names of the relevant graph outputs.
+    @param clear_devices Remove the device directives from the graph for better portability.
+    @return The frozen graph definition.
+    """
+    from tensorflow.python.framework.graph_util import convert_variables_to_constants
+    graph = session.graph
+    with graph.as_default():
+        freeze_var_names = list(set(v.op.name for v in tf.global_variables()).difference(keep_var_names or []))
+        output_names = output_names or []
+        output_names += [v.op.name for v in tf.global_variables()]
+        # Graph -> GraphDef ProtoBuf
+        input_graph_def = graph.as_graph_def()
+        if clear_devices:
+            for node in input_graph_def.node:
+                node.device = ""
+        frozen_graph = convert_variables_to_constants(session, input_graph_def,
+                                                      output_names, freeze_var_names)
+        return frozen_graph
 
 def printtest():
     for i in range(15):
@@ -16,7 +48,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("capresults.npy", allow_pickle=True)
+raw_data = np.load("combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -26,7 +58,6 @@ for i, dp in enumerate(raw_data):
     if (dp[3].size is 0 or dp[5].size is 0):
         mask[i] = False
     
-    #flattened = np.concatenate([[*dp[0], dp[1][0] / 1920, dp[1][1] / 1080, dp[2][0] / 1920, dp[2][1] / 1080,], dp[3], [dp[4] / 2073600], dp[5]], axis=0).astype('float32')
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
@@ -48,44 +79,29 @@ testing_labels = data[mask, ...][:, :2]
 norm_training_data = normalize(training_data)
 norm_training_labels = normalize(training_labels)
 
+norm_testing_data = normalize(testing_data)
+norm_testing_labels = normalize(testing_labels)
+
 del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(138, activation='linear'))
+model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(253, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(10, activation='relu'))
+model.add(keras.layers.Dense(60, activation='relu'))
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
+model.compile(optimizer='adam', loss='mean_absolute_error')
 
-model.fit(training_data, training_labels, epochs=40)
+model.fit(norm_training_data, norm_training_labels, epochs=65)
 
-test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-print("\nTest MSE:", test_mse)
+frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
+tf.train.write_graph(frozen_graph, "model", "tf_model.pb", as_text=False)
 
-#printtest()
-
-model = keras.Sequential()
-model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-
-model.add(keras.layers.Dense(2, activation='linear', name='output'))
-
-model.compile(optimizer='adam', loss='mean_squared_error', 
-            metrics=['mean_squared_error'])
-
-model.fit(training_data, training_labels, epochs=40)
-
-test_loss, test_mse = model.evaluate(testing_data, testing_labels, verbose=0)
-print("\nTest MSE:", test_mse)
+test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
+print("\nTest MAE:", test_loss)

@@ -99,9 +99,9 @@ def simple_crossover(a, b):
 
     l = len(a.layers) - len(b.layers)
     if l >= 0:       # a >= b
-        model.layers = Util.layer_crossover(a.layers, b.layers, l)
+        model.layers = Util.layer_crossover(a.layers.copy(), b.layers.copy(), l)
     elif l < 0:      # a < b
-        model.layers = Util.layer_crossover(b.layers, a.layers, -l)
+        model.layers = Util.layer_crossover(b.layers.copy(), a.layers.copy(), -l)
 
     return model
 
@@ -252,6 +252,7 @@ class GeneticCalculator:
             file.write("---------------------------------------------------------\n")
             for i, result in enumerate(self.__population[:n]):
                 file.write("" + str(i) + " | " + str(result) + "\n")
+                file.write(" -- " + str(result.layers) + "\n")
 
     @staticmethod
     def to_model(it):
