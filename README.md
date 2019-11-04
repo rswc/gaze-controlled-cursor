@@ -28,7 +28,8 @@
 * analysis_jup.ipynb - plik stworzony przy pomocy platformy jupyter służący do analizy i wizualizacji danych.
 
 * cursor_operator.py  - ostatni finalny skrypt pythonowy reprezentujący działanie naszego programu.  
-Schemat działania:  
+***
+## Schemat działania:  
   - Wczytywanie danych z kalibracji
   - Uczenie modeli za pomocą optymalnej sieci
   - Pętla programu
