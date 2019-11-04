@@ -19,7 +19,7 @@ print("pos: ", x, ' ', y)
 ####################
 
 
-raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
+raw_data = np.load("combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -60,14 +60,13 @@ del data
 #Initializing layers
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(512, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(128, activation='relu'))
+model.add(keras.layers.Dense(507, activation='linear'))
+model.add(keras.layers.Dense(112, activation='relu'))
+model.add(keras.layers.Dense(472, activation='relu'))
+model.add(keras.layers.Dense(289, activation='relu'))
+model.add(keras.layers.Dense(262, activation='relu'))
+model.add(keras.layers.Dense(30, activation='relu'))
 model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(128, activation='relu'))
-model.add(keras.layers.Dense(128, activation='relu'))
 #model.add(keras.layers.Dense(128, activation='relu'))
 #model.add(keras.layers.Dense(48, activation='relu'))
 #model.add(keras.layers.Dense(32, activation='relu'))
@@ -77,7 +76,7 @@ model.add(keras.layers.Dense(128, activation='relu'))
 
 
 
-weights = np.array([1,1,1,1,2,2,2,1,1,1,1])
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
@@ -86,7 +85,7 @@ model.compile(optimizer='adam', loss='mean_absolute_error',
             metrics=['mean_absolute_error'])
 
 #FIT 
-model.fit(norm_training_data, training_labels, epochs=68, class_weight=weights)
+model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
 
 test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 print("\nTest MAE:", test_mse)
@@ -159,14 +158,35 @@ while video.isOpened():
 
     
 
+    #UŚREDNIANIE 5 WYNIKÓW, WYŚWIETLANIE CO 5
     if(rou == 4):
         gx = avx/5
         gy = avy/5
         
-        print('x = ', gx, '| y = ', gy)
-        
+    #    print('x = ', gx, '| y = ', gy)
+    #    if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
+    #        pyautogui.moveTo(1920*gx,1080*gy)
         if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
-            pyautogui.moveTo(1920*gx,1080*gy)
+            if(gx<0.25):
+                print('LEFT')
+                pyautogui.moveTo(1920 * 0.25, 1080 * 0.5)
+            elif(gx>0.75):
+                print('RIGHT')
+                pyautogui.moveTo(1920 * 0.75, 1080 * 0.5)
+            elif(gx>0.25 and gx < 0.75 and gy > 0.75):
+                print('DOWN')
+                pyautogui.moveTo(1920 * 0.5, 1080 * 0.70)
+                pyautogui.scroll(-200)
+            elif(gx >0.25 and gx <0.75 and gy < 0.20):
+                print('UP')
+                pyautogui.moveTo(1920 * 0.5, 1080 * 0.25)
+                pyautogui.scroll(200)
+            else:
+                print('MIDDLE')    
+                pyautogui.moveTo(1920 * 0.5, 1080 * 0.5)
+        else:
+            print('OUT OF SCREEN')
+
         rou = 0
         avx = 0
         avy = 0
@@ -174,9 +194,7 @@ while video.isOpened():
         avx += gx
         avy += gy
         rou += 1
-        
-        
-    
+   
 
     
     

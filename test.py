@@ -7,7 +7,7 @@ random.seed(1984)
 
 def printtest():
     for i in range(15):
-        index = random.randint(0, 1100)
+        index = random.randint(0, len(testing_data))
         
         normed = _normalize(testing_data[index:index+1], minim, ptp)
         # normed = normalize__(testing_data[index:index+1])
@@ -26,7 +26,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
+raw_data = np.load("capresults_new_points_big.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -77,21 +77,23 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
+model.add(keras.layers.Dense(16, activation='linear'))
+model.add(keras.layers.Dense(138, activation='linear'))
 model.add(keras.layers.Dense(512, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(256, activation='relu'))
+model.add(keras.layers.Dense(22, activation='linear'))
+model.add(keras.layers.Dense(48, activation='linear'))
 
 
 
 
 
 
-weights = np.array([1,1,1,1,2,2,2,1,2,2,2])
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 
 
-model.add(keras.layers.Dense(2, activation='linear', name='output'))
+model.add(keras.layers.Dense(2, activation='relu', name='output'))
 
 model.compile(optimizer='adam', loss='mean_absolute_error', 
             metrics=['mean_absolute_error'])
@@ -102,7 +104,7 @@ model.fit(norm_training_data, training_labels, epochs=55, class_weight=weights)
 
 test_loss, test_mse = model.evaluate(norm_testing_data, testing_labels, verbose=0)
 
-#printtest()
+printtest()
 
 print("\nTest MSE:", test_mse)
 
@@ -125,3 +127,14 @@ t = [[(testing_data[400] - m )/ p]]
 print('normalized: ', t)
 print('pred: ', model.predict(t))
 print('exp: ', testing_labels[400])
+
+
+
+t = [[(testing_data[50] - m )/ p]]
+print('pred: ', model.predict(t))
+print('exp: ', testing_labels[50])
+
+
+t = [[(testing_data[200] - m )/ p]]
+print('pred: ', model.predict(t))
+print('exp: ', testing_labels[200])
