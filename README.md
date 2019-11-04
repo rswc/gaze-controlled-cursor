@@ -9,7 +9,7 @@
 2. *numpy
 3. *cv2
 4. *pytautogui
-5. openVINO
+5. openVINO  
 //moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem
 ---
 ## Struktura programu: 
@@ -21,11 +21,11 @@
 
 * cap_combiner - krótki skrypt łączący pliki z danymi z kalibracji. 
 
-* genetic_calculator.py - ```  - TODO ```
+* genetic_calculator.py - implementacja genetycznego algorytmu mająca na celu znajdowanie najbardziej optymalnego modelu sieci dla zebranych danych.
 
-* face_processing.py - ```  - TODO ``` 
+* face_processing.py - moduł pomocniczy służący do wykonywania wszystkich skomplikowanych obliczeń potrzebnych do analizy obrazu za pomocą bibliotek openVINO i przekazywania tych danych do treningu modelu.
 
-* JUPYTER STATYSTKA  ``` + TODO ```
+* analysis_jup.ipynb - plik stworzony przy pomocy platformy jupyter służący do analizy i wizualizacji danych.
 
 * cursor_operator.py  - ostatni finalny skrypt pythonowy reprezentujący działanie naszego programu.  
 Schemat działania:  
