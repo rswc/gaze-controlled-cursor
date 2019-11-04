@@ -7,6 +7,6 @@ d = np.load("captured_calibrations/capresults_new_points.npy", allow_pickle = Tr
 e = np.load("captured_calibrations/capresults_new_points_big.npy", allow_pickle = True)
 f = np.load("captured_calibrations/capresults_only_segments_1.npy", allow_pickle = True)
 g = np.load("captured_calibrations/capresults_only_segments.npy", allow_pickle = True)
-combined = np.concatenate((d,e))
+combined = np.concatenate((a))
 
 np.save("combined_results.npy", combined)

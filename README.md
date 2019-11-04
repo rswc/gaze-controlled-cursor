@@ -9,8 +9,8 @@
 2. *numpy
 3. *cv2
 4. *pytautogui
-5. openVINO  
-//moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem
+5. openVINO 
+//moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem (cursor_operator.py)
 ---
 ## Struktura programu: 
 *  calibration.py - jest to skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.

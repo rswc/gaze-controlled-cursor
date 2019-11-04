@@ -6,10 +6,20 @@ from tensorflow import keras, device
 
 
 def normalize(array):
-    print(array.shape, array)
     return (array - array.min(0)) / array.ptp(0)
 
-raw_data = np.load("capresults_9_points.npy", allow_pickle=True)
+    
+
+#pyautogui.moveTo(100,150)
+x,y = pyautogui.position()
+
+print("pos: ", x, ' ', y)
+
+
+####################
+
+
+raw_data = np.load("capresults_AAA.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -20,7 +30,7 @@ for i, dp in enumerate(raw_data):
         mask[i] = False
     
     #flattened = np.concatenate([[*dp[0], dp[1][0] / 1920, dp[1][1] / 1080, dp[2][0] / 1920, dp[2][1] / 1080,], dp[3], [dp[4] / 2073600], dp[5]], axis=0).astype('float32')
-    flattened = np.concatenate( [[*dp[0],*dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
+    flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
 del raw_data
@@ -66,7 +76,7 @@ model.add(keras.layers.Dense(64, activation='relu'))
 
 
 
-weights = np.array([1,1,1,1,3,3,3,1,1,1,1])
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
@@ -96,6 +106,8 @@ face_avg = fp.PropertyAverager(10)
 avx = 0
 avy = 0
 rou = 0
+speed = 1
+prev = 'MIDDLE'
 
 #Program loop
 while video.isOpened():
@@ -125,7 +137,7 @@ while video.isOpened():
 
    
 
-    
+
     data = np.array([float(lmid_x), float(lmid_y), float(rmid_x), float(rmid_y), float(gaz_x), float(gaz_y), float(gaz_z), fac_siz, float(pos_x), float(pos_y), float(pos_z)])
 
     m = testing_data.min(0)
@@ -149,28 +161,28 @@ while video.isOpened():
     
 
     #UŚREDNIANIE 5 WYNIKÓW, WYŚWIETLANIE CO 5
-    if(rou == 3):
-        gx = avx/4
-        gy = avy/4
+    if(rou == 9):
+        gx = avx/10
+        gy = avy/10
         
-        print('x = ', float(int(gx*1000)/10), '| y = ', float(int(gy*1000)/10))
+        print('x = ', float(int(gx*1000)/10), '| y = ',float(int(gy*1000)/10))
     #    if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
     #        pyautogui.moveTo(1920*gx,1080*gy)
         if(gx < 1 and gx > 0 and gy < 1 and gy > 0):
-            if(gx<0.25):
-                print('LEFT')
-                pyautogui.moveTo(1920 * 0.25, 1080 * 0.5)
-            elif(gx>0.75):
-                print('RIGHT')
-                pyautogui.moveTo(1920 * 0.75, 1080 * 0.5)
-            elif(gy > 0.70):
+            #if(gx<0.25):
+            #    print('LEFT')
+            #    pyautogui.moveTo(1920 * 0.25, 1080 * 0.5)
+            #elif(gx>0.75):
+            #    print('RIGHT')
+            #    pyautogui.moveTo(1920 * 0.75, 1080 * 0.5)
+            if(gy > 0.65):
                 print('DOWN')
                 pyautogui.moveTo(1920 * 0.5, 1080 * 0.70)
-                pyautogui.scroll(-200)
-            elif( gy < 0.30):
+                pyautogui.scroll(-200*speed)
+            elif(gy < 0.30):
                 print('UP')
                 pyautogui.moveTo(1920 * 0.5, 1080 * 0.25)
-                pyautogui.scroll(200)
+                pyautogui.scroll(200*speed)
             else:
                 print('MIDDLE')    
                 pyautogui.moveTo(1920 * 0.5, 1080 * 0.5)

@@ -67,7 +67,7 @@ while video.isOpened():
             active_point = training_pts.pop()
         capture = not capture
 
-np.save("capresults_9_points", capture_results)
+np.save("capresults_AAA", capture_results)
 
 video.release()
 cv2.waitKey(0)
