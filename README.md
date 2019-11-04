@@ -1,10 +1,16 @@
 # Obsługa komputera za pomocą wzroku
 ***
-### Stworzyliśmy program wykorzystujący sztuczną inteligencję, którego zdaniem jest analizowanie obrazu z kamerki internetowej.
-
-### Dane jakie jesteśmy w stanie wyciągnąć z pojedynczych kratek służą do wyznaczania punktu na ekranie, na który skierowany jest wzrok użytkownika.
-
-### Zastosowaniem projektu jest możliwość czytania książek, pdfów, przeglądanie stron bez potrzeby używania rąk.
+### Stworzyliśmy program wykorzystujący sztuczną inteligencję, którego zdaniem jest analizowanie obrazu z kamerki internetowej, a dane jakie jesteśmy w stanie wyciągnąć z pojedynczych kratek służą do wyznaczania punktu na ekranie, na który skierowany jest wzrok użytkownika.
+### Zastosowaniem projektu jest możliwość czytania książek, pdfów, przeglądanie stron bez potrzeby używania rąk, przewijając ekran automatycznie, gdy wzrok zbliża się do dołu/góry strony.
+### Celem rozwojowym projektu jest stworzenie bardziej precyzyjnego modelu, który byłby w stanie z większą dokładnością określać punkt na ekranie, aby móc przeprowadzać bardziej skomplikowane operacje za pomocą wzroku.
+---
+### Wymagane moduły:
+1. *tensorflow
+2. *numpy
+3. *cv2
+4. *pytautogui
+5. openVINO
+//moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem
 ---
 ## Struktura programu: 
 *  calibration.py - jest to skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.
