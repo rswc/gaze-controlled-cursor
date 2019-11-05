@@ -1,0 +1,684 @@
+Processing initial population model (0/30)...
+Processing initial population model (1/30)...
+Processing initial population model (2/30)...
+Processing initial population model (3/30)...
+Processing initial population model (4/30)...
+Processing initial population model (5/30)...
+Processing initial population model (6/30)...
+Processing initial population model (7/30)...
+Processing initial population model (8/30)...
+Processing initial population model (9/30)...
+Processing initial population model (10/30)...
+Processing initial population model (11/30)...
+Processing initial population model (12/30)...
+Processing initial population model (13/30)...
+Processing initial population model (14/30)...
+Processing initial population model (15/30)...
+Processing initial population model (16/30)...
+Processing initial population model (17/30)...
+Processing initial population model (18/30)...
+Processing initial population model (19/30)...
+Processing initial population model (20/30)...
+Processing initial population model (21/30)...
+Processing initial population model (22/30)...
+Processing initial population model (23/30)...
+Processing initial population model (24/30)...
+Processing initial population model (25/30)...
+Processing initial population model (26/30)...
+Processing initial population model (27/30)...
+Processing initial population model (28/30)...
+Processing initial population model (29/30)...
+Processing initial population model (30/30)...
+Generation starting...
+ [+] 0.10754180 | True | linear |  41 | . (16, l) (32, l) (128, l) (256, r) (254, r) (42, r) 
+ [+] 0.10948068 | True | linear |  52 | . (64, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ [+] 0.10208107 | True | linear |  66 | . (279, l) (478, r) (490, r) (118, l) (256, l) (512, l) (48, r) 
+ [+] 0.11997284 | True | linear |  45 | . (16, r) (32, l) (510, r) (256, r) (37, l) (512, l) (48, r) 
+ [+] 0.11066037 | True | linear |  57 | . (48, l) (21, l) (512, r) (62, l) (266, r) (32, l) (10, l) 
+ [+] 0.14575193 | True | linear |  60 | . (42, r) (522, r) (48, l) (11, l) 
+Generation:   0, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (490, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.08038367 | True | relu   |  50 | . (512, r) (128, r) (512, r) (253, r) (254, r) (22, l) (48, l) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]2 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (48, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]3 |  0.09079560 | True | relu   |  53 | . (27, l) (265, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]4 |  0.09754646 | True | relu   |  50 | . (244, r) (514, l) (502, r) (256, r) (256, r) (48, l) (113, r) (30, l) 
+ -- [[244, 'relu'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]5 |  0.09910883 | True | linear |  56 | . (512, r) (128, r) (512, r) (258, l) (254, r) (42, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [258, 'linear'], [254, 'relu'], [42, 'relu'], [27, 'relu']]6 |  0.10088239 | True | linear |  54 | . (512, r) (138, l) (512, r) (253, r) (256, r) (10, r) (60, r) 
+ -- [[512, 'relu'], [138, 'linear'], [512, 'relu'], [253, 'relu'], [256, 'relu'], [10, 'relu'], [60, 'relu']]7 |  0.10174410 | True | relu   |  50 | . (16, r) (256, r) (256, r) (512, l) (64, r) 
+ -- [[16, 'relu'], [256, 'relu'], [256, 'relu'], [512, 'linear'], [64, 'relu']]Generation starting...
+ [+] 0.23416516 | True | linear |  46 | . (256, l) (48, l) (62, l) (37, l) 
+ [+] 0.10290671 | True | relu   |  49 | . (512, r) (64, r) (10, r) (246, r) 
+ [+] 0.09778233 | True | linear |  45 | . (242, l) (514, l) (502, r) (256, r) (254, r) (42, r) 
+ [+] 0.13159063 | True | linear |  54 | . (522, l) (128, r) (48, l) (512, l) (38, r) (48, r) 
+ [+] 0.18412760 | True | relu   |  59 | . (512, l) (48, r) (48, l) (48, l) 
+ [+] 0.15687881 | True | relu   |  54 | . (59, r) (32, r) (48, l) (11, l) 
+Generation:   1, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (490, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (512, r) (253, r) (254, r) (22, l) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]2 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (48, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]3 |  0.09079560 | True | relu   |  53 | . (27, l) (265, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]4 |  0.09754646 | True | relu   |  50 | . (242, l) (514, l) (502, r) (256, r) (256, r) (48, l) (113, r) (30, l) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]5 |  0.09778233 | True | linear |  45 | . (242, l) (514, l) (502, r) (256, r) (254, r) (42, r) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [254, 'relu'], [42, 'relu']]6 |  0.09910883 | True | linear |  56 | . (512, r) (128, r) (512, r) (258, l) (254, r) (42, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [258, 'linear'], [254, 'relu'], [42, 'relu'], [27, 'relu']]7 |  0.10088239 | True | linear |  54 | . (512, r) (138, l) (512, r) (253, r) (256, r) (10, r) (60, r) 
+ -- [[512, 'relu'], [138, 'linear'], [512, 'relu'], [253, 'relu'], [256, 'relu'], [10, 'relu'], [60, 'relu']]Generation starting...
+ [+] 0.14669893 | True | relu   |  46 | . (512, r) (66, l) (10, r) (48, l) (48, l) 
+ [+] 0.08855168 | True | linear |  64 | . (279, l) (478, r) (490, r) (118, l) (38, r) (48, r) 
+ [+] 0.13261271 | True | linear |  46 | . (507, r) (130, r) (64, l) 
+ [+] 0.09903683 | True | linear |  51 | . (512, r) (66, l) (16, l) (118, l) (246, r) (53, r) (48, r) 
+ [+] 0.11308966 | True | linear |  49 | . (48, l) (21, l) (512, r) (37, l) (266, r) (32, l) (10, l) 
+ [+] 0.17002477 | True | linear |  57 | . (59, r) (32, r) (46, r) 
+Generation:   2, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (490, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (512, r) (253, r) (254, r) (22, l) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]2 |  0.08855168 | True | linear |  64 | . (279, l) (478, r) (490, r) (118, l) (38, r) (53, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]3 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (48, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]4 |  0.09079560 | True | relu   |  53 | . (27, l) (265, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]5 |  0.09754646 | True | relu   |  50 | . (242, l) (514, l) (502, r) (256, r) (256, r) (48, l) (113, r) (30, l) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]6 |  0.09778233 | True | linear |  45 | . (242, l) (514, l) (502, r) (256, r) (254, r) (42, r) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [254, 'relu'], [42, 'relu']]7 |  0.09903683 | True | linear |  51 | . (512, r) (66, l) (16, l) (118, l) (246, r) (53, r) (48, r) 
+ -- [[512, 'relu'], [66, 'linear'], [16, 'linear'], [118, 'linear'], [246, 'relu'], [53, 'relu'], [48, 'relu']]Generation starting...
+ [+] 0.17832490 | True | linear |  48 | . (16, l) (48, r) (10, l) (48, l) (48, l) (128, l) 
+ [+] 0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (48, l) (256, r) (48, l) (113, r) (30, l) 
+ [+] 0.17492348 | True | linear |  60 | . (26, r) (46, r) (512, l) 
+ [+] 0.12344943 | True | linear |  49 | . (507, r) (130, r) (48, l) (11, l) 
+ [+] 0.13718706 | True | linear |  52 | . (522, l) (128, r) (48, l) (512, l) (246, r) (512, l) 
+ [+] 0.12398240 | True | linear |  47 | . (64, l) (16, r) (500, r) (37, l) (86, l) (10, l) (32, r) 
+Generation:   3, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (490, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (48, l) (256, r) (48, l) (113, r) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]2 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (512, r) (253, r) (254, r) (22, l) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]3 |  0.08855168 | True | linear |  64 | . (279, l) (478, r) (490, r) (118, l) (38, r) (53, r) 
+ -- [[279, 'linear'], [478, 'relu'], [490, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]4 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (48, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [48, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]5 |  0.09079560 | True | relu   |  53 | . (27, l) (265, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]6 |  0.09754646 | True | relu   |  50 | . (242, l) (514, l) (502, r) (256, r) (256, r) (48, l) (113, r) (30, l) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]7 |  0.09778233 | True | linear |  45 | . (242, l) (514, l) (502, r) (256, r) (254, r) (42, r) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [254, 'relu'], [42, 'relu']]Generation starting...
+ [+] 0.12453916 | True | relu   |  52 | . (64, l) (16, r) (500, r) (37, l) (86, l) (10, l) (48, r) 
+ [+] 0.10702525 | True | linear |  54 | . (48, l) (21, l) (512, r) (34, l) (266, r) (76, r) (10, l) 
+ [+] 0.09760256 | True | linear |  60 | . (26, r) (522, r) (58, r) (522, r) (38, r) 
+ [+] 0.48209897 | True | relu   |  64 | . (279, l) (478, r) (495, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ [+] 0.11764017 | True | relu   |  46 | . (507, r) (256, l) (46, r) (62, l) (53, r) 
+ [+] 0.13571378 | True | relu   |  46 | . (507, r) (130, r) (66, l) (11, l) 
+Generation:   4, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (495, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [495, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]2 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (512, r) (253, r) (254, r) (22, l) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]3 |  0.08855168 | True | linear |  64 | . (279, l) (478, r) (495, r) (118, l) (38, r) (53, r) 
+ -- [[279, 'linear'], [478, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]4 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (58, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]5 |  0.09079560 | True | relu   |  53 | . (27, l) (265, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[27, 'linear'], [265, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]6 |  0.09754646 | True | relu   |  50 | . (242, l) (514, l) (502, r) (256, r) (256, r) (48, l) (115, l) (30, l) 
+ -- [[242, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]7 |  0.09760256 | True | linear |  60 | . (26, r) (522, r) (58, r) (522, r) (38, r) 
+ -- [[26, 'relu'], [522, 'relu'], [58, 'relu'], [522, 'relu'], [38, 'relu']]Generation starting...
+ [+] 0.08069193 | True | linear |  57 | . (279, l) (478, r) (512, r) (253, r) (254, r) (20, r) 
+ [+] 0.08479062 | True | relu   |  52 | . (62, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ [+] 0.16982422 | True | relu   |  48 | . (16, l) (32, l) (128, l) (11, l) (254, r) (42, r) 
+ [+] 0.09489689 | True | linear |  61 | . (279, l) (478, r) (495, r) (37, l) (86, l) (10, l) (48, r) 
+ [+] 0.08902239 | True | linear |  48 | . (240, l) (514, l) (502, r) (256, r) (254, r) (510, r) (48, r) 
+ [+] 0.13792844 | True | linear |  51 | . (26, r) (522, r) (58, r) (524, l) (256, r) (48, l) 
+Generation:   5, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (279, l) (478, r) (495, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'linear'], [478, 'relu'], [495, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]2 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (512, r) (253, r) (254, r) (20, r) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [20, 'relu'], [48, 'linear']]3 |  0.08069193 | True | linear |  57 | . (279, l) (478, r) (512, r) (253, r) (254, r) (20, r) 
+ -- [[279, 'linear'], [478, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [20, 'relu']]4 |  0.08479062 | True | relu   |  52 | . (62, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[62, 'linear'], [16, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]5 |  0.08855168 | True | linear |  64 | . (279, l) (478, r) (495, r) (118, l) (38, r) (53, r) 
+ -- [[279, 'linear'], [478, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]6 |  0.08902239 | True | linear |  48 | . (240, l) (514, l) (502, r) (256, r) (254, r) (510, r) (48, r) 
+ -- [[240, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [254, 'relu'], [510, 'relu'], [48, 'relu']]7 |  0.09059242 | True | relu   |  45 | . (244, r) (512, r) (514, r) (58, l) (31, l) (32, l) (32, r) (128, l) (128, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear'], [128, 'linear']]Generation starting...
+ [+] 0.12244400 | True | linear |  47 | . (507, r) (130, r) (43, l) (62, l) 
+ [+] 0.08273303 | True | linear |  57 | . (289, r) (480, r) (514, r) (253, r) (254, r) (20, l) (50, l) (20, l) 
+ [+] 0.09147102 | True | linear |  55 | . (512, r) (128, r) (512, r) (258, l) (256, r) (48, l) (115, l) 
+ [+] 0.14341064 | True | relu   |  53 | . (32, r) (66, l) (10, l) (53, r) (53, r) 
+ [+] 0.16130046 | True | linear |  42 | . (502, l) (522, r) 
+ [+] 0.14856897 | True | linear |  43 | . (16, l) (32, l) (16, l) (118, l) (246, r) (510, r) (46, r) 
+Generation:   6, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (289, r) (480, r) (495, r) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [480, 'relu'], [495, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]2 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (514, r) (253, r) (254, r) (20, r) (48, l) 
+ -- [[522, 'linear'], [128, 'relu'], [514, 'relu'], [253, 'relu'], [254, 'relu'], [20, 'relu'], [48, 'linear']]3 |  0.08069193 | True | linear |  57 | . (289, r) (480, r) (514, r) (253, r) (254, r) (20, r) 
+ -- [[289, 'relu'], [480, 'relu'], [514, 'relu'], [253, 'relu'], [254, 'relu'], [20, 'relu']]4 |  0.08273303 | True | linear |  57 | . (289, r) (480, r) (514, r) (253, r) (254, r) (20, l) (50, l) (20, l) 
+ -- [[289, 'relu'], [480, 'relu'], [514, 'relu'], [253, 'relu'], [254, 'relu'], [20, 'linear'], [50, 'linear'], [20, 'linear']]5 |  0.08479062 | True | relu   |  52 | . (62, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[62, 'linear'], [16, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]6 |  0.08855168 | True | linear |  64 | . (289, r) (480, r) (495, r) (118, l) (38, r) (53, r) 
+ -- [[289, 'relu'], [480, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]7 |  0.08902239 | True | linear |  48 | . (240, l) (514, l) (502, r) (256, r) (254, r) (510, r) (46, r) 
+ -- [[240, 'linear'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [254, 'relu'], [510, 'relu'], [46, 'relu']]Generation starting...
+ [+] 0.23371255 | True | linear |  45 | . (16, l) (32, l) (128, l) (248, l) (20, l) (50, l) 
+ [+] 0.10210677 | True | linear |  45 | . (502, l) (478, r) (514, r) (253, r) (254, r) (20, r) 
+ [+] 0.11367333 | True | relu   |  48 | . (62, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (128, l) 
+ [+] 0.12746188 | True | linear |  49 | . (502, l) (522, r) (58, r) (524, l) (256, r) 
+ [+] 0.07964819 | True | linear |  60 | . (512, r) (128, r) (495, r) (118, l) (38, r) (53, r) (27, r) 
+ [+] 0.48209897 | True | relu   |  54 | . (244, r) (512, r) (514, r) (243, l) (254, r) (20, r) (53, l) 
+Generation:   7, min_loss:     0.07768247
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07768247 | True | linear |  60 | . (289, r) (478, r) (495, r) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [478, 'relu'], [495, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]1 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]2 |  0.07964819 | True | linear |  60 | . (512, r) (128, r) (495, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]3 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (514, r) (243, l) (254, r) (20, r) (53, l) 
+ -- [[522, 'linear'], [128, 'relu'], [514, 'relu'], [243, 'linear'], [254, 'relu'], [20, 'relu'], [53, 'linear']]4 |  0.08069193 | True | linear |  57 | . (289, r) (478, r) (514, r) (243, l) (254, r) (20, r) 
+ -- [[289, 'relu'], [478, 'relu'], [514, 'relu'], [243, 'linear'], [254, 'relu'], [20, 'relu']]5 |  0.08273303 | True | linear |  57 | . (289, r) (478, r) (514, r) (243, l) (254, r) (20, l) (50, l) (20, l) 
+ -- [[289, 'relu'], [478, 'relu'], [514, 'relu'], [243, 'linear'], [254, 'relu'], [20, 'linear'], [50, 'linear'], [20, 'linear']]6 |  0.08479062 | True | relu   |  52 | . (62, l) (16, r) (500, r) (515, r) (37, l) (86, l) (67, l) (32, r) (73, r) 
+ -- [[62, 'linear'], [16, 'relu'], [500, 'relu'], [515, 'relu'], [37, 'linear'], [86, 'linear'], [67, 'linear'], [32, 'relu'], [73, 'relu']]7 |  0.08855168 | True | linear |  64 | . (289, r) (478, r) (495, r) (118, l) (38, r) (53, r) 
+ -- [[289, 'relu'], [478, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu']]Generation starting...
+ [+] 0.13959253 | True | relu   |  45 | . (16, l) (42, r) (128, l) (58, l) (256, r) (48, l) 
+ [+] 0.11953762 | True | linear |  53 | . (507, r) (66, l) (16, l) (524, l) (38, r) (53, r) 
+ [+] 0.07106284 | True | linear |  45 | . (502, l) (473, r) (514, r) (245, r) (254, r) (42, r) 
+ [+] 0.07454554 | True | linear |  59 | . (512, r) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ [+] 0.16361309 | True | relu   |  45 | . (512, r) (66, l) (66, l) 
+ [+] 0.10719713 | True | linear |  49 | . (512, r) (130, r) (58, r) 
+Generation:   8, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (512, r) (473, r) (514, r) (245, r) (254, r) (42, r) 
+ -- [[512, 'relu'], [473, 'relu'], [514, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07454554 | True | linear |  59 | . (512, r) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]2 |  0.07768247 | True | linear |  60 | . (289, r) (473, r) (495, r) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [473, 'relu'], [495, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]3 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (256, r) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [256, 'relu'], [48, 'linear'], [115, 'linear'], [30, 'linear']]4 |  0.07964819 | True | linear |  60 | . (512, r) (128, r) (495, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [495, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]5 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (514, r) (245, r) (254, r) (20, r) (53, l) 
+ -- [[522, 'linear'], [128, 'relu'], [514, 'relu'], [245, 'relu'], [254, 'relu'], [20, 'relu'], [53, 'linear']]6 |  0.08069193 | True | linear |  57 | . (289, r) (473, r) (514, r) (245, r) (254, r) (20, r) 
+ -- [[289, 'relu'], [473, 'relu'], [514, 'relu'], [245, 'relu'], [254, 'relu'], [20, 'relu']]7 |  0.08273303 | True | linear |  57 | . (289, r) (473, r) (514, r) (245, r) (254, r) (20, l) (50, l) (20, l) 
+ -- [[289, 'relu'], [473, 'relu'], [514, 'relu'], [245, 'relu'], [254, 'relu'], [20, 'linear'], [50, 'linear'], [20, 'linear']]Generation starting...
+ [+] 0.15307530 | True | linear |  49 | . (289, r) (532, l) 
+ [+] 0.10384051 | True | linear |  44 | . (16, l) (42, r) (512, r) (245, r) (264, r) (30, l) 
+ [+] 0.10961645 | True | linear |  48 | . (289, r) (473, r) (497, l) (37, l) (86, l) (510, r) (46, r) 
+ [+] 0.09056157 | True | linear |  51 | . (62, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ [+] 0.11530597 | True | linear |  55 | . (512, r) (128, r) (512, r) (118, l) (258, l) (48, l) (115, l) (30, l) 
+ [+] 0.11287718 | True | linear |  45 | . (512, r) (473, r) (58, r) (524, l) (38, r) (53, r) 
+Generation:   9, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (512, r) (473, r) (507, r) (245, r) (254, r) (42, r) 
+ -- [[512, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07454554 | True | linear |  59 | . (512, r) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]2 |  0.07768247 | True | linear |  60 | . (289, r) (473, r) (497, l) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [473, 'relu'], [497, 'linear'], [505, 'linear'], [547, 'relu'], [76, 'relu']]3 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (258, l) (48, l) (115, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [258, 'linear'], [48, 'linear'], [115, 'linear'], [30, 'linear']]4 |  0.07964819 | True | linear |  60 | . (512, r) (128, r) (497, l) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [497, 'linear'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]5 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[522, 'linear'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]6 |  0.08069193 | True | linear |  57 | . (289, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear']]7 |  0.08273303 | True | linear |  57 | . (289, r) (473, r) (507, r) (245, r) (264, r) (20, l) (50, l) (20, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [20, 'linear'], [50, 'linear'], [20, 'linear']]Generation starting...
+ [+] 0.12300974 | True | relu   |  43 | . (532, l) (507, r) (507, r) 
+ [+] 0.12206508 | True | linear |  47 | . (289, r) (473, r) (497, l) (37, l) (86, l) (42, r) (46, r) 
+ [+] 0.11146354 | True | relu   |  52 | . (522, l) (128, r) (507, r) (245, r) (264, r) (20, l) (50, l) 
+ [+] 0.11444727 | True | relu   |  55 | . (62, l) (26, l) (505, r) (515, r) (37, l) (48, l) (110, r) (30, l) (128, l) 
+ [+] 0.08189287 | True | linear |  59 | . (289, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ [+] 0.15265522 | True | linear |  48 | . (507, l) (532, l) (507, r) 
+Generation:  10, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (507, l) (473, r) (507, r) (245, r) (254, r) (42, r) 
+ -- [[507, 'linear'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07454554 | True | linear |  59 | . (512, r) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]2 |  0.07768247 | True | linear |  60 | . (289, r) (473, r) (497, l) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [473, 'relu'], [497, 'linear'], [505, 'linear'], [547, 'relu'], [76, 'relu']]3 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (58, l) (258, l) (48, l) (110, r) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [58, 'linear'], [258, 'linear'], [48, 'linear'], [110, 'relu'], [30, 'linear']]4 |  0.07964819 | True | linear |  60 | . (512, r) (128, r) (497, l) (118, l) (38, r) (53, r) (27, r) 
+ -- [[512, 'relu'], [128, 'relu'], [497, 'linear'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]5 |  0.08038367 | True | relu   |  50 | . (522, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[522, 'linear'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]6 |  0.08069193 | True | linear |  57 | . (289, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear']]7 |  0.08189287 | True | linear |  59 | . (289, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear']]Generation starting...
+ [+] 0.48209897 | True | relu   |  52 | . (524, r) (128, r) (505, r) (520, r) (37, l) (96, r) (67, l) (32, r) (73, r) 
+ [+] 0.16073621 | True | linear |  48 | . (507, l) (512, r) 
+ [+] 0.08157713 | True | linear |  56 | . (289, r) (473, r) (507, r) (37, l) (96, r) (510, r) (50, l) (20, l) 
+ [+] 0.09721878 | True | linear |  49 | . (242, r) (514, l) (502, r) (256, r) (264, r) (30, l) (43, r) 
+ [+] 0.09819419 | True | relu   |  56 | . (522, l) (512, r) (514, r) (53, r) (258, l) (48, l) (108, l) 
+ [+] 0.09121377 | True | linear |  47 | . (507, l) (473, r) (507, r) (245, r) 
+Generation:  11, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (507, l) (473, r) (507, r) (245, r) (254, r) (42, r) 
+ -- [[507, 'linear'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]2 |  0.07768247 | True | linear |  60 | . (289, r) (473, r) (507, r) (505, l) (547, r) (76, r) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]3 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (53, r) (258, l) (48, l) (108, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [53, 'relu'], [258, 'linear'], [48, 'linear'], [108, 'linear'], [30, 'linear']]4 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (507, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [507, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]5 |  0.08038367 | True | relu   |  50 | . (524, r) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[524, 'relu'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]6 |  0.08069193 | True | linear |  57 | . (289, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear']]7 |  0.08157713 | True | linear |  56 | . (289, r) (473, r) (507, r) (37, l) (96, r) (510, r) (50, l) (20, l) 
+ -- [[289, 'relu'], [473, 'relu'], [507, 'relu'], [37, 'linear'], [96, 'relu'], [510, 'relu'], [50, 'linear'], [20, 'linear']]Generation starting...
+ [+] 0.11596598 | True | linear |  42 | . (507, l) (514, l) (502, r) (256, r) (254, r) (512, r) 
+ [+] 0.07923041 | True | linear |  50 | . (526, r) (473, r) (507, r) (245, r) (37, l) (96, r) (65, r) (34, l) 
+ [+] 0.08557354 | True | linear |  49 | . (279, r) (473, r) (507, r) (37, l) (96, r) (20, l) (50, l) 
+ [+] 0.23303959 | True | relu   |  48 | . (507, l) (532, l) 
+ [+] 0.10417336 | True | linear |  40 | . (542, l) (473, r) (509, r) (37, l) (101, r) 
+ [+] 0.12751059 | True | linear |  47 | . (16, l) (42, r) (514, r) (53, r) (258, l) (50, r) (108, l) 
+Generation:  12, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (507, l) (473, r) (507, r) (245, r) (254, r) (42, r) 
+ -- [[507, 'linear'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]2 |  0.07768247 | True | linear |  60 | . (279, r) (473, r) (509, r) (505, l) (547, r) (76, r) 
+ -- [[279, 'relu'], [473, 'relu'], [509, 'relu'], [505, 'linear'], [547, 'relu'], [76, 'relu']]3 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (514, r) (53, r) (258, l) (50, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [514, 'relu'], [53, 'relu'], [258, 'linear'], [50, 'relu'], [108, 'linear'], [30, 'linear']]4 |  0.07923041 | True | linear |  50 | . (526, r) (473, r) (507, r) (245, r) (37, l) (101, r) (65, r) (34, l) 
+ -- [[526, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [37, 'linear'], [101, 'relu'], [65, 'relu'], [34, 'linear']]5 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (509, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [509, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]6 |  0.08038367 | True | relu   |  50 | . (526, r) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[526, 'relu'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]7 |  0.08069193 | True | linear |  57 | . (279, r) (473, r) (507, r) (245, r) (264, r) (30, l) 
+ -- [[279, 'relu'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear']]Generation starting...
+ [+] 0.15458099 | True | linear |  42 | . (16, l) (42, r) (524, l) (37, l) (91, l) (60, r) 
+ [+] 0.48209897 | True | relu   |  39 | . (526, r) (128, r) (507, r) (245, r) 
+ [+] 0.08994653 | True | linear |  59 | . (522, l) (128, r) (509, r) (118, l) (258, l) (60, r) (108, l) (30, l) 
+ [+] 0.07128103 | True | linear |  63 | . (528, l) (473, r) (509, r) (505, l) (549, l) (76, r) (65, r) (34, l) 
+ [+] 0.23394337 | True | linear |  45 | . (507, l) (542, l) 
+ [+] 0.14952013 | True | linear |  46 | . (507, l) (514, l) (509, r) (37, l) (91, l) (42, r) 
+Generation:  13, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (507, l) (473, r) (507, r) (245, r) (254, r) (42, r) 
+ -- [[507, 'linear'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (528, l) (473, r) (509, r) (505, l) (549, l) (76, r) (65, r) (34, l) 
+ -- [[528, 'linear'], [473, 'relu'], [509, 'relu'], [505, 'linear'], [549, 'linear'], [76, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (279, r) (473, r) (509, r) (505, l) (549, l) (76, r) 
+ -- [[279, 'relu'], [473, 'relu'], [509, 'relu'], [505, 'linear'], [549, 'linear'], [76, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (512, r) (524, l) (53, r) (258, l) (60, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [512, 'relu'], [524, 'linear'], [53, 'relu'], [258, 'linear'], [60, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (528, l) (473, r) (507, r) (245, r) (37, l) (91, l) (65, r) (34, l) 
+ -- [[528, 'linear'], [473, 'relu'], [507, 'relu'], [245, 'relu'], [37, 'linear'], [91, 'linear'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (509, r) (118, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [509, 'relu'], [118, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (528, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[528, 'linear'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.08972835 | True | linear |  45 | . (507, l) (473, r) (499, r) (91, l) (512, r) (46, r) 
+ [+] 0.08075872 | True | relu   |  55 | . (244, r) (517, r) (499, r) (505, l) (549, l) (74, r) 
+ [+] 0.11970794 | True | relu   |  40 | . (542, l) (475, l) (499, r) (520, r) (37, l) (86, l) 
+ [+] 0.10473415 | True | linear |  49 | . (505, r) (128, r) (499, r) (128, l) (38, r) (53, r) 
+ [+] 0.14164940 | True | linear |  54 | . (522, l) (524, l) (32, l) (88, r) (60, r) (27, r) 
+ [+] 0.17327663 | True | linear |  47 | . (11, r) (47, r) (524, l) (53, r) (544, r) (79, r) (65, r) (34, l) 
+Generation:  14, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (505, r) (475, l) (507, r) (245, r) (254, r) (42, r) 
+ -- [[505, 'relu'], [475, 'linear'], [507, 'relu'], [245, 'relu'], [254, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (528, l) (475, l) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[528, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (128, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [128, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (279, r) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[279, 'relu'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (517, r) (524, l) (53, r) (258, l) (60, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [517, 'relu'], [524, 'linear'], [53, 'relu'], [258, 'linear'], [60, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (528, l) (475, l) (507, r) (245, r) (32, l) (88, r) (65, r) (34, l) 
+ -- [[528, 'linear'], [475, 'linear'], [507, 'relu'], [245, 'relu'], [32, 'linear'], [88, 'relu'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (499, r) (128, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [499, 'relu'], [128, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (528, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[528, 'linear'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.14044994 | True | relu   |  53 | . (505, r) (475, l) (509, l) (505, l) (544, r) 
+ [+] 0.21347891 | True | linear |  42 | . (11, r) (542, l) (524, l) 
+ [+] 0.09397028 | True | linear |  45 | . (289, r) (475, l) (509, l) (32, l) (252, r) (512, r) (46, r) 
+ [+] 0.12278069 | True | linear |  48 | . (522, l) (475, l) (88, r) (512, r) (44, r) 
+ [+] 0.15434046 | True | linear |  43 | . (505, r) (47, r) (524, l) 
+ [+] 0.12721235 | True | relu   |  41 | . (510, l) (128, r) (504, r) (128, l) (38, r) 
+Generation:  15, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (510, l) (475, l) (507, r) (245, r) (252, r) (42, r) 
+ -- [[510, 'linear'], [475, 'linear'], [507, 'relu'], [245, 'relu'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (528, l) (475, l) (504, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[528, 'linear'], [475, 'linear'], [504, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (128, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [128, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (289, r) (475, l) (504, r) (505, l) (544, r) (79, r) 
+ -- [[289, 'relu'], [475, 'linear'], [504, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (517, r) (524, l) (53, r) (258, l) (60, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [517, 'relu'], [524, 'linear'], [53, 'relu'], [258, 'linear'], [60, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (528, l) (475, l) (507, r) (245, r) (32, l) (88, r) (65, r) (34, l) 
+ -- [[528, 'linear'], [475, 'linear'], [507, 'relu'], [245, 'relu'], [32, 'linear'], [88, 'relu'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (504, r) (128, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [504, 'relu'], [128, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (528, l) (128, r) (507, r) (245, r) (264, r) (30, l) (43, r) 
+ -- [[528, 'linear'], [128, 'relu'], [507, 'relu'], [245, 'relu'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.11545792 | True | linear |  53 | . (518, l) (475, l) (504, r) (88, r) (55, r) (65, r) 
+ [+] 0.12985168 | True | linear |  47 | . (287, l) (475, l) (504, r) (240, l) (90, l) (512, r) 
+ [+] 0.14592471 | True | linear |  49 | . (518, l) (475, l) (507, r) (240, l) (32, l) (512, r) (44, r) 
+ [+] 0.14084666 | True | linear |  49 | . (244, r) (542, l) (524, l) (53, r) (256, l) (55, r) (256, l) 
+ [+] 0.48209897 | True | relu   |  41 | . (510, l) (128, r) (504, r) (133, l) (544, r) (544, r) 
+ [+] 0.12191658 | True | linear |  45 | . (510, l) (128, r) (509, r) (522, l) (32, l) (90, l) 
+Generation:  16, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (510, l) (475, l) (507, r) (240, l) (252, r) (42, r) 
+ -- [[510, 'linear'], [475, 'linear'], [507, 'relu'], [240, 'linear'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (518, l) (475, l) (509, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [509, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (133, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [133, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (287, l) (475, l) (509, r) (505, l) (544, r) (79, r) 
+ -- [[287, 'linear'], [475, 'linear'], [509, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (517, r) (524, l) (53, r) (256, l) (55, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [517, 'relu'], [524, 'linear'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (518, l) (475, l) (507, r) (240, l) (32, l) (90, l) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [507, 'relu'], [240, 'linear'], [32, 'linear'], [90, 'linear'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (509, r) (133, l) (38, r) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [509, 'relu'], [133, 'linear'], [38, 'relu'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (518, l) (128, r) (507, r) (240, l) (264, r) (30, l) (43, r) 
+ -- [[518, 'linear'], [128, 'relu'], [507, 'relu'], [240, 'linear'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.09506799 | True | linear |  56 | . (522, l) (128, r) (512, r) (133, l) (38, r) (44, r) (27, r) 
+ [+] 0.13650132 | True | relu   |  35 | . (11, r) (47, r) (509, r) (240, l) (90, l) (512, r) 
+ [+] 0.12248452 | True | linear |  51 | . (522, l) (517, r) (524, l) (133, l) (40, l) (53, r) 
+ [+] 0.12565720 | True | linear |  61 | . (287, l) (475, l) (507, r) (240, l) (264, r) (30, l) 
+ [+] 0.11161930 | True | linear |  54 | . (518, l) (480, r) (524, l) (53, r) (256, l) (55, r) (108, l) (30, l) 
+ [+] 0.08885918 | True | linear |  41 | . (515, r) (128, r) (499, r) (133, l) (252, r) (42, r) 
+Generation:  17, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (480, r) (507, r) (240, l) (252, r) (42, r) 
+ -- [[515, 'relu'], [480, 'relu'], [507, 'relu'], [240, 'linear'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (518, l) (480, r) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[518, 'linear'], [480, 'relu'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (133, l) (40, l) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [133, 'linear'], [40, 'linear'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (287, l) (480, r) (499, r) (505, l) (544, r) (79, r) 
+ -- [[287, 'linear'], [480, 'relu'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (517, r) (524, l) (53, r) (256, l) (55, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [517, 'relu'], [524, 'linear'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (518, l) (480, r) (507, r) (240, l) (32, l) (90, l) (65, r) (34, l) 
+ -- [[518, 'linear'], [480, 'relu'], [507, 'relu'], [240, 'linear'], [32, 'linear'], [90, 'linear'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (499, r) (133, l) (40, l) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [499, 'relu'], [133, 'linear'], [40, 'linear'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (518, l) (128, r) (507, r) (240, l) (264, r) (30, l) (43, r) 
+ -- [[518, 'linear'], [128, 'relu'], [507, 'relu'], [240, 'linear'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.08293516 | True | linear |  49 | . (244, r) (128, r) (507, r) (240, l) (264, r) (30, l) (43, r) 
+ [+] 0.16882233 | True | relu   |  49 | . (297, l) (475, l) (512, r) (133, l) (40, l) (39, l) 
+ [+] 0.11521349 | True | linear |  48 | . (242, r) (514, l) (502, r) (256, r) (512, r) (41, l) (41, l) 
+ [+] 0.11967418 | True | linear |  52 | . (302, l) (475, l) (499, r) (37, l) (37, l) (512, r) (41, l) 
+ [+] 0.09352442 | True | linear |  51 | . (302, l) (128, r) (499, r) (133, l) (252, r) (42, r) 
+ [+] 0.11848747 | True | linear |  61 | . (302, l) (475, l) (497, r) (240, l) (264, r) (79, r) 
+Generation:  18, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (497, r) (240, l) (252, r) (42, r) 
+ -- [[515, 'relu'], [475, 'linear'], [497, 'relu'], [240, 'linear'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (518, l) (475, l) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (128, r) (512, r) (133, l) (40, l) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [512, 'relu'], [133, 'linear'], [40, 'linear'], [53, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (302, l) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[302, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07801007 | True | relu   |  55 | . (244, r) (517, r) (524, l) (53, r) (256, l) (55, r) (108, l) (30, l) 
+ -- [[244, 'relu'], [517, 'relu'], [524, 'linear'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [108, 'linear'], [30, 'linear']]5 |  0.07923041 | True | linear |  50 | . (518, l) (475, l) (497, r) (240, l) (37, l) (90, l) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [497, 'relu'], [240, 'linear'], [37, 'linear'], [90, 'linear'], [65, 'relu'], [34, 'linear']]6 |  0.07964819 | True | linear |  60 | . (522, l) (128, r) (499, r) (133, l) (40, l) (53, r) (27, r) 
+ -- [[522, 'linear'], [128, 'relu'], [499, 'relu'], [133, 'linear'], [40, 'linear'], [53, 'relu'], [27, 'relu']]7 |  0.08038367 | True | relu   |  50 | . (518, l) (128, r) (497, r) (240, l) (264, r) (30, l) (43, r) 
+ -- [[518, 'linear'], [128, 'relu'], [497, 'relu'], [240, 'linear'], [264, 'relu'], [30, 'linear'], [43, 'relu']]Generation starting...
+ [+] 0.17613821 | True | linear |  49 | . (244, r) (542, l) (524, l) (133, l) (40, l) (41, l) 
+ [+] 0.09445121 | True | linear |  54 | . (515, r) (128, r) (497, r) (240, l) (264, r) 
+ [+] 0.10364122 | True | linear |  52 | . (522, l) (126, r) (522, r) (133, l) (40, l) (41, l) (27, r) 
+ [+] 0.07776628 | True | linear |  45 | . (244, l) (519, r) (534, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ [+] 0.11801017 | True | relu   |  55 | . (302, l) (475, l) (499, r) (240, l) (264, r) (55, r) (103, r) (30, l) 
+ [+] 0.13906431 | True | relu   |  48 | . (518, l) (475, l) (499, r) (240, l) (43, r) 
+Generation:  19, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (499, r) (240, l) (252, r) (42, r) 
+ -- [[515, 'relu'], [475, 'linear'], [499, 'relu'], [240, 'linear'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (518, l) (475, l) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (126, r) (522, r) (133, l) (40, l) (43, r) (27, r) 
+ -- [[522, 'linear'], [126, 'relu'], [522, 'relu'], [133, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (302, l) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[302, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07776628 | True | linear |  45 | . (244, l) (519, r) (534, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[244, 'linear'], [519, 'relu'], [534, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (519, r) (534, r) (53, r) (256, l) (55, r) (103, r) (30, l) 
+ -- [[244, 'relu'], [519, 'relu'], [534, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [103, 'relu'], [30, 'linear']]6 |  0.07923041 | True | linear |  50 | . (518, l) (475, l) (499, r) (240, l) (37, l) (90, l) (65, r) (34, l) 
+ -- [[518, 'linear'], [475, 'linear'], [499, 'relu'], [240, 'linear'], [37, 'linear'], [90, 'linear'], [65, 'relu'], [34, 'linear']]7 |  0.07964819 | True | linear |  60 | . (522, l) (126, r) (499, r) (133, l) (40, l) (43, r) (27, r) 
+ -- [[522, 'linear'], [126, 'relu'], [499, 'relu'], [133, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.13659550 | True | linear |  49 | . (518, l) (475, l) (534, r) (133, l) (40, l) (36, l) (65, r) 
+ [+] 0.08552134 | True | linear |  51 | . (302, l) (475, l) (499, r) (230, r) (264, r) (42, r) (103, r) (20, l) 
+ [+] 0.12348242 | True | linear |  42 | . (516, l) (475, l) (544, r) (133, l) (40, l) (43, r) (41, l) (516, l) 
+ [+] 0.08281840 | True | linear |  62 | . (515, r) (136, l) (499, r) (143, r) (264, r) (79, r) 
+ [+] 0.11505159 | True | relu   |  52 | . (522, l) (475, l) (499, r) (95, l) (512, r) (41, l) 
+ [+] 0.12398452 | True | relu   |  59 | . (244, r) (519, r) (499, r) (505, l) (544, r) (43, r) 
+Generation:  20, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (499, r) (230, r) (252, r) (42, r) 
+ -- [[515, 'relu'], [475, 'linear'], [499, 'relu'], [230, 'relu'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (516, l) (475, l) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[516, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (522, l) (136, l) (522, r) (143, r) (40, l) (43, r) (27, r) 
+ -- [[522, 'linear'], [136, 'linear'], [522, 'relu'], [143, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (302, l) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[302, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07776628 | True | linear |  45 | . (244, l) (519, r) (544, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[244, 'linear'], [519, 'relu'], [544, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (519, r) (544, r) (53, r) (256, l) (55, r) (103, r) (20, l) 
+ -- [[244, 'relu'], [519, 'relu'], [544, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [103, 'relu'], [20, 'linear']]6 |  0.07923041 | True | linear |  50 | . (516, l) (475, l) (499, r) (230, r) (37, l) (95, l) (65, r) (34, l) 
+ -- [[516, 'linear'], [475, 'linear'], [499, 'relu'], [230, 'relu'], [37, 'linear'], [95, 'linear'], [65, 'relu'], [34, 'linear']]7 |  0.07964819 | True | linear |  60 | . (522, l) (136, l) (499, r) (143, r) (40, l) (43, r) (27, r) 
+ -- [[522, 'linear'], [136, 'linear'], [499, 'relu'], [143, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.13559980 | True | linear |  51 | . (516, l) (475, l) (544, r) (143, r) (40, l) (46, l) (65, r) (34, l) 
+ [+] 0.14625232 | True | linear |  45 | . (516, l) (475, l) (504, l) (230, r) (37, l) (105, l) (46, l) 
+ [+] 0.12785040 | True | relu   |  52 | . (244, l) (514, l) (502, r) (254, l) (264, r) (55, r) (103, r) (103, r) 
+ [+] 0.10222568 | True | linear |  60 | . (515, r) (138, r) (499, r) (143, r) (252, r) (42, r) (138, r) 
+ [+] 0.10135640 | True | linear |  56 | . (517, r) (138, r) (522, r) (143, r) (40, l) (46, l) (27, r) 
+ [+] 0.09773502 | True | linear |  43 | . (516, l) (519, r) (544, r) (143, r) (40, l) (43, r) 
+Generation:  21, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (504, l) (230, r) (252, r) (42, r) 
+ -- [[515, 'relu'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (516, l) (475, l) (499, r) (505, l) (544, r) (79, r) (65, r) (34, l) 
+ -- [[516, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [65, 'relu'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (138, r) (522, r) (143, r) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [522, 'relu'], [143, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (302, l) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[302, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07776628 | True | linear |  45 | . (244, l) (519, r) (544, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[244, 'linear'], [519, 'relu'], [544, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (519, r) (544, r) (53, r) (256, l) (55, r) (103, r) (20, l) 
+ -- [[244, 'relu'], [519, 'relu'], [544, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [103, 'relu'], [20, 'linear']]6 |  0.07923041 | True | linear |  50 | . (516, l) (475, l) (504, l) (230, r) (37, l) (105, l) (65, r) (34, l) 
+ -- [[516, 'linear'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [37, 'linear'], [105, 'linear'], [65, 'relu'], [34, 'linear']]7 |  0.07964819 | True | linear |  60 | . (517, r) (138, r) (499, r) (143, r) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [499, 'relu'], [143, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.09247691 | True | linear |  63 | . (517, r) (138, r) (527, r) (138, r) (40, l) (43, r) (27, r) 
+ [+] 0.08622428 | True | relu   |  56 | . (515, r) (138, r) (138, r) (252, r) (42, r) (138, r) 
+ [+] 0.10500447 | True | relu   |  46 | . (516, l) (519, r) (499, r) (148, l) (252, r) (42, r) 
+ [+] 0.09496669 | True | relu   |  59 | . (244, r) (529, l) (499, r) (505, l) (544, r) (79, r) 
+ [+] 0.11914648 | True | linear |  45 | . (526, r) (475, l) (544, r) (148, l) (40, l) (44, r) (75, l) 
+ [+] 0.13024696 | True | linear |  54 | . (526, r) (475, l) (554, r) (40, l) (43, r) (103, r) (103, r) (475, l) 
+Generation:  22, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (504, l) (230, r) (252, r) (42, r) 
+ -- [[515, 'relu'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [252, 'relu'], [42, 'relu']]1 |  0.07128103 | True | linear |  63 | . (526, r) (475, l) (499, r) (505, l) (544, r) (79, r) (75, l) (34, l) 
+ -- [[526, 'relu'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu'], [75, 'linear'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (138, r) (527, r) (148, l) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [527, 'relu'], [148, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (302, l) (475, l) (499, r) (505, l) (544, r) (79, r) 
+ -- [[302, 'linear'], [475, 'linear'], [499, 'relu'], [505, 'linear'], [544, 'relu'], [79, 'relu']]4 |  0.07776628 | True | linear |  45 | . (244, l) (529, l) (554, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[244, 'linear'], [529, 'linear'], [554, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (529, l) (554, r) (53, r) (256, l) (55, r) (103, r) (20, l) 
+ -- [[244, 'relu'], [529, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [103, 'relu'], [20, 'linear']]6 |  0.07923041 | True | linear |  50 | . (526, r) (475, l) (504, l) (230, r) (37, l) (105, l) (75, l) (34, l) 
+ -- [[526, 'relu'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [37, 'linear'], [105, 'linear'], [75, 'linear'], [34, 'linear']]7 |  0.07964819 | True | linear |  60 | . (517, r) (138, r) (499, r) (148, l) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [499, 'relu'], [148, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.48209897 | True | relu   |  53 | . (300, r) (475, l) (504, l) (230, r) (264, r) (55, r) (103, r) (103, r) 
+ [+] 0.09799655 | True | linear |  59 | . (244, r) (128, r) (504, l) (264, r) (30, l) 
+ [+] 0.10258125 | True | linear |  47 | . (254, l) (534, r) (554, r) (53, r) (40, l) (44, r) (75, l) 
+ [+] 0.13857737 | True | linear |  48 | . (521, r) (138, r) (504, l) (522, l) (37, l) (105, l) 
+ [+] 0.11028401 | True | linear |  59 | . (531, r) (138, r) (504, l) (148, l) (252, r) (52, r) 
+ [+] 0.12486949 | True | linear |  52 | . (517, r) (138, r) (504, l) (505, l) (549, r) (79, r) (27, r) 
+Generation:  23, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (504, l) (230, r) (252, r) (52, r) 
+ -- [[515, 'relu'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [252, 'relu'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (531, r) (475, l) (504, l) (505, l) (549, r) (79, r) (75, l) (34, l) 
+ -- [[531, 'relu'], [475, 'linear'], [504, 'linear'], [505, 'linear'], [549, 'relu'], [79, 'relu'], [75, 'linear'], [34, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (138, r) (527, r) (148, l) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [527, 'relu'], [148, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07768247 | True | linear |  60 | . (300, r) (475, l) (504, l) (505, l) (549, r) (79, r) 
+ -- [[300, 'relu'], [475, 'linear'], [504, 'linear'], [505, 'linear'], [549, 'relu'], [79, 'relu']]4 |  0.07776628 | True | linear |  45 | . (254, l) (534, r) (554, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[254, 'linear'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (534, r) (554, r) (53, r) (256, l) (55, r) (103, r) (20, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [103, 'relu'], [20, 'linear']]6 |  0.07923041 | True | linear |  50 | . (531, r) (475, l) (504, l) (230, r) (37, l) (105, l) (75, l) (34, l) 
+ -- [[531, 'relu'], [475, 'linear'], [504, 'linear'], [230, 'relu'], [37, 'linear'], [105, 'linear'], [75, 'linear'], [34, 'linear']]7 |  0.07964819 | True | linear |  60 | . (517, r) (138, r) (504, l) (148, l) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [504, 'linear'], [148, 'linear'], [40, 'linear'], [43, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.10664405 | True | linear |  59 | . (531, r) (138, r) (504, l) (153, r) (52, r) 
+ [+] 0.08537207 | True | relu   |  54 | . (244, r) (534, r) (504, l) (510, r) (264, r) (30, l) 
+ [+] 0.07708021 | True | relu   |  54 | . (244, r) (534, r) (554, r) (53, r) (256, l) (103, r) (75, l) (44, l) 
+ [+] 0.10371949 | True | linear |  52 | . (300, r) (475, l) (506, r) (254, l) (264, r) (55, r) (103, r) (55, r) 
+ [+] 0.13080278 | True | linear |  53 | . (290, l) (475, l) (509, r) (515, r) (544, l) (32, l) 
+ [+] 0.09911588 | True | linear |  57 | . (531, r) (475, l) (514, l) (230, r) (264, r) (55, r) (101, l) (101, l) 
+Generation:  24, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (475, l) (506, r) (230, r) (252, r) (52, r) 
+ -- [[515, 'relu'], [475, 'linear'], [506, 'relu'], [230, 'relu'], [252, 'relu'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (531, r) (475, l) (514, l) (515, r) (544, l) (79, r) (75, l) (44, l) 
+ -- [[531, 'relu'], [475, 'linear'], [514, 'linear'], [515, 'relu'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [44, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (138, r) (527, r) (153, r) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [138, 'relu'], [527, 'relu'], [153, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (244, r) (534, r) (554, r) (53, r) (256, l) (103, r) (75, l) (44, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [44, 'linear']]4 |  0.07768247 | True | linear |  60 | . (290, l) (475, l) (514, l) (515, r) (544, l) (79, r) 
+ -- [[290, 'linear'], [475, 'linear'], [514, 'linear'], [515, 'relu'], [544, 'linear'], [79, 'relu']]5 |  0.07776628 | True | linear |  45 | . (254, l) (534, r) (554, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[254, 'linear'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]6 |  0.07801007 | True | relu   |  55 | . (244, r) (534, r) (554, r) (53, r) (256, l) (55, r) (101, l) (20, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [101, 'linear'], [20, 'linear']]7 |  0.07923041 | True | linear |  50 | . (531, r) (475, l) (506, r) (230, r) (37, l) (103, r) (75, l) (44, l) 
+ -- [[531, 'relu'], [475, 'linear'], [506, 'relu'], [230, 'relu'], [37, 'linear'], [103, 'relu'], [75, 'linear'], [44, 'linear']]Generation starting...
+ [+] 0.07880266 | True | relu   |  62 | . (517, r) (140, l) (527, r) (515, r) (544, l) (79, r) (27, r) 
+ [+] 0.11955266 | True | relu   |  51 | . (290, l) (480, l) (554, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ [+] 0.09659461 | True | relu   |  59 | . (515, r) (482, l) (496, l) (230, r) (47, r) (103, r) (75, l) (44, l) 
+ [+] 0.08100885 | True | relu   |  54 | . (290, l) (534, r) (516, r) (513, l) (544, l) (79, r) 
+ [+] 0.12045534 | True | relu   |  53 | . (290, l) (130, l) (516, r) (153, r) (264, r) (30, l) 
+ [+] 0.09596854 | True | linear |  60 | . (517, r) (130, l) (554, r) (53, r) (256, l) (103, r) (75, l) 
+Generation:  25, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (482, l) (496, l) (230, r) (252, r) (52, r) 
+ -- [[515, 'relu'], [482, 'linear'], [496, 'linear'], [230, 'relu'], [252, 'relu'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (531, r) (482, l) (516, r) (513, l) (544, l) (79, r) (75, l) (44, l) 
+ -- [[531, 'relu'], [482, 'linear'], [516, 'relu'], [513, 'linear'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [44, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (130, l) (527, r) (153, r) (40, l) (43, r) (27, r) 
+ -- [[517, 'relu'], [130, 'linear'], [527, 'relu'], [153, 'relu'], [40, 'linear'], [43, 'relu'], [27, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (244, r) (534, r) (554, r) (53, r) (256, l) (103, r) (75, l) (44, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [44, 'linear']]4 |  0.07768247 | True | linear |  60 | . (290, l) (482, l) (516, r) (513, l) (544, l) (79, r) 
+ -- [[290, 'linear'], [482, 'linear'], [516, 'relu'], [513, 'linear'], [544, 'linear'], [79, 'relu']]5 |  0.07776628 | True | linear |  45 | . (254, l) (534, r) (554, r) (53, r) (31, l) (32, l) (32, r) (128, l) 
+ -- [[254, 'linear'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [31, 'linear'], [32, 'linear'], [32, 'relu'], [128, 'linear']]6 |  0.07801007 | True | relu   |  55 | . (244, r) (534, r) (554, r) (53, r) (256, l) (55, r) (101, l) (20, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [101, 'linear'], [20, 'linear']]7 |  0.07880266 | True | relu   |  62 | . (517, r) (130, l) (527, r) (513, l) (544, l) (79, r) (27, r) 
+ -- [[517, 'relu'], [130, 'linear'], [527, 'relu'], [513, 'linear'], [544, 'linear'], [79, 'relu'], [27, 'relu']]Generation starting...
+ [+] 0.08029357 | True | linear |  58 | . (517, r) (130, l) (527, r) (153, r) (40, l) (44, r) (29, r) 
+ [+] 0.13937668 | True | linear |  58 | . (515, r) (482, l) (496, l) (513, l) (544, l) (79, r) 
+ [+] 0.08634115 | True | relu   |  52 | . (517, r) (130, l) (516, r) (153, r) (264, r) (30, l) 
+ [+] 0.09636058 | True | relu   |  57 | . (515, r) (130, l) (527, r) (153, r) (40, l) (48, l) (19, r) 
+ [+] 0.08934694 | True | linear |  58 | . (244, r) (534, r) (516, r) (508, l) (544, l) (37, l) 
+ [+] 0.12087183 | True | relu   |  51 | . (280, l) (482, l) (554, r) (254, l) (264, r) (55, r) (101, l) (101, l) 
+Generation:  26, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (515, r) (482, l) (496, l) (230, r) (252, r) (52, r) 
+ -- [[515, 'relu'], [482, 'linear'], [496, 'linear'], [230, 'relu'], [252, 'relu'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (531, r) (482, l) (516, r) (508, l) (544, l) (79, r) (75, l) (44, l) 
+ -- [[531, 'relu'], [482, 'linear'], [516, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [44, 'linear']]2 |  0.07454554 | True | linear |  59 | . (517, r) (130, l) (527, r) (153, r) (40, l) (48, l) (19, r) 
+ -- [[517, 'relu'], [130, 'linear'], [527, 'relu'], [153, 'relu'], [40, 'linear'], [48, 'linear'], [19, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (244, r) (534, r) (554, r) (53, r) (256, l) (103, r) (75, l) (44, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [44, 'linear']]4 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (516, r) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [516, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (534, r) (554, r) (53, r) (256, l) (55, r) (101, l) (20, l) 
+ -- [[244, 'relu'], [534, 'relu'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [55, 'relu'], [101, 'linear'], [20, 'linear']]6 |  0.07880266 | True | relu   |  62 | . (517, r) (130, l) (527, r) (508, l) (544, l) (79, r) (19, r) 
+ -- [[517, 'relu'], [130, 'linear'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [19, 'relu']]7 |  0.07923041 | True | linear |  50 | . (531, r) (482, l) (496, l) (230, r) (47, r) (103, r) (75, l) (44, l) 
+ -- [[531, 'relu'], [482, 'linear'], [496, 'linear'], [230, 'relu'], [47, 'relu'], [103, 'relu'], [75, 'linear'], [44, 'linear']]Generation starting...
+ [+] 0.12900811 | True | linear |  58 | . (522, r) (130, l) (527, r) (153, r) (40, l) (48, l) 
+ [+] 0.13137349 | True | linear |  52 | . (525, l) (482, l) (496, l) (230, r) (47, r) (103, r) (19, r) (44, l) 
+ [+] 0.09216771 | True | linear |  58 | . (525, l) (125, r) (516, r) (153, r) (252, r) (52, r) 
+ [+] 0.14792358 | True | relu   |  52 | . (280, l) (539, l) (516, r) (508, l) (544, l) (60, r) 
+ [+] 0.15530230 | True | relu   |  50 | . (482, l) (491, l) (220, l) (47, r) (79, r) (19, r) (46, r) 
+ [+] 0.10176080 | True | relu   |  56 | . (280, l) (125, r) (486, r) (508, l) (544, l) (79, r) 
+Generation:  27, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (486, r) (220, l) (252, r) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [486, 'relu'], [220, 'linear'], [252, 'relu'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (531, r) (482, l) (516, r) (508, l) (544, l) (79, r) (75, l) (46, r) 
+ -- [[531, 'relu'], [482, 'linear'], [516, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [46, 'relu']]2 |  0.07454554 | True | linear |  59 | . (522, r) (125, r) (527, r) (153, r) (40, l) (48, l) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [153, 'relu'], [40, 'linear'], [48, 'linear'], [19, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (244, r) (539, l) (554, r) (53, r) (256, l) (103, r) (75, l) (46, r) 
+ -- [[244, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [46, 'relu']]4 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (516, r) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [516, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]5 |  0.07801007 | True | relu   |  55 | . (244, r) (539, l) (554, r) (53, r) (256, l) (60, r) (101, l) (20, l) 
+ -- [[244, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [60, 'relu'], [101, 'linear'], [20, 'linear']]6 |  0.07880266 | True | relu   |  62 | . (522, r) (125, r) (527, r) (508, l) (544, l) (79, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [19, 'relu']]7 |  0.07923041 | True | linear |  50 | . (531, r) (482, l) (486, r) (220, l) (47, r) (103, r) (75, l) (46, r) 
+ -- [[531, 'relu'], [482, 'linear'], [486, 'relu'], [220, 'linear'], [47, 'relu'], [103, 'relu'], [75, 'linear'], [46, 'relu']]Generation starting...
+ [+] 0.09085563 | True | relu   |  65 | . (244, r) (539, l) (527, r) (153, r) (30, r) (48, l) 
+ [+] 0.13145909 | True | linear |  59 | . (280, l) (482, l) (516, r) (153, r) (30, r) (48, l) 
+ [+] 0.08671764 | True | linear |  59 | . (522, r) (125, r) (527, r) (153, r) (30, r) (44, r) (19, r) 
+ [+] 0.12265931 | True | linear |  58 | . (531, r) (125, r) (521, l) (153, r) (254, l) (52, r) (521, l) 
+ [+] 0.09192510 | True | relu   |  54 | . (234, l) (539, l) (521, l) (163, r) (264, r) (79, r) 
+ [+] 0.09534290 | True | linear |  51 | . (521, r) (482, l) (486, r) (220, l) (254, r) (30, l) 
+Generation:  28, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (486, r) (220, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [486, 'relu'], [220, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (521, l) (508, l) (544, l) (79, r) (75, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [521, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [46, 'relu']]2 |  0.07454554 | True | linear |  59 | . (522, r) (125, r) (527, r) (163, r) (30, r) (48, l) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [30, 'relu'], [48, 'linear'], [19, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (234, l) (539, l) (554, r) (53, r) (256, l) (103, r) (75, l) (46, r) 
+ -- [[234, 'linear'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [46, 'relu']]4 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (521, l) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [521, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu']]5 |  0.07880266 | True | relu   |  62 | . (522, r) (125, r) (527, r) (508, l) (544, l) (79, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [19, 'relu']]6 |  0.07923041 | True | linear |  50 | . (521, r) (482, l) (486, r) (220, l) (47, r) (103, r) (75, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [486, 'relu'], [220, 'linear'], [47, 'relu'], [103, 'relu'], [75, 'linear'], [46, 'relu']]7 |  0.08029357 | True | linear |  58 | . (522, r) (125, r) (527, r) (163, r) (30, r) (44, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [30, 'relu'], [44, 'relu'], [19, 'relu']]Generation starting...
+ [+] 0.11052180 | True | linear |  50 | . (280, l) (482, l) (486, r) (220, l) (254, r) (40, r) 
+ [+] 0.15820520 | True | relu   |  52 | . (280, l) (125, r) (521, l) (163, r) (254, l) 
+ [+] 0.48209897 | True | relu   |  56 | . (239, r) (539, l) (521, l) (163, r) (254, l) (52, r) 
+ [+] 0.12421343 | True | linear |  58 | . (239, r) (539, l) (521, l) (508, l) (30, r) (44, r) 
+ [+] 0.13028467 | True | relu   |  54 | . (482, l) (496, r) (220, l) (544, l) (79, r) (19, r) (46, r) 
+ [+] 0.13875155 | True | linear |  59 | . (280, l) (482, l) (521, l) (163, r) (30, r) (48, l) 
+Generation:  29, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (496, r) (220, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [496, 'relu'], [220, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (521, l) (508, l) (544, l) (79, r) (75, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [521, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [75, 'linear'], [46, 'relu']]2 |  0.07454554 | True | linear |  59 | . (522, r) (125, r) (527, r) (163, r) (30, r) (48, l) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [30, 'relu'], [48, 'linear'], [19, 'relu']]3 |  0.07708021 | True | relu   |  54 | . (239, r) (539, l) (554, r) (53, r) (256, l) (103, r) (75, l) (46, r) 
+ -- [[239, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [75, 'linear'], [46, 'relu']]4 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (521, l) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [521, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu']]5 |  0.07880266 | True | relu   |  62 | . (522, r) (125, r) (527, r) (508, l) (544, l) (79, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [19, 'relu']]6 |  0.07923041 | True | linear |  50 | . (521, r) (482, l) (496, r) (220, l) (47, r) (103, r) (75, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [496, 'relu'], [220, 'linear'], [47, 'relu'], [103, 'relu'], [75, 'linear'], [46, 'relu']]7 |  0.08029357 | True | linear |  58 | . (522, r) (125, r) (527, r) (163, r) (30, r) (44, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [30, 'relu'], [44, 'relu'], [19, 'relu']]Generation starting...
+ [+] 0.09721022 | True | relu   |  64 | . (525, l) (125, r) (527, r) (163, r) (35, r) (48, l) 
+ [+] 0.12309103 | True | linear |  51 | . (280, l) (125, r) (526, r) (163, r) (254, l) 
+ [+] 0.48209897 | True | relu   |  53 | . (239, r) (125, r) (527, r) (163, r) (35, r) (48, l) 
+ [+] 0.09318281 | True | relu   |  65 | . (482, l) (496, r) (220, l) (163, r) (35, r) (48, l) (46, r) (220, l) 
+ [+] 0.07354329 | True | linear |  58 | . (522, r) (125, r) (527, r) (163, r) (35, r) (44, r) (35, r) 
+ [+] 0.13173128 | True | linear |  51 | . (521, r) (482, l) (491, r) (220, l) (47, r) (79, r) (65, r) 
+Generation:  30, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (491, r) (220, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [491, 'relu'], [220, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (526, r) (508, l) (544, l) (79, r) (65, r) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [65, 'relu'], [46, 'relu']]2 |  0.07354329 | True | linear |  58 | . (522, r) (125, r) (527, r) (163, r) (35, r) (44, r) (35, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [35, 'relu'], [44, 'relu'], [35, 'relu']]3 |  0.07454554 | True | linear |  59 | . (522, r) (125, r) (527, r) (163, r) (35, r) (48, l) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [163, 'relu'], [35, 'relu'], [48, 'linear'], [19, 'relu']]4 |  0.07708021 | True | relu   |  54 | . (239, r) (539, l) (554, r) (53, r) (256, l) (103, r) (65, r) (46, r) 
+ -- [[239, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [65, 'relu'], [46, 'relu']]5 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (526, r) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]6 |  0.07880266 | True | relu   |  62 | . (522, r) (125, r) (527, r) (508, l) (544, l) (79, r) (19, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [19, 'relu']]7 |  0.07923041 | True | linear |  50 | . (521, r) (482, l) (491, r) (220, l) (47, r) (103, r) (65, r) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [491, 'relu'], [220, 'linear'], [47, 'relu'], [103, 'relu'], [65, 'relu'], [46, 'relu']]Generation starting...
+ [+] 0.08066106 | True | relu   |  54 | . (239, r) (125, r) (527, r) (158, r) (35, r) (79, r) 
+ [+] 0.10531317 | True | relu   |  58 | . (482, l) (491, r) (215, l) (158, r) (254, l) (24, r) 
+ [+] 0.12238702 | True | linear |  61 | . (522, r) (539, l) (527, r) (158, r) (30, r) (46, r) (24, r) (24, r) 
+ [+] 0.09247772 | True | linear |  51 | . (521, r) (482, l) (491, r) (215, l) (254, r) (79, r) (67, l) 
+ [+] 0.09481205 | True | linear |  56 | . (239, r) (539, l) (158, r) (30, r) (46, r) 
+ [+] 0.10064248 | True | linear |  56 | . (244, r) (539, l) (526, r) (508, l) (30, r) (44, r) 
+Generation:  31, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (491, r) (215, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [491, 'relu'], [215, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (526, r) (508, l) (544, l) (79, r) (67, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [67, 'linear'], [46, 'relu']]2 |  0.07354329 | True | linear |  58 | . (522, r) (125, r) (527, r) (158, r) (30, r) (44, r) (30, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [158, 'relu'], [30, 'relu'], [44, 'relu'], [30, 'relu']]3 |  0.07454554 | True | linear |  59 | . (522, r) (125, r) (527, r) (158, r) (30, r) (46, r) (24, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [158, 'relu'], [30, 'relu'], [46, 'relu'], [24, 'relu']]4 |  0.07708021 | True | relu   |  54 | . (244, r) (539, l) (554, r) (53, r) (256, l) (103, r) (67, l) (46, r) 
+ -- [[244, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [67, 'linear'], [46, 'relu']]5 |  0.07768247 | True | linear |  60 | . (280, l) (482, l) (526, r) (508, l) (544, l) (79, r) 
+ -- [[280, 'linear'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]6 |  0.07880266 | True | relu   |  62 | . (522, r) (125, r) (527, r) (508, l) (544, l) (79, r) (24, r) 
+ -- [[522, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [24, 'relu']]7 |  0.07923041 | True | linear |  50 | . (521, r) (482, l) (491, r) (215, l) (47, r) (103, r) (67, l) (46, r) 
+ -- [[521, 'relu'], [482, 'linear'], [491, 'relu'], [215, 'linear'], [47, 'relu'], [103, 'relu'], [67, 'linear'], [46, 'relu']]Generation starting...
+ [+] 0.14205988 | True | relu   |  54 | . (482, l) (482, l) (491, r) (215, l) (47, r) (79, r) (67, l) 
+ [+] 0.19571028 | True | linear |  62 | . (280, l) (482, l) (536, l) (508, l) (544, l) (57, r) (48, l) 
+ [+] 0.11189783 | True | relu   |  53 | . (244, r) (482, l) (491, r) (215, l) (254, r) (79, r) 
+ [+] 0.08786483 | True | linear |  51 | . (517, r) (125, r) (527, r) (158, r) (30, r) (103, r) (57, r) 
+ [+] 0.14553971 | True | linear |  49 | . (280, l) (482, l) (536, l) (158, r) (30, r) (52, r) (30, r) 
+ [+] 0.13307629 | True | relu   |  51 | . (275, l) (125, r) (536, l) (508, l) (30, r) (44, r) (125, r) 
+Generation:  32, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (491, r) (215, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [491, 'relu'], [215, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (536, l) (508, l) (544, l) (79, r) (57, r) (48, l) 
+ -- [[521, 'relu'], [482, 'linear'], [536, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [57, 'relu'], [48, 'linear']]2 |  0.07354329 | True | linear |  58 | . (517, r) (125, r) (527, r) (158, r) (30, r) (44, r) (30, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [158, 'relu'], [30, 'relu'], [44, 'relu'], [30, 'relu']]3 |  0.07454554 | True | linear |  59 | . (517, r) (125, r) (527, r) (158, r) (30, r) (46, r) (24, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [158, 'relu'], [30, 'relu'], [46, 'relu'], [24, 'relu']]4 |  0.07708021 | True | relu   |  54 | . (244, r) (539, l) (554, r) (53, r) (256, l) (103, r) (57, r) (48, l) 
+ -- [[244, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'relu'], [57, 'relu'], [48, 'linear']]5 |  0.07768247 | True | linear |  60 | . (275, l) (482, l) (536, l) (508, l) (544, l) (79, r) 
+ -- [[275, 'linear'], [482, 'linear'], [536, 'linear'], [508, 'linear'], [544, 'linear'], [79, 'relu']]6 |  0.07880266 | True | relu   |  62 | . (517, r) (125, r) (527, r) (508, l) (544, l) (79, r) (24, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [24, 'relu']]7 |  0.07923041 | True | linear |  50 | . (521, r) (482, l) (491, r) (215, l) (47, r) (103, r) (57, r) (48, l) 
+ -- [[521, 'relu'], [482, 'linear'], [491, 'relu'], [215, 'linear'], [47, 'relu'], [103, 'relu'], [57, 'relu'], [48, 'linear']]Generation starting...
+ [+] 0.07675369 | True | linear |  47 | . (244, r) (539, l) (531, r) (158, r) (254, r) (44, r) (14, r) 
+ [+] 0.10436080 | True | relu   |  54 | . (244, r) (482, l) (491, r) (215, l) (30, r) (44, r) 
+ [+] 0.13253468 | True | relu   |  47 | . (482, l) (482, l) (491, r) (215, l) (47, r) (113, l) (57, r) (48, l) 
+ [+] 0.08841017 | True | linear |  58 | . (273, l) (482, l) (531, r) (148, r) (30, r) (14, r) 
+ [+] 0.09784552 | True | relu   |  65 | . (525, l) (125, r) (526, r) (148, r) (30, r) (44, r) 
+ [+] 0.10770405 | True | relu   |  59 | . (273, l) (482, l) (526, r) (148, r) (30, r) (79, r) 
+Generation:  33, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (491, r) (215, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [491, 'relu'], [215, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (526, r) (508, l) (544, l) (79, r) (57, r) (48, l) 
+ -- [[521, 'relu'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [57, 'relu'], [48, 'linear']]2 |  0.07354329 | True | linear |  58 | . (517, r) (125, r) (527, r) (148, r) (30, r) (44, r) (30, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [148, 'relu'], [30, 'relu'], [44, 'relu'], [30, 'relu']]3 |  0.07454554 | True | linear |  59 | . (517, r) (125, r) (527, r) (148, r) (30, r) (46, r) (14, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [148, 'relu'], [30, 'relu'], [46, 'relu'], [14, 'relu']]4 |  0.07675369 | True | linear |  47 | . (244, r) (539, l) (526, r) (148, r) (254, r) (44, r) (14, r) 
+ -- [[244, 'relu'], [539, 'linear'], [526, 'relu'], [148, 'relu'], [254, 'relu'], [44, 'relu'], [14, 'relu']]5 |  0.07708021 | True | relu   |  54 | . (244, r) (539, l) (554, r) (53, r) (256, l) (113, l) (57, r) (48, l) 
+ -- [[244, 'relu'], [539, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [113, 'linear'], [57, 'relu'], [48, 'linear']]6 |  0.07768247 | True | linear |  60 | . (273, l) (482, l) (526, r) (508, l) (544, l) (79, r) 
+ -- [[273, 'linear'], [482, 'linear'], [526, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]7 |  0.07880266 | True | relu   |  62 | . (517, r) (125, r) (527, r) (508, l) (544, l) (79, r) (14, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [14, 'relu']]Generation starting...
+ [+] 0.09002796 | True | relu   |  49 | . (517, r) (125, r) (527, r) (508, l) (254, l) (52, r) (14, r) 
+ [+] 0.09685487 | True | linear |  52 | . (244, r) (539, l) (526, r) (148, r) (30, r) (79, r) 
+ [+] 0.11573407 | True | relu   |  48 | . (273, l) (482, l) (489, r) (215, l) (47, r) (103, l) (57, r) (48, l) 
+ [+] 0.07971830 | True | linear |  50 | . (244, r) (537, l) (526, r) (148, r) (252, r) 
+ [+] 0.08274260 | True | linear |  58 | . (273, l) (482, l) (526, r) (148, r) (30, r) (46, r) 
+ [+] 0.09826830 | True | linear |  63 | . (244, r) (537, l) (524, r) (508, l) (30, r) (49, r) 
+Generation:  34, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (489, r) (215, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [489, 'relu'], [215, 'linear'], [254, 'linear'], [52, 'relu']]1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (524, r) (508, l) (544, l) (79, r) (57, r) (48, l) 
+ -- [[521, 'relu'], [482, 'linear'], [524, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [57, 'relu'], [48, 'linear']]2 |  0.07354329 | True | linear |  58 | . (517, r) (125, r) (527, r) (148, r) (30, r) (49, r) (30, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [148, 'relu'], [30, 'relu'], [49, 'relu'], [30, 'relu']]3 |  0.07454554 | True | linear |  59 | . (517, r) (125, r) (527, r) (148, r) (30, r) (46, r) (14, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [148, 'relu'], [30, 'relu'], [46, 'relu'], [14, 'relu']]4 |  0.07675369 | True | linear |  47 | . (244, r) (537, l) (524, r) (148, r) (252, r) (49, r) (14, r) 
+ -- [[244, 'relu'], [537, 'linear'], [524, 'relu'], [148, 'relu'], [252, 'relu'], [49, 'relu'], [14, 'relu']]5 |  0.07708021 | True | relu   |  54 | . (244, r) (537, l) (554, r) (53, r) (256, l) (103, l) (57, r) (48, l) 
+ -- [[244, 'relu'], [537, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [103, 'linear'], [57, 'relu'], [48, 'linear']]6 |  0.07768247 | True | linear |  60 | . (273, l) (482, l) (524, r) (508, l) (544, l) (79, r) 
+ -- [[273, 'linear'], [482, 'linear'], [524, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu']]7 |  0.07880266 | True | relu   |  62 | . (517, r) (125, r) (527, r) (508, l) (544, l) (79, r) (14, r) 
+ -- [[517, 'relu'], [125, 'relu'], [527, 'relu'], [508, 'linear'], [544, 'linear'], [79, 'relu'], [14, 'relu']]
+Generation starting...
+ [+] 0.09452615 | True | linear |  56 | . (517, r) (130, r) (527, r) (508, l) (30, r) (49, r) (14, r) (14, r) 
+ [+] 0.10679815 | True | relu   |  56 | . (244, r) (537, l) (524, r) (148, r) (30, r) (46, r) (14, r) (524, r) 
+ [+] 0.11141836 | True | linear |  59 | . (273, l) (135, l) (527, r) (148, r) (25, l) (49, r) 
+ [+] 0.14591039 | True | linear |  56 | . (525, l) (482, l) (489, r) (215, l) (534, l) (79, r) (57, r) (48, l) 
+ [+] 0.11539862 | True | relu   |  45 | . (273, l) (482, l) (524, r) (148, r) (49, r) (93, l) (62, l) (48, l) 
+ [+] 0.10504275 | True | linear |  58 | . (244, r) (537, l) (524, r) (148, r) (25, l) (36, l) 
+Generation:  35, min_loss:     0.07106284
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.07106284 | True | linear |  45 | . (525, l) (482, l) (489, r) (215, l) (254, l) (52, r) 
+ -- [[525, 'linear'], [482, 'linear'], [489, 'relu'], [215, 'linear'], [254, 'linear'], [52, 'relu']]
+1 |  0.07128103 | True | linear |  63 | . (521, r) (482, l) (524, r) (508, l) (534, l) (79, r) (62, l) (48, l) 
+ -- [[521, 'relu'], [482, 'linear'], [524, 'relu'], [508, 'linear'], [534, 'linear'], [79, 'relu'], [62, 'linear'], [48, 'linear']]
+2 |  0.07354329 | True | linear |  58 | . (517, r) (135, l) (527, r) (148, r) (25, l) (49, r) (25, l) 
+ -- [[517, 'relu'], [135, 'linear'], [527, 'relu'], [148, 'relu'], [25, 'linear'], [49, 'relu'], [25, 'linear']]
+3 |  0.07454554 | True | linear |  59 | . (517, r) (135, l) (527, r) (148, r) (25, l) (36, l) (14, r) 
+ -- [[517, 'relu'], [135, 'linear'], [527, 'relu'], [148, 'relu'], [25, 'linear'], [36, 'linear'], [14, 'relu']]
+4 |  0.07675369 | True | linear |  47 | . (244, r) (537, l) (524, r) (148, r) (252, r) (49, r) (14, r) 
+ -- [[244, 'relu'], [537, 'linear'], [524, 'relu'], [148, 'relu'], [252, 'relu'], [49, 'relu'], [14, 'relu']]
+5 |  0.07708021 | True | relu   |  54 | . (244, r) (537, l) (554, r) (53, r) (256, l) (93, l) (62, l) (48, l) 
+ -- [[244, 'relu'], [537, 'linear'], [554, 'relu'], [53, 'relu'], [256, 'linear'], [93, 'linear'], [62, 'linear'], [48, 'linear']]

@@ -1,0 +1,194 @@
+Processing initial population model (0/41)...
+Processing initial population model (1/41)...
+Processing initial population model (2/41)...
+Processing initial population model (3/41)...
+Processing initial population model (4/41)...
+Processing initial population model (5/41)...
+Processing initial population model (6/41)...
+Processing initial population model (7/41)...
+Processing initial population model (8/41)...
+Processing initial population model (9/41)...
+Processing initial population model (10/41)...
+Processing initial population model (11/41)...
+Processing initial population model (12/41)...
+Processing initial population model (13/41)...
+Processing initial population model (14/41)...
+Processing initial population model (15/41)...
+Processing initial population model (16/41)...
+Processing initial population model (17/41)...
+Processing initial population model (18/41)...
+Processing initial population model (19/41)...
+Processing initial population model (20/41)...
+Processing initial population model (21/41)...
+Processing initial population model (22/41)...
+Processing initial population model (23/41)...
+Processing initial population model (24/41)...
+Processing initial population model (25/41)...
+Processing initial population model (26/41)...
+Processing initial population model (27/41)...
+Processing initial population model (28/41)...
+Processing initial population model (29/41)...
+Processing initial population model (30/41)...
+Processing initial population model (31/41)...
+Processing initial population model (32/41)...
+Processing initial population model (33/41)...
+Processing initial population model (34/41)...
+Processing initial population model (35/41)...
+Processing initial population model (36/41)...
+Processing initial population model (37/41)...
+Processing initial population model (38/41)...
+Processing initial population model (39/41)...
+Processing initial population model (40/41)...
+Generation starting...
+ [+] 0.24995254 | True | relu   |  40 | . (64, r) (512, r) (512, r) (512, l) (16, r) (48, r) 
+ [+] 0.03638667 | True | relu   |  43 | . (251, l) (128, l) (16, r) (256, l) (256, r) (256, l) (48, l) 
+ [+] 0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+ [+] 0.03905127 | True | relu   |  61 | . (16, l) (32, l) (256, l) (48, r) (42, r) (48, l) (32, l) (16, l) 
+ [+] 0.05234931 | True | linear |  40 | . (48, l) (256, l) (64, r) (64, l) (16, r) (64, l) 
+ [+] 0.04813746 | True | relu   |  54 | . (32, l) (32, l) (256, l) (512, r) 
+Generation:   0, min_loss:     0.01878097
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.01878097 | True | relu   |  60 | . (48, r) (48, r) (128, r) (256, r) (64, l) (48, l) (48, r) (48, r) 
+1 |  0.01961789 | True | linear |  60 | . (48, l) (32, r) (128, r) (256, l) (256, r) (48, r) 
+2 |  0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+3 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+4 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+5 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+6 |  0.02588182 | True | linear |  50 | . (64, r) (128, r) (512, r) (512, l) (16, r) (48, r) 
+7 |  0.02637044 | True | linear |  40 | . (16, r) (512, l) (256, r) (64, r) (512, l) (256, r) (128, r) (16, r) (32, l) 
+Generation starting...
+ [+] 0.07917516 | True | relu   |  55 | . (16, r) (32, r) (246, l) (256, l) (256, r) (256, l) (48, l) (64, r) (32, r) (16, r) (128, r) (32, r) (32, r) (64, r) (251, l) (64, r) 
+ [+] 0.03429118 | True | linear |  40 | . (512, r) (16, l) (517, r) (16, l) (64, r) 
+ [+] 0.11697204 | True | relu   |  44 | . (48, l) (48, l) (256, l) (512, l) 
+ [+] 0.02924855 | True | relu   |  48 | . (256, r) (64, r) (512, l) (64, l) (16, r) (64, l) (16, r) (32, l) (32, r) 
+ [+] 0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+ [+] 0.05084689 | True | relu   |  40 | . (16, r) (510, l) (256, r) (21, l) (128, l) 
+Generation:   1, min_loss:     0.01961789
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.01961789 | True | linear |  60 | . (48, l) (32, r) (128, r) (256, l) (256, r) (48, r) 
+1 |  0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+2 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+3 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+4 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+5 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+6 |  0.02588182 | True | linear |  50 | . (64, r) (128, r) (512, r) (512, l) (16, r) (48, r) 
+7 |  0.02637044 | True | linear |  40 | . (16, r) (510, l) (256, r) (64, r) (512, l) (256, r) (128, r) (16, r) (32, l) 
+Generation starting...
+ [+] 0.03759508 | True | relu   |  47 | . (48, l) (64, r) (512, l) (64, l) (16, r) (64, l) (16, r) (32, l) (32, r) 
+ [+] 0.29625028 | True | relu   |  41 | . (48, l) (256, r) (64, r) (16, l) 
+ [+] 0.02537293 | True | relu   |  42 | . (64, r) (512, r) (512, r) (512, l) (64, r) (50, r) 
+ [+] 0.03031178 | True | linear |  44 | . (512, r) (16, l) (256, r) (256, r) 
+ [+] 0.02259136 | True | relu   |  53 | . (251, l) (128, l) (16, r) (266, r) (256, r) (32, r) (256, r) 
+ [+] 0.03448701 | True | relu   |  41 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (64, r) 
+Generation:   2, min_loss:     0.01961789
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.01961789 | True | linear |  60 | . (48, l) (32, r) (128, r) (256, l) (256, r) (48, r) 
+1 |  0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+2 |  0.02259136 | True | relu   |  53 | . (251, l) (128, l) (16, r) (266, r) (256, r) (32, r) (256, r) 
+3 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+4 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+5 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+6 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+7 |  0.02537293 | True | relu   |  42 | . (64, r) (512, r) (512, r) (512, l) (64, r) (50, r) 
+Generation starting...
+ [+] 0.02604333 | True | relu   |  47 | . (512, r) (128, l) (16, r) (266, r) (256, r) (256, l) 
+ [+] 0.02536381 | True | linear |  46 | . (512, r) (16, l) (517, r) (512, l) (64, r) (48, r) (32, r) 
+ [+] 0.03190448 | True | linear |  40 | . (512, l) (512, l) (256, r) (256, r) (32, r) (64, l) (27, r) 
+ [+] 0.03368901 | True | linear |  50 | . (64, r) (128, r) (256, r) (254, l) 
+ [+] 0.02776262 | True | relu   |  44 | . (16, r) (66, r) (256, r) (64, l) (256, r) (32, r) (256, r) 
+ [+] 0.02609763 | True | linear |  41 | . (256, r) (64, r) (510, r) (64, l) (128, r) (128, r) (16, l) (32, l) (32, r) 
+Generation:   3, min_loss:     0.01961789
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.01961789 | True | linear |  60 | . (48, l) (32, r) (128, r) (256, l) (256, r) (48, r) 
+1 |  0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+2 |  0.02259136 | True | relu   |  53 | . (251, l) (128, l) (16, r) (266, r) (256, r) (32, r) (256, r) 
+3 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+4 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+5 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+6 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+7 |  0.02536381 | True | linear |  46 | . (512, r) (16, l) (517, r) (512, l) (64, r) (48, r) (32, r) 
+Generation starting...
+ [+] 0.05726609 | True | relu   |  41 | . (48, r) (128, r) (16, l) (48, l) (48, l) (128, l) (48, r) 
+ [+] 0.03628914 | True | relu   |  59 | . (512, l) (48, r) (256, l) (48, r) (32, r) (64, l) (25, l) 
+ [+] 0.02959598 | True | relu   |  45 | . (251, l) (128, l) (16, r) (266, r) (256, r) (32, r) (48, l) 
+ [+] 0.03127782 | True | linear |  40 | . (251, l) (128, l) (64, r) (128, l) (32, r) (128, r) (64, r) 
+ [+] 0.02861717 | True | linear |  45 | . (512, l) (128, r) (512, r) (48, r) (256, l) (256, r) (32, r) 
+ [+] 0.02234814 | True | relu   |  60 | . (64, l) (256, r) (256, r) (64, l) (256, r) (32, r) (512, l) 
+Generation:   4, min_loss:     0.02141962
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.02141962 | True | linear |  60 | . (64, l) (256, r) (517, r) (16, l) (256, r) (32, r) 
+1 |  0.02234814 | True | relu   |  60 | . (64, l) (256, r) (256, r) (64, l) (256, r) (32, r) (512, l) 
+2 |  0.02259136 | True | relu   |  53 | . (251, l) (128, l) (16, r) (266, r) (256, r) (32, r) (256, r) 
+3 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+4 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+5 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+6 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+7 |  0.02536381 | True | linear |  46 | . (512, r) (16, l) (517, r) (512, l) (64, r) (48, r) (32, r) 
+Generation starting...
+ [+] 0.03783464 | True | linear |  41 | . (48, l) (128, l) (64, r) (128, l) (32, r) (128, r) 
+ [+] 0.03533080 | True | relu   |  44 | . (251, l) (128, l) (16, r) (266, r) (32, r) (59, l) (25, l) 
+ [+] 0.02592057 | True | linear |  49 | . (512, r) (118, r) (16, r) (266, r) (256, r) (32, r) (48, l) 
+ [+] 0.04799822 | True | linear |  40 | . (16, r) (510, l) (256, r) (74, l) (512, l) (59, l) (25, l) (16, r) (32, l) 
+ [+] 0.03508441 | True | relu   |  60 | . (16, r) (48, l) (128, r) (64, l) (64, r) (48, l) (512, l) (128, l) 
+ [+] 0.03424941 | True | relu   |  41 | . (64, r) (128, r) (256, r) (64, l) 
+Generation:   5, min_loss:     0.02234814
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.02234814 | True | relu   |  60 | . (64, l) (256, r) (256, r) (64, l) (256, r) (32, r) (512, l) 
+1 |  0.02259136 | True | relu   |  53 | . (251, l) (118, r) (16, r) (266, r) (256, r) (32, r) (256, r) 
+2 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+3 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+4 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+5 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+6 |  0.02536381 | True | linear |  46 | . (512, r) (16, l) (517, r) (512, l) (64, r) (48, r) (32, r) 
+7 |  0.02537293 | True | relu   |  42 | . (64, r) (512, r) (512, r) (512, l) (64, r) (50, r) 
+
+FINAL POPULATION:
+#  | error      | norm  | out_ac | epochs | hidden layers
+---------------------------------------------------------
+0 |  0.02234814 | True | relu   |  60 | . (64, l) (256, r) (256, r) (64, l) (256, r) (32, r) (512, l) 
+1 |  0.02259136 | True | relu   |  53 | . (251, l) (118, r) (16, r) (266, r) (256, r) (32, r) (256, r) 
+2 |  0.02355585 | True | linear |  60 | . (256, r) (256, l) (64, r) (64, l) (16, r) (64, l) (16, r) 
+3 |  0.02475945 | True | linear |  60 | . (64, l) (128, l) (128, l) (256, r) (32, l) (256, r) (16, l) (16, l) (128, r) 
+4 |  0.02494109 | True | relu   |  40 | . (512, l) (512, l) (48, r) (128, l) (32, r) (128, r) (64, r) 
+5 |  0.02516784 | True | relu   |  50 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (128, r) (16, l) 
+6 |  0.02536381 | True | linear |  46 | . (512, r) (16, l) (517, r) (512, l) (64, r) (48, r) (32, r) 
+7 |  0.02537293 | True | relu   |  42 | . (64, r) (512, r) (512, r) (512, l) (64, r) (50, r) 
+8 |  0.02588182 | True | linear |  50 | . (64, r) (128, r) (512, r) (512, l) (16, r) (50, r) 
+9 |  0.02592057 | True | linear |  49 | . (512, r) (118, r) (16, r) (266, r) (256, r) (32, r) (48, l) 
+10 |  0.02604333 | True | relu   |  47 | . (512, r) (118, r) (16, r) (266, r) (256, r) (256, l) 
+11 |  0.02609763 | True | linear |  41 | . (256, r) (64, r) (510, r) (64, l) (128, r) (128, r) (16, l) (32, l) (32, r) 
+12 |  0.02637044 | True | linear |  40 | . (16, r) (510, l) (256, r) (74, l) (512, l) (256, r) (128, r) (16, r) (32, l) 
+13 |  0.02741014 | True | linear |  40 | . (251, l) (118, r) (64, r) (256, r) (128, r) (128, r) (16, l) 
+14 |  0.02776262 | True | relu   |  44 | . (16, r) (66, r) (256, r) (64, l) (256, r) (32, r) (256, r) 
+15 |  0.02798311 | True | relu   |  40 | . (512, l) (512, l) (48, r) (48, r) (32, r) (59, l) (25, l) (128, r) (48, r) 
+16 |  0.02802816 | True | linear |  40 | . (512, r) (512, l) (16, r) (64, r) (64, r) (32, l) 
+17 |  0.02825613 | True | linear |  60 | . (64, l) (256, r) (256, r) (64, l) (256, r) (32, r) (256, r) 
+18 |  0.02848797 | True | linear |  50 | . (512, r) (128, r) (512, r) (48, r) (256, l) (256, r) (32, r) 
+19 |  0.02861717 | True | linear |  45 | . (512, l) (128, r) (512, r) (48, r) (256, l) (256, r) (32, r) 
+20 |  0.02924855 | True | relu   |  48 | . (256, r) (64, r) (510, r) (64, l) (16, r) (64, l) (16, r) (32, l) (32, r) 
+21 |  0.02959598 | True | relu   |  45 | . (251, l) (118, r) (16, r) (266, r) (256, r) (32, r) (48, l) 
+22 |  0.03031178 | True | linear |  44 | . (512, r) (16, l) (256, r) (254, l) 
+23 |  0.03127782 | True | linear |  40 | . (251, l) (118, r) (64, r) (128, l) (32, r) (128, r) (64, r) 
+24 |  0.03190448 | True | linear |  40 | . (512, l) (512, l) (256, r) (254, l) (32, r) (59, l) (25, l) 
+25 |  0.03249925 | True | linear |  60 | . (16, l) (512, l) (16, r) (266, r) (256, r) (256, l) (48, l) (64, r) 
+26 |  0.03368901 | True | linear |  50 | . (64, r) (128, r) (256, r) (254, l) 
+27 |  0.03375969 | True | relu   |  40 | . (64, r) (512, r) (64, l) (256, l) (48, l) (128, l) (48, r) 
+28 |  0.03424941 | True | relu   |  41 | . (64, r) (128, r) (256, r) (64, l) 
+29 |  0.03448701 | True | relu   |  41 | . (16, l) (32, l) (48, r) (256, l) (128, l) (512, r) (64, r) 
+30 |  0.03508441 | True | relu   |  60 | . (16, r) (48, l) (128, r) (64, l) (64, r) (48, l) (512, l) (128, l) 
+31 |  0.03530931 | True | relu   |  50 | . (256, r) (64, r) (510, r) (256, l) (512, l) (512, l) (16, r) (32, l) (32, r) 
+32 |  0.03533080 | True | relu   |  44 | . (251, l) (118, r) (16, r) (266, r) (32, r) (59, l) (25, l) 
+33 |  0.03628914 | True | relu   |  59 | . (512, l) (48, r) (256, l) (48, r) (32, r) (59, l) (25, l) 
+34 |  0.03638667 | True | relu   |  43 | . (251, l) (118, r) (16, r) (266, r) (256, r) (256, l) (48, l) 
+35 |  0.03720432 | True | relu   |  50 | . (48, r) (128, r) (16, l) (48, l) (64, r) 
+36 |  0.03783464 | True | linear |  41 | . (48, l) (118, r) (64, r) (128, l) (32, r) (128, r) 
+37 |  0.04090181 | True | relu   |  60 | . (16, r) (48, l) (128, r) (64, l) (64, r) (48, l) (512, l) (128, l) 
+38 |  0.04799822 | True | linear |  40 | . (16, r) (510, l) (256, r) (74, l) (512, l) (59, l) (25, l) (16, r) (32, l) 
+39 |  0.05726609 | True | relu   |  41 | . (48, r) (128, r) (16, l) (48, l) (48, l) (128, l) (48, r) 
+40 |  0.11697204 | True | relu   |  44 | . (48, l) (48, l) (256, l) (512, l) 
