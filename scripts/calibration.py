@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import face_processing as fp
 
-fp.init(True)
+fp.init()
 
 video = cv2.VideoCapture(0)
 
@@ -35,7 +35,9 @@ while video.isOpened():
     if capture and len(faces) is 1:
         cv2.circle(img, (50, 50), 8, (0.24, 0.48, 0.9), -1)
 
-            # save face & point data to capture_results
+        face = faces[0]
+
+        # save face & point data to capture_results
         capture_results.append([active_point, face.l_mid, face.r_mid, face.gaze, face.size, face.h_pose])
 
     (pt_x, pt_y) = np.array([active_point[0] * 1920, active_point[1] * 1080]).astype('int')

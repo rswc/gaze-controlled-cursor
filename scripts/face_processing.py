@@ -3,6 +3,8 @@ import numpy as np
 from opv import OpvModel
 
 CURSOR_MODE = False
+__NORM_MIN = 0
+__NORM_PTP = 1
 
 model_fd = None
 model_lm = None
@@ -10,12 +12,20 @@ model_hp = None
 model_ge = None
 model_cu = None
 
+def normalize(array):
+    return (array - __NORM_MIN) / __NORM_PTP
+
+
 # The face processing module can be used both during calibration and cursor inference.
 # During calibration we don't want to waste time initializing an untrained or inexistent
 # cursor model, so the cursor_mode arg can be used to signify whether or not we want
-# it to be run. Default is False for backwards compatibility.
-def init(cursor_mode=False):
-    global model_fd, model_lm, model_hp, model_ge, model_cu, CURSOR_MODE
+# it to be run
+def init(cursor_mode=False, norm_min=0, norm_ptp=1):
+    global model_fd, model_lm, model_hp, model_ge, model_cu, CURSOR_MODE, __NORM_MIN, __NORM_PTP
+
+    __NORM_MIN = norm_min
+    __NORM_PTP = norm_ptp
+
     model_fd = OpvModel("face-detection-adas-0001", "GPU")
     model_lm = OpvModel("facial-landmarks-35-adas-0002", "GPU", ncs=2)
     model_hp = OpvModel("head-pose-estimation-adas-0001", "GPU", ncs=3)
@@ -150,9 +160,9 @@ class Face:
         """
         Returns data required by the cursor model in flat list format
         """
-        return np.array([self.l_mid[0], self.l_mid[1], self.r_mid[0], self.r_mid[1],
+        return normalize(np.array([self.l_mid[0], self.l_mid[1], self.r_mid[0], self.r_mid[1],
                 self.size, self.gaze[0], self.gaze[1], self.gaze[2],
-                self.h_pose[0], self.h_pose[1], self.h_pose[2]])
+                self.h_pose[0], self.h_pose[1], self.h_pose[2]]))
 
     def draw_bbox(self, image):
         cv2.rectangle(image, self.p2, self.p1, (230, 230, 230), 2)
