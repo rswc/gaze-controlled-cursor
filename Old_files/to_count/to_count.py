@@ -41,6 +41,8 @@ def printtest():
         index = random.randint(0, 500)
         td = testing_data[index:index+1]
 
+        print(type(td), td.shape, td)
+
         print('\nModel returns:', model.predict(td))
         print('Expected:', testing_labels[index])
 
@@ -62,6 +64,8 @@ for i, dp in enumerate(raw_data):
     if flattened.shape[0] is data.shape[1]:
         data[i] = flattened
 del raw_data
+
+
 
 data = data[mask, ...]
 
@@ -94,6 +98,10 @@ model.add(keras.layers.Dense(256, activation='relu'))
 model.add(keras.layers.Dense(10, activation='relu'))
 model.add(keras.layers.Dense(60, activation='relu'))
 
+
+
+
+weights = np.array([1,1,1,1,1,1,1,1,1,1,1])
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
 model.compile(optimizer='adam', loss='mean_absolute_error')
