@@ -9,8 +9,8 @@
 2. *numpy
 3. *opencv
 4. *pytautogui
-5. *openVINO  
--> moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem (cursor_operator.py)
+5. \*openVINO  
+-> moduły z '\*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem (cursor_operator.py)
 ---
 ### Instrukcja uruchomienia obsługi kursora
 1. Zainstalować wymagane moduły za pomocą pip -m install <nazwa_modułu>
@@ -20,18 +20,24 @@
 Działanie programu polega na automatycznym przewijaniu dokumentu (strony itp.) podczas czytania. Jeżeli wzrok znajduje się w dolnej częsci ekranu tekst przesuwa się w dół i analogicznie w drugą stronę.
 ---
 ### Instrukcja uruchomienia algorytmu genetycznego
-`TODO RAPTOR`
+Działanie implementacji algorytmu genetycznego z genetic_calculator.py zostało zademonstrowane w pliku genetic_test.py.
+Po wyliczeniu zadanej liczby pokoleń program poprosi użytkownika o dalsze polecenia. Należy wybrać:
+* C - aby kontynuować obliczenia przez podaną liczbę pokoleń
+* E - aby edytować zmienne takie jak prawdopodobieństwo mutacji
+* Q - aby zakończyć pracę programu
+Przebieg obliczeń i wynik będą zapisane w pliku out.txt
 ---
 ### Instrukcja uruchomienia kalibracji oraz wskazówki jak wykonać poprawną kalibrację
 1. Instalacja modułów jak w obsłudze kursora (wymagane moduły: opencv, numpy, openvino)
 2. Otworzyć i uruchomić skrypt calibration.py
 3. Zostaną otworzone dwa okienka, jedno pokazujące twarz i nakładane na nią boxy i wektory określonych wartości oraz drugie, w którym odbywa się kalibracja.
 4. Na środku ekranu widoczna jest biała kropka na którą należy skierować swój wzrok. Przyciskiem 'x' rozpoczynamy nagrywanie, podczas którego należy skupić wzrok na kropce i poruszać głową w róznych kierunkach (najlepiej dla każdej kolejnej kropki podobnie). Drugie naciśnięcie klawisza 'x' wyłącza nagrywanie i wyświetla nową kropkę.
-5. Po skalibrowaniu 9 kropek należy dwukrotnie nacisnąć 'x' aby zakończyć i zapisać wyniki do pliku.
-`TODO RAPTOR`
+5. Po skalibrowaniu 9 kropek należy dwukrotnie nacisnąć 'x' aby zakończyć i zapisać wyniki do pliku. Domyślna nazwa pliku to `capresults_J.npy`
+6. Należy uruchomić skrypt model_compiler.py, którego wynikiem będą plik .pb oraz `norm.npy`, w folderze `model`
+7. Uzyskany plik .pb należy skonwertować za pomocą programu Model Optimizer będącego częścią pakietu OpenVINO. Powstałe pliki należy umieścić w folderze `\models\cursor-estimation-0001\FP32`
 ---
 ## Struktura programu: 
-*  calibration.py - jest to skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.
+* calibration.py - jest to skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.
 
 * test.py - skrypt służący do testowania pojedynczych konfiguracji sieci, aby sprawdzać poprawność modelu.
 
@@ -56,3 +62,7 @@ Działanie programu polega na automatycznym przewijaniu dokumentu (strony itp.) 
    + Wykorzystanie zwróconych punktów do sterowania myszką: 
      - Przesuwanie kursora w segment ekranu odpowiadający punktowi, na który skierowany jest wzrok użytkownika
      - Jeżeli segmentem oglądanym jest część górna/dolna ekranu wywoływane jest polecenie do scrollowania w górę/dół
+---
+## Źródła
+* [keras-tf-pb](https://github.com/Tony607/keras-tf-pb) by Tony607 przy zapisywaniu modelu w formacie .pb
+* [OpenVINO-Python-Utils](https://github.com/simpledevelopments/OpenVINO-Python-Utils) by simpledevelopments, z delikatnymi modyfikacjami, przy ładowaniu modeli OpenVINO
