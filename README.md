@@ -5,12 +5,30 @@
 ### Celem rozwojowym projektu jest stworzenie bardziej precyzyjnego modelu, który byłby w stanie z większą dokładnością określać punkt na ekranie, aby móc przeprowadzać bardziej skomplikowane operacje za pomocą wzroku.
 ---
 ### Wymagane moduły:
-1. *tensorflow
+1. tensorflow w wersji 1.14
 2. *numpy
-3. *cv2
+3. *opencv
 4. *pytautogui
-5. openVINO  
+5. *openVINO  
 -> moduły z '*' wymagane do uruchomienia skryptu ze sterowaniem wzrokiem (cursor_operator.py)
+---
+### Instrukcja uruchomienia obsługi kursora
+1. Zainstalować wymagane moduły za pomocą pip -m install <nazwa_modułu>
+2. Pobrać pakiet openVINO z oficjalnej strony oraz zainstalować go na urządzeniu. W przypadku trudności z dodaniem modułu do PATH wystarczy dodać folder z pakiekietem (openvino/) do Project/scripts/
+3. Otworzyć i uruchomić skrypt cursor_operator.py
+4. Aby zamknąć program należy ustawić focus na okienko z kamerą i nacisnąć spację dwa razy
+Działanie programu polega na automatycznym przewijaniu dokumentu (strony itp.) podczas czytania. Jeżeli wzrok znajduje się w dolnej częsci ekranu tekst przesuwa się w dół i analogicznie w drugą stronę.
+---
+### Instrukcja uruchomienia algorytmu genetycznego
+`TODO RAPTOR`
+---
+### Instrukcja uruchomienia kalibracji oraz wskazówki jak wykonać poprawną kalibrację
+1. Instalacja modułów jak w obsłudze kursora (wymagane moduły: opencv, numpy, openvino)
+2. Otworzyć i uruchomić skrypt calibration.py
+3. Zostaną otworzone dwa okienka, jedno pokazujące twarz i nakładane na nią boxy i wektory określonych wartości oraz drugie, w którym odbywa się kalibracja.
+4. Na środku ekranu widoczna jest biała kropka na którą należy skierować swój wzrok. Przyciskiem 'x' rozpoczynamy nagrywanie, podczas którego należy skupić wzrok na kropce i poruszać głową w róznych kierunkach (najlepiej dla każdej kolejnej kropki podobnie). Drugie naciśnięcie klawisza 'x' wyłącza nagrywanie i wyświetla nową kropkę.
+5. Po skalibrowaniu 9 kropek należy dwukrotnie nacisnąć 'x' aby zakończyć i zapisać wyniki do pliku.
+`TODO RAPTOR`
 ---
 ## Struktura programu: 
 *  calibration.py - jest to skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.
