@@ -1,7 +1,7 @@
 #pylint: disable=missing-docstring, invalid-name
 import cv2
 import numpy as np
-import face_processing as fp
+import util.face_processing as fp
 
 fp.init()
 
@@ -46,8 +46,6 @@ while video.isOpened():
     cv2.imshow('window', img)
     cv2.imshow('frame', frame)
 
-    
-
     key = cv2.waitKey(1)
     if key == ord('q'):
         break
@@ -58,7 +56,7 @@ while video.isOpened():
             active_point = training_pts.pop()
         capture = not capture
 
-np.save("capresults_AAA", capture_results)
+np.save("capresults_J", capture_results)
 
 video.release()
 cv2.waitKey(0)

@@ -4,9 +4,10 @@ from tensorflow.keras import backend as K
 import numpy as np
 import random
 
-random.seed(1984)
+random.seed()
 
 # This function is taken from https://github.com/Tony607/keras-tf-pb
+# Thank you, Tony607, this is all black magic to me
 def freeze_session(session, keep_var_names=None, output_names=None, clear_devices=True):
     """
     Freezes the state of a session into a pruned computation graph.
@@ -49,7 +50,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.reshape(np.load("combined_results.npy", allow_pickle=True), (-1, 6))
+raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -83,6 +84,9 @@ norm_training_labels = normalize(training_labels)
 norm_testing_data = normalize(testing_data)
 norm_testing_labels = normalize(testing_labels)
 
+m = data.min(0)
+p = data.ptp(0)
+
 del data
 
 model = keras.Sequential()
@@ -102,7 +106,9 @@ model.compile(optimizer='adam', loss='mean_absolute_error')
 model.fit(norm_training_data, norm_training_labels, epochs=65)
 
 frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
-tf.train.write_graph(frozen_graph, "model", "tf_model.pb", as_text=False)
+tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
+
+np.save("./model/norm", np.array([m, p]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
