@@ -10,7 +10,26 @@ print("pos: ", x, ' ', y)
 
 # TODO: min & ptp values should be constant, or saved & loaded along with
 # cursor model data. F_P needs to be initialized with the correct values
-fp.init(cursor_mode=True, norm_min=, norm_ptp=)
+
+raw_data = np.load("capresults_AAA.npy", allow_pickle = True)
+
+data = np.zeros((len(raw_data), 11), dtype='O')
+
+for i, dp in enumerate(raw_data):
+    if (dp[3].size is not 0 or dp[5].size is not  0):
+        flattened = np.concatenate([[*dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
+        if flattened.shape[0] is data.shape[1]:
+            data[i] = flattened
+del raw_data
+
+
+m = data.min(0)
+p = data.ptp(0)
+print(m,p)
+
+
+
+fp.init(cursor_mode=True, norm_min=m, norm_ptp=p)
 
 video = cv2.VideoCapture(0)
 
@@ -37,11 +56,11 @@ while video.isOpened():
     cv2.imshow('frame', frame)
 
     # TODO: Select the face with the highest conf instead?
-    face = faces[0]
+    try: 
+        face = faces[0]
+    except (RuntimeError, IndexError):
+        print('Bad value')
 
-    #print('normalized: ', t)
-    #print('pred: ', model.predict(t))
-    #print('exp: ', testing_labels[600])
     tab = face.cursor[0]
 
     gx = tab[0]
