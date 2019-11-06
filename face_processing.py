@@ -161,7 +161,7 @@ class Face:
         Returns data required by the cursor model in flat list format
         """
         return normalize(np.array([self.l_mid[0], self.l_mid[1], self.r_mid[0], self.r_mid[1],
-                self.size, self.gaze[0], self.gaze[1], self.gaze[2],
+                self.gaze[0], self.gaze[1], self.gaze[2], self.size,
                 self.h_pose[0], self.h_pose[1], self.h_pose[2]]))
 
     def draw_bbox(self, image):
@@ -190,7 +190,7 @@ class Face:
         """
         Debug function. Shows the eye cutouts in two separate windows.
         """
-        if self.l_eye.size > 0: 
+        if self.l_eye.size > 0:
             cv2.imshow('left eye', self.l_eye)
             cv2.resizeWindow('left eye', 256, 256)
         if self.r_eye.size > 0:
