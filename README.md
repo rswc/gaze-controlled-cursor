@@ -44,6 +44,8 @@ Przebieg obliczeń i wynik będą zapisane w pliku out.txt
 
 * model_calculator.py - kalkulator modeli, służy do wyznaczania średniego absolutnego błędu w zależności od konfiguracji warstw, neuronów, epochów itp. Działa na zasadzie dokładnego wyliczania każdej możliwej konfiguracji z wybranych wartości. Na koniec tworzy plik .npy zawierający tabelę konfiguracji wszystkich sieci przeznaczoną do analizy i wyznaczania statystyk.
 
+* model_compiler.py - skrypt kompiluje model, uczy na danych z kalibracji i zapisuje w formacie .pb w folderze `model`
+
 * cap_combiner - krótki skrypt łączący pliki z danymi z kalibracji. 
 
 * genetic_calculator.py - implementacja genetycznego algorytmu mająca na celu znajdowanie najbardziej optymalnego modelu sieci dla zebranych danych.
