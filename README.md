@@ -1,4 +1,4 @@
-# Sterowanie ekranem komputerowym za pomocą wzroku
+# Obsługa komputera za pomocą wzroku
 ***
 ### Zadaniem naszego projektu jest umożliwienie oraz ułatwienie obsługi komputera osobom tymczasowo bądź stale niepełnosprawnym ruchowo jak i cierpiącym na choroby neurologiczne, w tym neurodegeneracyjne. Jest również ciekawe i użyteczne rozwiązanie dla użytkowników zainteresowanych nową technologią i dla tych, którzy zmęczeni są używaniem myszki. Zadaniem programu  jest analiza obrazu przechwyconego przez kamerkę internetową, za pomocą sztucznej inteligencji. Dane jakie jesteśmy w stanie uzyskać z pojedynczych kratek dają możliwość wyznaczania dokładnego punktu na ekranie, na który skierowany jest wzrok użytkownika. 
 ### Nasz projekt umożliwia aktualnie czytanie książek w wersji elektronicznej, plików, przeglądanie stron internetowych bez potrzeby użycia rąk, dzięki automatycznym sterowaniu ekranem za pomocą wzroku, który kierujemy zależnie, od potrzeby w dół bądź górę strony.
