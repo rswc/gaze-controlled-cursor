@@ -16,7 +16,8 @@
 1. Zainstalować wymagane moduły za pomocą pip -m install <nazwa_modułu>
 2. Pobrać pakiet openVINO z oficjalnej strony oraz zainstalować go na urządzeniu. W przypadku trudności z dodaniem modułu do PATH wystarczy dodać folder z pakiekietem (openvino/) do Project/scripts/
 3. Otworzyć i uruchomić skrypt cursor_operator.py
-4. Aby zamknąć program należy ustawić focus na okienko z kamerą i nacisnąć spację dwa razy
+4. Aby zatrzymać program należy ustawić focus na okienko z kamerą i nacisnąć '[', zostanie wyświetlony komunikat 'PAUSED', aby przywrócić działanie należy drugi raz wcisnąć klawisz '['
+5. Zamykanie programu działa analogicznie do pauzowania, z wyjątkiem, że należy dwukrotnie wcisnąć przycisk ']'
 Działanie programu polega na automatycznym przewijaniu dokumentu (strony itp.) podczas czytania. Jeżeli wzrok znajduje się w dolnej częsci ekranu tekst przesuwa się w dół i analogicznie w drugą stronę.
 ---
 ### Instrukcja uruchomienia algorytmu genetycznego

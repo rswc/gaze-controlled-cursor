@@ -40,7 +40,7 @@ def freeze_session(session, keep_var_names=None, output_names=None, clear_device
 
 def printtest():
     for i in range(15):
-        index = random.randint(0, 500)
+        index = random.randint(0, len(norm_testing_data)-1)
         td = norm_testing_data[index:index+1]
 
         print('\nModel returns:', model.predict(td))
@@ -50,7 +50,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("captured_calibrations/combined_results.npy", allow_pickle=True)
+raw_data = np.load("captured_calibrations/capresults_AAA.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -85,7 +85,11 @@ norm_testing_data = normalize(testing_data)
 norm_testing_labels = normalize(testing_labels)
 
 m = data.min(0)
+print("m: ",m)
+mi = m[2:]
+print("mi: ", mi)
 p = data.ptp(0)
+pt = p[2:]
 
 del data
 
@@ -108,7 +112,7 @@ model.fit(norm_training_data, norm_training_labels, epochs=65)
 frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
 tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
 
-np.save("./model/norm", np.array([m, p]))
+np.save("./model/norm", np.array([mi, pt]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
