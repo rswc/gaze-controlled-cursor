@@ -3,10 +3,12 @@ from tensorflow import keras
 from tensorflow.keras import backend as K
 import numpy as np
 import random
+import datetime
 
-random.seed(1984)
+random.seed()
 
 # This function is taken from https://github.com/Tony607/keras-tf-pb
+# Thank you, Tony607, this is all black magic to me
 def freeze_session(session, keep_var_names=None, output_names=None, clear_devices=True):
     """
     Freezes the state of a session into a pruned computation graph.
@@ -39,7 +41,7 @@ def freeze_session(session, keep_var_names=None, output_names=None, clear_device
 
 def printtest():
     for i in range(15):
-        index = random.randint(0, 500)
+        index = random.randint(0, len(norm_testing_data)-1)
         td = norm_testing_data[index:index+1]
 
         print('\nModel returns:', model.predict(td))
@@ -49,7 +51,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.reshape(np.load("combined_results.npy", allow_pickle=True), (-1, 6))
+raw_data = np.load("captured_calibrations/capresults_AAA.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -83,6 +85,13 @@ norm_training_labels = normalize(training_labels)
 norm_testing_data = normalize(testing_data)
 norm_testing_labels = normalize(testing_labels)
 
+m = data.min(0)
+print("m: ",m)
+mi = m[2:]
+print("mi: ", mi)
+p = data.ptp(0)
+pt = p[2:]
+
 del data
 
 model = keras.Sequential()
@@ -92,19 +101,28 @@ model.add(keras.layers.Dense(138, activation='linear'))
 model.add(keras.layers.Dense(512, activation='relu'))
 model.add(keras.layers.Dense(253, activation='relu'))
 model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(10, activation='relu'))
+model.add(keras.layers.Dense(64, activation='relu'))
 model.add(keras.layers.Dense(60, activation='relu'))
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
 
+file_writer = tf.summary.FileWriter('logs/', K.get_session().graph)
+
 model.compile(optimizer='adam', loss='mean_absolute_error')
 
-model.fit(norm_training_data, norm_training_labels, epochs=65)
+log_dir="logs\\fit\\" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=2)
 
-frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
-tf.train.write_graph(frozen_graph, "model", "tf_model.pb", as_text=False)
+model.fit(norm_training_data, norm_training_labels, epochs=65, validation_split=0.1, callbacks=[tensorboard_callback])
+
+# frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
+# tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
+
+# np.save("./model/norm", np.array([m, p]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
+
+file_writer.close()
 
 printtest()

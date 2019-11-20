@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from opv import OpvModel
+from util.opv import OpvModel
 
 CURSOR_MODE = False
 __NORM_MIN = 0
@@ -122,8 +122,7 @@ class Face:
         self.gaze = model_ge.Predict({'left_eye_image': self.l_eye, 'right_eye_image': self.r_eye, 'head_pose_angles': self.h_pose})[0]
 
         if CURSOR_MODE:
-            ret = model_cu.Predict({'data': self.__cursor_data})
-            self.cursor = ret
+            self.cursor = model_cu.Predict({'data': self.__cursor_data})
 
     def get_eye(self, p1, p2):
         # Get the norm & midpoint of the eye
@@ -149,7 +148,7 @@ class Face:
 
         # The method returns a tuple: first, the two points of the eye's bounding box,
         # then, the midpoint, and finally th image cutout of the eye.
-        # Points are in global, frame-space coordinates, I think?
+        # Points are in global, frame-space coordinates (?)
         return ((xmax + w, ymax + h),
                 (xmin + w, ymin + h),
                 (int(midpoint[0] + w), int(midpoint[1] + h)),
@@ -165,10 +164,16 @@ class Face:
                 self.h_pose[0], self.h_pose[1], self.h_pose[2]]))
 
     def draw_bbox(self, image):
+        """
+        Draws the face's bounding box in image
+        """
         cv2.rectangle(image, self.p2, self.p1, (230, 230, 230), 2)
         cv2.putText(image, str(round(self.conf * 100, 2))+"%", self.p2, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0,0), 2)
 
     def draw_pts(self, image):
+        """
+        Draws eye points and bounding boxes in image
+        """
         (w, h) = self.p1
         for i in range(4):
             c_x = self.eye_pts[i][0] + w
@@ -180,6 +185,9 @@ class Face:
         cv2.rectangle(image, self.r_p2, self.r_p1, (230, 230, 230), 1)
 
     def draw_gaze(self, image):
+        """
+        Draws the gaze vectors in image
+        """
         if not self.gaze.size:
             return
         gaze_arrow = (np.array([self.gaze[0], -self.gaze[1]]) * 0.4 * self.image.shape[0]).astype("int")

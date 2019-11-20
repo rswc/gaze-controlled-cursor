@@ -2,4 +2,4 @@ videos/
 __pycache__/
 .vscode/
 .gitignore
-openvino/
+logs/

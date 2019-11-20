@@ -1,5 +1,3 @@
-#pylint: disable=invalid-name
-
 from genetic_calculator import GeneticCalculator, Model
 from tensorflow import keras
 import numpy as np
@@ -60,7 +58,7 @@ def model_fitness(tpl):
         model.fit(training_data, training_labels, epochs=tpl.epochs, verbose=0)
         return model.evaluate(testing_data, testing_labels, verbose=0)
 
-# initial population
+# Initial population
 pop = [
     Model(True, 'relu', 50, [[512, 'relu'], [128, 'relu'], [512, 'relu'], [253, 'relu'], [254, 'relu'], [22, 'linear'], [48, 'linear']]),
     Model(True, 'relu', 50, [[244, 'relu'], [514, 'linear'], [502, 'relu'], [256, 'relu'], [256, 'relu'], [48, 'linear'], [113, 'relu'], [30, 'linear']]),
@@ -78,6 +76,7 @@ pop = [
                              layer_activation=['relu', 'linear'], norm_choice=[True], out_ac_choice=['relu', 'linear'],
                              epochs_choice=[40, 50, 60])
 
+# Gen calc instance
 gen_calc = GeneticCalculator(pop, model_fitness, mutation_probability=0.25, selection_amount=6, selection_probability=0.6, verbose=3)
 gen_calc.start(2)
 
