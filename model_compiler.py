@@ -115,6 +115,7 @@ tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram
 
 model.fit(norm_training_data, norm_training_labels, epochs=65, validation_split=0.1, callbacks=[tensorboard_callback])
 
+
 # frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
 # tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
 
