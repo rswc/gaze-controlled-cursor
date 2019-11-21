@@ -33,7 +33,7 @@ def all_hl_cfg(depth=1, _arr=[]):
                 for ac in ACTIVATION:
                     ret.append(el + [(num_units, ac)])
         return all_hl_cfg(depth - 1, ret)
-    elif depth is 1:
+    elif depth == 1:
         return _arr
     else:
         raise ValueError('depth must always be equal to, or higher than 1')
@@ -48,11 +48,11 @@ mask = np.ones(len(raw_data), dtype=bool)
 data = np.zeros((len(raw_data), 13), dtype='O')
 
 for i, dp in enumerate(raw_data):
-    if (dp[3].size is 0 or dp[5].size is 0):
+    if (dp[3].size == 0 or dp[5].size == 0):
         mask[i] = False
     
     flattened = np.concatenate([[*dp[0], *dp[1], *dp[2]], dp[3], [dp[4]], dp[5]], axis=0).astype('float32')
-    if flattened.shape[0] is data.shape[1]:
+    if flattened.shape[0] == data.shape[1]:
         data[i] = flattened
 del raw_data
 
@@ -92,7 +92,7 @@ with device('/GPU:0'):
     for num_hl in NUM_HIDDEN_LAYERS:
         for hl_cfg in all_hl_cfg(num_hl):
             for out_ac in OUTPUT_LAYER_ACTIVATION:
-                if current_test % AUTOSAVE_EVERY is 0:
+                if current_test % AUTOSAVE_EVERY == 0:
                     np.save("cfg_autosave", configurations)
                     keras.backend.clear_session()
 

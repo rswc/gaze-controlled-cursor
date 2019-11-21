@@ -13,13 +13,14 @@ from tensorflow import keras
 from sortedcontainers import SortedList
 
 class Model:
-    __slots__ = ['norm', 'out_ac', 'epochs', 'layers', 'error']
+    __slots__ = ['out_ac', 'epochs', 'layers', 'batch_size', 'learning_rate', 'error']
 
-    def __init__(self, norm=False, out_ac=None, epochs=0, layers=None, error=0):
-        self.norm = norm
+    def __init__(self, out_ac=None, epochs=0, layers=None, batch_size=0, learning_rate=0, error=0):
         self.out_ac = out_ac
         self.epochs = epochs
         self.layers = layers
+        self.batch_size = batch_size
+        self.learning_rate = learning_rate
         self.error = error
 
     def __lt__(self, other):
@@ -39,30 +40,36 @@ class Model:
         for layer in self.layers:
             layers += "({0}, {1}) ".format(layer[0], layer[1][0])
 
-        return "{0:11.8f} | {1} | {2:6s} | {3:3d} | {4}".format(self.error, self.norm, self.out_ac, self.epochs, layers)
+        return "{0:11.8f} | {2:6s} | {3:3d} | {4:3d} | {5:8.7f} | {4}".format(self.error, self.out_ac,
+                     self.epochs, self.batch_size, self.learning_rate, layers)
 
 class Util:
     @staticmethod
     def choice_crossover(a, b):
-        if a is b:
+        if a == b:
             return a
         else:
             return random.choice((a, b))
 
     @staticmethod
-    def normal_crossover(a, b):
+    def normal_crossover(a, b, as_int=True):
         x = np.random.normal(scale=0.5)
         if x > 1:
             x = 1
         if x < -1:
             x = -1
 
-        if x is 0:
-            return int((a + b) / 2)
+        if x == 0:
+            r = (a + b) / 2
         elif x > 0:
-            return int(x * a + (1-x) * b)
+            r = x * a + (1-x) * b
         else:
-            return int((1+x) * a - x * b)
+            r = (1+x) * a - x * b
+
+        if as_int:
+            return int(r)
+        else:
+            return r
 
     @staticmethod
     def layer_crossover(long, short, size_diff):
@@ -93,9 +100,10 @@ def simple_selection(pop, selection_amount, min_pop_size=10):
 def simple_crossover(a, b):
     model = Model()
 
-    model.norm = Util.choice_crossover(a.norm, b.norm)
     model.out_ac = Util.choice_crossover(a.out_ac, b.out_ac)
     model.epochs = Util.normal_crossover(a.epochs, b.epochs)
+    model.batch_size = Util.normal_crossover(a.batch_size, b.batch_size)
+    model.learning_rate = Util.normal_crossover(a.learning_rate, b.learning_rate, as_int=False)
 
     l = len(a.layers) - len(b.layers)
     if l >= 0:       # a >= b
@@ -110,6 +118,10 @@ def simple_mutation(model, pm):
         model.out_ac = GeneticCalculator.ACTIVATION_FUNCTIONS[random.randrange(0, len(GeneticCalculator.ACTIVATION_FUNCTIONS))]
     if random.random() < pm:
         model.epochs += random.choice([-7, -5, -2, 2, 5, 7])
+    if random.random() < pm:
+        model.batch_size += random.choice([-8, -4, -2, 2, 4, 8])
+    if random.random() < pm:
+        model.learning_rate += random.choice([-0.0004, -0.0002, 0.0002, 0.0004])
 
     if random.random() < (0.5 * pm):
         del model.layers[random.randrange(0, len(model.layers))]
@@ -195,7 +207,7 @@ class GeneticCalculator:
         """
         with open('out.txt', 'a') as OUTPUT_FILE:
             for _ in range(max_generations):
-                if self.__generation % 10 is 0 and self.__generation > 0:
+                if self.__generation % 10 == 0 and self.__generation > 0:
                     keras.backend.clear_session()
 
                 if self.__verbosity > 2:
@@ -259,11 +271,11 @@ class GeneticCalculator:
         """
         Converts the iterable format used in model_calculator.py to a Model object
         """
-        return Model(it[0], it[2], it[3], it[1])
+        return Model(it[2], it[3], it[1])
 
     @staticmethod
     def random(num_models, min_layers, max_layers, layer_size_choice, layer_activation,
-               norm_choice, out_ac_choice, epochs_choice):
+               out_ac_choice, epochs_choice, batch_size_choice, learning_rate_choice):
         """
         Generates a list of num_models random model configurations using the options
         provided in the rest of the parameters
@@ -273,7 +285,7 @@ class GeneticCalculator:
             layers = []
             for _ in range(random.randint(min_layers, max_layers)):
                 layers.append([random.choice(layer_size_choice), random.choice(layer_activation)])
-            models.append(Model(random.choice(norm_choice), random.choice(out_ac_choice),
-                                random.choice(epochs_choice), layers))
+            models.append(Model(random.choice(out_ac_choice), random.choice(epochs_choice), layers,
+                            random.choice(batch_size_choice), random.choice(learning_rate_choice)))
 
         return models

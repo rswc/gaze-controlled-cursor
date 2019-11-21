@@ -5,7 +5,7 @@ import numpy as np
 import random
 import datetime
 
-random.seed()
+random.seed(1984)
 
 # This function is taken from https://github.com/Tony607/keras-tf-pb
 # Thank you, Tony607, this is all black magic to me
@@ -110,16 +110,15 @@ file_writer = tf.summary.FileWriter('logs/', K.get_session().graph)
 
 model.compile(optimizer='adam', loss='mean_absolute_error')
 
-log_dir="logs\\fit\\" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=2)
+# log_dir="logs\\fit\\" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+# tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=2)
 
 model.fit(norm_training_data, norm_training_labels, epochs=65, validation_split=0.1, callbacks=[tensorboard_callback])
 
 
-# frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
-# tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
-
-# np.save("./model/norm", np.array([m, p]))
+frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
+tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
+np.save("./model/norm", np.array([m, p]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
