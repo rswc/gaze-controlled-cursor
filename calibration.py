@@ -56,7 +56,7 @@ while video.isOpened():
             active_point = training_pts.pop()
         capture = not capture
 
-np.save("capresults_J", capture_results)
+np.save("new_calibration_6", capture_results)
 
 video.release()
 cv2.waitKey(0)

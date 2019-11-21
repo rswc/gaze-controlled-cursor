@@ -5,7 +5,7 @@ import numpy as np
 import random
 import datetime
 
-random.seed()
+random.seed(1984)
 
 # This function is taken from https://github.com/Tony607/keras-tf-pb
 # Thank you, Tony607, this is all black magic to me
@@ -51,7 +51,7 @@ def normalize(array):
     return (array - array.min(0)) / array.ptp(0)
 
 
-raw_data = np.load("captured_calibrations/capresults_AAA.npy", allow_pickle=True)
+raw_data = np.load("new_combined_results.npy", allow_pickle=True)
 
 # del datapoints with empty vectors
 mask = np.ones(len(raw_data), dtype=bool)
@@ -96,12 +96,12 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(512, activation='relu'))
-model.add(keras.layers.Dense(138, activation='linear'))
-model.add(keras.layers.Dense(512, activation='relu'))
-model.add(keras.layers.Dense(253, activation='relu'))
-model.add(keras.layers.Dense(256, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dense(1024, activation='relu'))
+model.add(keras.layers.Dense(612, activation='linear'))
+model.add(keras.layers.Dense(422, activation='relu'))
+model.add(keras.layers.Dense(254, activation='relu'))
+model.add(keras.layers.Dense(160, activation='relu'))
+model.add(keras.layers.Dense(100, activation='relu'))
 model.add(keras.layers.Dense(60, activation='relu'))
 
 model.add(keras.layers.Dense(2, activation='linear', name='output'))
@@ -119,7 +119,7 @@ model.fit(norm_training_data, norm_training_labels, epochs=65, validation_split=
 # frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
 # tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
 
-# np.save("./model/norm", np.array([m, p]))
+np.save("./model/norm", np.array([m, p]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
