@@ -10,7 +10,7 @@
 			</output>
 		</layer>
 		<layer id="1" name="dense/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="512"/>
+			<data out-size="1024"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
@@ -20,176 +20,176 @@
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="0" size="22528"/>
-				<biases offset="22528" size="2048"/>
+				<weights offset="0" size="45056"/>
+				<biases offset="45056" size="4096"/>
 			</blobs>
 		</layer>
 		<layer id="2" name="dense/Relu" precision="FP32" type="ReLU">
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</input>
 			<output>
 				<port id="1">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="3" name="dense_1/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="138"/>
+			<data out-size="612"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</input>
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>138</dim>
+					<dim>612</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="24576" size="282624"/>
-				<biases offset="307200" size="552"/>
+				<weights offset="49152" size="2506752"/>
+				<biases offset="2555904" size="2448"/>
 			</blobs>
 		</layer>
 		<layer id="4" name="dense_2/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="512"/>
+			<data out-size="422"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>138</dim>
+					<dim>612</dim>
 				</port>
 			</input>
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>422</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="307752" size="282624"/>
-				<biases offset="590376" size="2048"/>
+				<weights offset="2558352" size="1033056"/>
+				<biases offset="3591408" size="1688"/>
 			</blobs>
 		</layer>
 		<layer id="5" name="dense_2/Relu" precision="FP32" type="ReLU">
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>422</dim>
 				</port>
 			</input>
 			<output>
 				<port id="1">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>422</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="6" name="dense_3/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="253"/>
+			<data out-size="254"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>422</dim>
 				</port>
 			</input>
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>253</dim>
+					<dim>254</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="592424" size="518144"/>
-				<biases offset="1110568" size="1012"/>
+				<weights offset="3593096" size="428752"/>
+				<biases offset="4021848" size="1016"/>
 			</blobs>
 		</layer>
 		<layer id="7" name="dense_3/Relu" precision="FP32" type="ReLU">
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>253</dim>
+					<dim>254</dim>
 				</port>
 			</input>
 			<output>
 				<port id="1">
 					<dim>1</dim>
-					<dim>253</dim>
+					<dim>254</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="8" name="dense_4/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="256"/>
+			<data out-size="160"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>253</dim>
+					<dim>254</dim>
 				</port>
 			</input>
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>256</dim>
+					<dim>160</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="1111580" size="259072"/>
-				<biases offset="1370652" size="1024"/>
+				<weights offset="4022864" size="162560"/>
+				<biases offset="4185424" size="640"/>
 			</blobs>
 		</layer>
 		<layer id="9" name="dense_4/Relu" precision="FP32" type="ReLU">
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>256</dim>
+					<dim>160</dim>
 				</port>
 			</input>
 			<output>
 				<port id="1">
 					<dim>1</dim>
-					<dim>256</dim>
+					<dim>160</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="10" name="dense_5/MatMul" precision="FP32" type="FullyConnected">
-			<data out-size="10"/>
+			<data out-size="100"/>
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>256</dim>
+					<dim>160</dim>
 				</port>
 			</input>
 			<output>
 				<port id="3">
 					<dim>1</dim>
-					<dim>10</dim>
+					<dim>100</dim>
 				</port>
 			</output>
 			<blobs>
-				<weights offset="1371676" size="10240"/>
-				<biases offset="1381916" size="40"/>
+				<weights offset="4186064" size="64000"/>
+				<biases offset="4250064" size="400"/>
 			</blobs>
 		</layer>
 		<layer id="11" name="dense_5/Relu" precision="FP32" type="ReLU">
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>10</dim>
+					<dim>100</dim>
 				</port>
 			</input>
 			<output>
 				<port id="1">
 					<dim>1</dim>
-					<dim>10</dim>
+					<dim>100</dim>
 				</port>
 			</output>
 		</layer>
@@ -198,7 +198,7 @@
 			<input>
 				<port id="0">
 					<dim>1</dim>
-					<dim>10</dim>
+					<dim>100</dim>
 				</port>
 			</input>
 			<output>
@@ -208,8 +208,8 @@
 				</port>
 			</output>
 			<blobs>
-				<weights offset="1381956" size="2400"/>
-				<biases offset="1384356" size="240"/>
+				<weights offset="4250464" size="24000"/>
+				<biases offset="4274464" size="240"/>
 			</blobs>
 		</layer>
 		<layer id="13" name="dense_6/Relu" precision="FP32" type="ReLU">
@@ -241,8 +241,8 @@
 				</port>
 			</output>
 			<blobs>
-				<weights offset="1384596" size="480"/>
-				<biases offset="1385076" size="8"/>
+				<weights offset="4274704" size="480"/>
+				<biases offset="4275184" size="8"/>
 			</blobs>
 		</layer>
 	</layers>
@@ -274,7 +274,7 @@
 			<framework value="tf"/>
 			<freeze_placeholder_with_value value="{}"/>
 			<generate_experimental_IR_V10 value="False"/>
-			<input_model value="DIR\tf_model.pb"/>
+			<input_model value="DIR\cursor-estimation-0001.pb"/>
 			<input_model_is_text value="False"/>
 			<input_shape value="(1, 11)"/>
 			<keep_quantize_ops_in_IR value="False"/>
@@ -282,7 +282,6 @@
 			<log_level value="ERROR"/>
 			<mean_scale_values value="{}"/>
 			<mean_values value="()"/>
-			<model_name value="cursor-estimation-0001"/>
 			<move_to_preprocess value="False"/>
 			<output_dir value="DIR"/>
 			<placeholder_shapes value="[ 1 11]"/>
@@ -291,7 +290,7 @@
 			<silent value="False"/>
 			<steps value="False"/>
 			<version value="False"/>
-			<unset unset_cli_parameters="batch, disable_fusing, disable_gfusing, finegrain_fusing, generate_deprecated_IR_V2, input, input_checkpoint, input_meta_graph, output, saved_model_dir, saved_model_tags, scale, tensorboard_logdir, tensorflow_custom_layer_libraries, tensorflow_custom_operations_config_update, tensorflow_object_detection_api_pipeline_config, tensorflow_operation_patterns, tensorflow_subgraph_patterns, tensorflow_use_custom_operations_config"/>
+			<unset unset_cli_parameters="batch, disable_fusing, disable_gfusing, finegrain_fusing, generate_deprecated_IR_V2, input, input_checkpoint, input_meta_graph, model_name, output, saved_model_dir, saved_model_tags, scale, tensorboard_logdir, tensorflow_custom_layer_libraries, tensorflow_custom_operations_config_update, tensorflow_object_detection_api_pipeline_config, tensorflow_operation_patterns, tensorflow_subgraph_patterns, tensorflow_use_custom_operations_config"/>
 		</cli_parameters>
 	</meta_data>
 </net>
