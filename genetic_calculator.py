@@ -12,7 +12,7 @@ import numpy as np
 from tensorflow import keras
 from sortedcontainers import SortedList
 
-class Model:
+class ModelHParams:
     __slots__ = ['out_ac', 'epochs', 'layers', 'batch_size', 'learning_rate', 'error']
 
     def __init__(self, out_ac=None, epochs=0, layers=None, batch_size=0, learning_rate=0, error=0):
@@ -40,7 +40,7 @@ class Model:
         for layer in self.layers:
             layers += "({0}, {1}) ".format(layer[0], layer[1][0])
 
-        return "{0:11.8f} | {2:6s} | {3:3d} | {4:3d} | {5:8.7f} | {4}".format(self.error, self.out_ac,
+        return "{0:11.8f} | {1:6s} | {2:3d} | {3:3d} | {4:8.7f} | {5}".format(self.error, self.out_ac,
                      self.epochs, self.batch_size, self.learning_rate, layers)
 
 class Util:
@@ -98,7 +98,7 @@ def simple_selection(pop, selection_amount, min_pop_size=10):
     return total_deleted
 
 def simple_crossover(a, b):
-    model = Model()
+    model = ModelHParams()
 
     model.out_ac = Util.choice_crossover(a.out_ac, b.out_ac)
     model.epochs = Util.normal_crossover(a.epochs, b.epochs)
@@ -111,9 +111,13 @@ def simple_crossover(a, b):
     elif l < 0:      # a < b
         model.layers = Util.layer_crossover(b.layers.copy(), a.layers.copy(), -l)
 
+    if len(model.layers) < 4:
+        model.layers += a.layers
+
     return model
 
 def simple_mutation(model, pm):
+    
     if random.random() < pm:
         model.out_ac = GeneticCalculator.ACTIVATION_FUNCTIONS[random.randrange(0, len(GeneticCalculator.ACTIVATION_FUNCTIONS))]
     if random.random() < pm:
@@ -123,7 +127,7 @@ def simple_mutation(model, pm):
     if random.random() < pm:
         model.learning_rate += random.choice([-0.0004, -0.0002, 0.0002, 0.0004])
 
-    if random.random() < (0.5 * pm):
+    if random.random() < (0.5 * pm) and len(model.layers) > 4:
         del model.layers[random.randrange(0, len(model.layers))]
 
     if random.random() < (0.5 * pm):
@@ -131,9 +135,9 @@ def simple_mutation(model, pm):
 
     for i in range(len(model.layers)):
         if random.random() < (0.7 * pm):
-            model.layers[i][0] += random.choice([-10, -5, -2, 2, 5, 10])
-            if model.layers[i][0] < 10:
-                model.layers[i][0] = 10
+            model.layers[i][0] += random.choice([-5, -4, -2, 2, 4, 5])
+            if model.layers[i][0] < 4:
+                model.layers[i][0] = 4
             model.layers[i][1] = GeneticCalculator.ACTIVATION_FUNCTIONS[random.randrange(0, len(GeneticCalculator.ACTIVATION_FUNCTIONS))]
 
     return model
@@ -146,7 +150,7 @@ class GeneticCalculator:
     Args:
         population: Initial population
         fitness_func: Function for calculating the fitness of a given model. Should
-                      accept a Model object and return the loss value of a test
+                      accept a ModelHParams object and return the loss value of a test
         selection_amount: (default=1) Max amount of models to die each generation
         selection_probability: (default=0.4) Dictates which models get selected for crossover
                                or removal from the population. As it approaches 1, the selection
@@ -158,10 +162,10 @@ class GeneticCalculator:
                         Should accept a SortedList with the total population and selection_amount.
                         Should return the total number of models deleted. Should use del to remove models
         crossover_func: (default=simple_crossover) Function to be used in the crossover step.
-                        Should accept two Model objects. Should return a new Model object.
+                        Should accept two ModelHParams objects. Should return a new ModelHParams object.
                         Only (2 parents => 1 child) operations are supprted as of today.
         mutation_func: (default=simple_mutation) Function to be used for mutation. Applied to every
-                       new model before it enters the population. Should accept a Model object
+                       new model before it enters the population. Should accept a ModelHParams object
                        and mutation_probability. Should return the modifed model
         verbose: (default=1) Verbosity mode of the calcuator:
                                 0 - silent
@@ -227,7 +231,14 @@ class GeneticCalculator:
 
                 # Crossover, mutation & fitness
                 for _ in range(total_deleted):
-                    model = self.__crossover(parents.pop(), parents.pop())
+
+                    if len(parents) == 0:
+                        model = self.__crossover(self.__population[0], self.__population[1])
+                    elif len(parents) == 1:
+                        model = self.__crossover(parents.pop(), self.__population[0])
+                    else:
+                        model = self.__crossover(parents.pop(), parents.pop())
+                    
                     model = self.__mutate(model, self.__pm)
                     model.error = self.__fitness(model)
                     self.__population.add(model)
@@ -253,14 +264,14 @@ class GeneticCalculator:
         self.__ps = selection_probability
 
     def print_population(self, n=None, file=None):
-        print("#  | error      | norm  | out_ac | epochs | hidden layers")
+        print("#  | error      | out_ac | epochs | batch size | learning rate | hidden layers")
         print("---------------------------------------------------------")
         for i, result in enumerate(self.__population[:n]):
             print(i, "|", str(result))
         print("\n")
 
         if file:
-            file.write("#  | error      | norm  | out_ac | epochs | hidden layers\n")
+            file.write("#  | error      | out_ac | epochs | batch size | learning rate | hidden layers\n")
             file.write("---------------------------------------------------------\n")
             for i, result in enumerate(self.__population[:n]):
                 file.write("" + str(i) + " | " + str(result) + "\n")
@@ -269,9 +280,9 @@ class GeneticCalculator:
     @staticmethod
     def to_model(it):
         """
-        Converts the iterable format used in model_calculator.py to a Model object
+        Converts the iterable format used in model_calculator.py to a ModelHParams object
         """
-        return Model(it[2], it[3], it[1])
+        return ModelHParams(it[2], it[3], it[1])
 
     @staticmethod
     def random(num_models, min_layers, max_layers, layer_size_choice, layer_activation,
@@ -285,7 +296,7 @@ class GeneticCalculator:
             layers = []
             for _ in range(random.randint(min_layers, max_layers)):
                 layers.append([random.choice(layer_size_choice), random.choice(layer_activation)])
-            models.append(Model(random.choice(out_ac_choice), random.choice(epochs_choice), layers,
-                            random.choice(batch_size_choice), random.choice(learning_rate_choice)))
+            models.append(ModelHParams(random.choice(out_ac_choice), random.choice(epochs_choice), layers,
+                                random.choice(batch_size_choice), random.choice(learning_rate_choice)))
 
         return models

@@ -1,4 +1,4 @@
-from genetic_calculator import GeneticCalculator, Model
+from genetic_calculator import GeneticCalculator, ModelHParams
 from tensorflow import keras
 from tensorboard.plugins.hparams import api as hp
 import numpy as np
@@ -54,25 +54,18 @@ def model_fitness(tpl):
     
     model.compile(optimizer=optimizer, loss='mean_absolute_error')
 
-    hparams = {
-        "Num_layers": len(tpl.layers),
-        "Epochs": tpl.epochs,
-        "Batch_size": tpl.batch_size,
-        "Learning_rate": tpl.learning_rate
-    }
-
     model.fit(norm_training_data, training_labels, epochs=tpl.epochs, batch_size=tpl.batch_size, verbose=0)
 
     return model.evaluate(norm_testing_data, testing_labels, verbose=0)
 
 # Initial population
-pop = GeneticCalculator.random(15, min_layers=4, max_layers=9, layer_size_choice=[16, 32, 48, 64, 128, 256, 512],
+pop = GeneticCalculator.random(34, min_layers=3, max_layers=8, layer_size_choice=[6, 8, 11, 16, 20, 22],
                              layer_activation=['relu', 'linear'], out_ac_choice=['relu', 'linear'],
                              epochs_choice=[40, 50, 60], batch_size_choice=[24, 32, 40], learning_rate_choice=[0.001])
 
 # Gen calc instance
-gen_calc = GeneticCalculator(pop, model_fitness, mutation_probability=0.25, selection_amount=6, selection_probability=0.6, verbose=3)
-gen_calc.start(2)
+gen_calc = GeneticCalculator(pop, model_fitness, mutation_probability=0.25, selection_amount=6, selection_probability=0.75, verbose=3)
+gen_calc.start(64)
 
 while True:
     c = input("Set finished.\nC - Continue  E - Edit  Q - Quit")
