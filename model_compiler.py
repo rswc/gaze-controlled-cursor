@@ -96,10 +96,10 @@ del data
 
 model = keras.Sequential()
 model.add(keras.Input(shape=(11,), name='data'))
-model.add(keras.layers.Dense(1024, activation='relu'))
-model.add(keras.layers.Dense(612, activation='linear'))
-model.add(keras.layers.Dense(422, activation='relu'))
-model.add(keras.layers.Dense(254, activation='relu'))
+#model.add(keras.layers.Dense(1024, activation='relu'))
+#model.add(keras.layers.Dense(612, activation='linear'))
+#model.add(keras.layers.Dense(422, activation='relu'))
+#model.add(keras.layers.Dense(254, activation='relu'))
 model.add(keras.layers.Dense(160, activation='relu'))
 model.add(keras.layers.Dense(100, activation='relu'))
 model.add(keras.layers.Dense(60, activation='relu'))
@@ -118,7 +118,7 @@ model.fit(norm_training_data, norm_training_labels, epochs=65, validation_split=
 
 frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
 tf.train.write_graph(frozen_graph, "model", "cursor-estimation-0001.pb", as_text=False)
-np.save("./model/norm", np.array([m, p]))
+np.save("./model/norm", np.array([mi, pt]))
 
 test_loss = model.evaluate(norm_testing_data, norm_testing_labels, verbose=0)
 print("\nTest MAE:", test_loss)
